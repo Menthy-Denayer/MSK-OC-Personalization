@@ -21,14 +21,17 @@ S.solver.IG_selection = fullfile(params.kinematicsGuessFileMot);
 % S.weights.slack_ctrl = coeffs0(params.Nmuscles*2+6)*1e-3;
 
 %% Run Predictive Simulation
-fprintf('Started predictive simulation at %s\n', datetime('now','format','HH:SS:MM'));
+fprintf('Started predictive simulation at %s\n', datetime('now','format','HH:mm:ss'));
 
 % run predictive simulation for at most 20min
 [~,R,model_info] = runPredSim(S, char(modelFile));
 
+%% Compute Fitness
+[f,cot] = compute_fitness(R, model_info, params);
+
 %% Compute Cost Function
 % load results data
-predictionTime = R.time.mesh_GC;
+% predictionTime = R.time.mesh_GC;
 
 % lMpred = R.muscles.lMtilde;
 % vMpred = predictionResults.R.muscles.vMtilde;
@@ -36,8 +39,8 @@ predictionTime = R.time.mesh_GC;
 % lTpred = R.muscles.lT./lTslack;
 
 % resample data to match desired values
-duration = predictionTime(end-1)-predictionTime(1);
-norm_time = (predictionTime(1:end-1)-predictionTime(1))/duration;
+% duration = predictionTime(end-1)-predictionTime(1);
+% norm_time = (predictionTime(1:end-1)-predictionTime(1))/duration;
 
 % lMsyn = interp1(norm_time, lMpred, params.mtuTime, "linear");
 % vMsyn = interp1(norm_time, vMpred, params.mtuTime, "linear");
@@ -65,57 +68,57 @@ norm_time = (predictionTime(1:end-1)-predictionTime(1))/duration;
 % end
 
 %% Compute kinematics error
-f = 0;
+% f = 0;
 % f = f + sum(rmse(lMsyn, params.lMdesired, 1));
 % f = f + sum(rmse(lTsyn, params.lTdesired, 1));
 % f = f + sum(rmse(vMsyn, params.vMdesired, 1));
 
 % IKpred = R.kinematics.Qs(:,4:end-1);                                      % 2D Tracking
-IKpred = R.kinematics.Qs;                                                   % all joint angles
-IKsync = interp1(norm_time,IKpred,params.IKtime,"linear");
-IKerr = sum(rmse(IKsync,params.IKdesired));
-
-f = f + IKerr;
+% IKpred = R.kinematics.Qs;                                                   % all joint angles
+% IKsync = interp1(norm_time,IKpred,params.IKtime,"linear");
+% IKerr = sum(rmse(IKsync,params.IKdesired));
+% 
+% f = f + IKerr;
 
 %% Compute GRF error
-if(params.trackGRF)
-    GRFpred = [R.ground_reaction.GRF_r R.ground_reaction.GRF_l];                % all ground reaction forces
-    GRFsync = interp1(norm_time,GRFpred,params.GRFtime,"linear");
-    GRFerr = sum(rmse(GRFsync,params.GRFdesired));
-    f = f + GRFerr*0.2;
-end
+% if(params.trackGRF)
+%     GRFpred = [R.ground_reaction.GRF_r R.ground_reaction.GRF_l];                % all ground reaction forces
+%     GRFsync = interp1(norm_time,GRFpred,params.GRFtime,"linear");
+%     GRFerr = sum(rmse(GRFsync,params.GRFdesired));
+%     f = f + GRFerr*0.2;
+% end
 
 %% Create plot
-if(params.plot)
-    Nkin = size(IKpred,2);
-    % kinNames = string(R.colheaders.coordinates(4:end-1));                 % 2D Tracking joint angle names
-    kinNames = string(R.colheaders.coordinates);                            % joint angle names
-    for i = 1:Nkin
-        figure
-        hold on
-        plot(params.IKtime, IKsync(:,i), "red")
-        plot(params.IKtime, params.IKdesired(:,i), "blue")
-        legend(["predicted", "desired"])
-        title(kinNames(i))
-        hold off
-    end
-
-    if(params.trackGRF)
-        Ngrf = size(GRFpred,2);
-        grfNames = ["GRF Right X" "GRF Right Y" "GRF Right Z" "GRF Left X" "GRF Left Y" "GRF Left Z"];                            
-        for i = 1:Ngrf
-            figure
-            hold on
-            plot(params.GRFtime, GRFsync(:,i), "red")
-            plot(params.GRFtime, params.GRFdesired(:,i), "blue")
-            legend(["predicted", "desired"])
-            title(grfNames(i))
-            hold off
-        end
-    end
-end
+% if(params.plot)
+%     Nkin = size(IKpred,2);
+%     % kinNames = string(R.colheaders.coordinates(4:end-1));                 % 2D Tracking joint angle names
+%     kinNames = string(R.colheaders.coordinates);                            % joint angle names
+%     for i = 1:Nkin
+%         figure
+%         hold on
+%         plot(params.IKtime, IKsync(:,i), "red")
+%         plot(params.IKtime, params.IKdesired(:,i), "blue")
+%         legend(["predicted", "desired"])
+%         title(kinNames(i))
+%         hold off
+%     end
+% 
+%     if(params.trackGRF)
+%         Ngrf = size(GRFpred,2);
+%         grfNames = ["GRF Right X" "GRF Right Y" "GRF Right Z" "GRF Left X" "GRF Left Y" "GRF Left Z"];                            
+%         for i = 1:Ngrf
+%             figure
+%             hold on
+%             plot(params.GRFtime, GRFsync(:,i), "red")
+%             plot(params.GRFtime, params.GRFdesired(:,i), "blue")
+%             legend(["predicted", "desired"])
+%             title(grfNames(i))
+%             hold off
+%         end
+%     end
+% end
 
 %% Return metabolic cost
-cot = R.metabolics.Bhargava2004.COT;
+% cot = R.metabolics.Bhargava2004.COT;
 
 end

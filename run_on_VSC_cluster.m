@@ -1,41 +1,81 @@
-clear all
-clc
-close all
+% --------------------------------------------------------------------------
+% run_on_VSC_cluster
+%   Run personalization on the VSC cluster. VUB provides compute resources to 
+%   researchers in the High Performance Computing service. The HPC clusters 
+%   of VUB are part of the Vlaams Supercomputer Centrum  (VSC).
+% 
+%   https://hpc.vub.be/
+%   https://www.vscentrum.be/
+%
+% Original author: Lars D'Hondt
+% Original date: 01/October/2025
+%
+% Last edit by: Menthy Denayer
+% Last edit date: 29/11/2025 
+% 
+% --------------------------------------------------------------------------
 
-%% Add Path
-% addpath('C:\Users\menth\Documents\Universiteit\FWO\T1.3')
-addpath("C:\Users\menth\Documents\Programmas\PredSim")
+clear
+close all
+clc
+
+%% Add PredSim Path
+[pathPerDir,~,~] = fileparts(mfilename('fullpath'));
+[pathVSC_DATADir,~,~] = fileparts(pathPerDir);
+pathPredSimDir = fullfile(pathVSC_DATADir,'PredSim');
+addpath(pathPredSimDir);
+addpath(pathPerDir);
+
+%% Required Paths 
+% Check BLAS/LAPACK version; add functions from LinearAlgebra subdirectory
+% to path in case Intel is *not* used
+blas_version = version('-blas');
+lapack_version = version('-lapack');
+if ~startsWith(lapack_version, 'Intel')
+    % addpath(fullfile(getenv('PWD'), 'LinearAlgebra'))
+    addpath(fullfile(pathPredSimDir,'LinearAlgebra'))
+end
+
+% [pathExDir,~,~] = fileparts(mfilename('fullpath'));
+% [pathRepo,~,~] = fileparts(pathExDir);
+% [pathRepoFolder,~,~] = fileparts(pathRepo);
+
+addpath(fullfile(pathPredSimDir,'DefaultSettings'))
+% addpath(pathRepo)
+
+% if the OpenSim module is loaded, make its Java library available
+if isenv('EBROOTOPENSIM')
+    javaclasspath(fullfile(getenv('EBROOTOPENSIM'), 'sdk', 'Java', 'org-opensim-modeling.jar'));
+end
+
+% if the CasADi-MATLAB module is loaded, expose its matlab bindings
+if isenv('EBROOTCASADI')
+    addpath(fullfile(getenv('EBROOTCASADI'), 'matlab'))
+end
 
 %% Import Libraries
 import org.opensim.modeling.*
 
 %% Choose Initial Settings
-init_option = questdlg('How to initialize muscle parameters?', ...
-	'Initial Coefficients', ...
-	'Scaled Model','Existing Solution','cancel','cancel');
+init_option = 'Scaled Model';
 
 %% Choose Output Directory
-pathOutputFolder = uigetdir("","Choose the output directory.");
+pathOutputFolder = fullfile(pathVSC_DATADir, 'PredSimResults');
 
 %% Load Generic Model
-[osim_file_name, osim_file_loc] = uigetfile(".osim","Choose OpenSim model.");
+subj_name = 'SUBJ06mtu3D';
+osim_file_name = [subj_name, '.osim'];
+osim_file_loc = fullfile(pathPredSimDir,'Subjects',subj_name);
 genericModel = Model(fullfile(osim_file_loc,osim_file_name));
 
 %% Choose Generic Model Settings
-[modelSettings_file_name, modelSettings_file_loc] = uigetfile(".m","Choose model settings file.");
+modelSettings_file_name = ['settings_', subj_name, '.mat'];
+modelSettings_file_loc = osim_file_loc;
 
 %% Load Kinematics Initial Guess
-% [mot_file_name, mot_file_loc] = uigetfile(".sto", "Choose kinematics initial guess.");
-[mot_file_name, mot_file_loc] = uigetfile(".mot", "Choose kinematics initial guess.");
+mot_file_name = 'SUBJ06_gait1422_vTrackCost2e7-5e7-1GC.mot';
+mot_file_loc = osim_file_loc;
 KINdata = importdata(fullfile(mot_file_loc,mot_file_name));
-
-%% Load GRF Initial Guess
-% [grf_file_name, grf_file_loc] = uigetfile(".mot", "Choose GRF initial guess.");
-% GRFdata = importdata(fullfile(grf_file_loc,grf_file_name));
-
-%% Load Desired MTU Values
-% [mtu_file_name, mtu_file_loc] = uigetfile(".mat", "Choose MTU desired values.");
-% MTUdata = load(fullfile(mtu_file_loc, mtu_file_name));
 
 %% Initialize Optimization 
 
@@ -53,7 +93,7 @@ max_ce_vel = 10;                                                            % st
 
 %% Choose Simulation Parameters
 % optimization parameters
-params.rescaleF = false;
+params.rescaleF = true;
 params.FmaxGen = Fmax;
 
 % fitness shape
@@ -66,18 +106,8 @@ params.lMoptweight = 100;
 params.lTstrainPenalty = true;
 params.lTstrainweight = 100;
 
-% params.lMdesired = MTUdata.data(:,20:37);
-% params.vMdesired = MTUdata.data(:,38:end)/max_ce_vel;
-% params.lTdesired = 1+MTUdata.data(:,2:19);
-% params.mtuTime = MTUdata.data(:,1);
-% params.lMdesired = MTUdata.data.TracklMtilde;
-% params.vMdesired = MTUdata.data.TrackvMtilde;
-% params.lTdesired = MTUdata.data.TracklTtilde;
-
-% normalize mtu time
-% mtuTime = MTUdata.data.TrackTime; 
-% mtuDuration = mtuTime(end)-mtuTime(1);
-% params.mtuTime = mtuTime/mtuDuration;
+% plotting
+params.plot = false;
 
 % kinematics reference
 kinTime = KINdata.data(:,1); 
@@ -85,23 +115,15 @@ kinDuration = kinTime(end)-kinTime(1);
 params.IKtime = kinTime/kinDuration;
 % params.IKdesired = KINdata.data(:,5:10);                                    % 2D Tracking (hip, knee, ankle angles)
 params.IKdesired = KINdata.data(:,2:20);                                      % all joint angles
-% params.IKtime = KINdata.data(:,1);
-
-% GRF reference
-% grfTime = KINdata.data(:,1); 
-% grfDuration = grfTime(end)-grfTime(1);
-% params.GRFtime = grfTime/grfDuration;
-% params.GRFdesired = GRFdata.data(:,[2:4,8:10]);
 
 % general settings
-params.pathRepo = "C:\Users\menth\Documents\Programmas\PredSim";
+params.adaptedModelPath = fullfile(osim_file_loc,'active',osim_file_name);
+params.Nmuscles = size(lMoptGen,1);
+params.pathRepo = pathPredSimDir;
 params.kinematicsGuessFileMot = fullfile(mot_file_loc, mot_file_name); 
-% params.kinematicsGuessFileMot = "C:\Users\menth\Documents\Programmas\PredSim\OCP\IK_Guess_Full_GC.mot"; 
 params.predsimResultFolder = pathOutputFolder;
 params.modelPath = fullfile(osim_file_loc, osim_file_name);
 params.modelSettings = fullfile(modelSettings_file_loc, modelSettings_file_name);
-params.adaptedModelPath = "C:\Users\menth\Documents\Programmas\PredSim\Subjects\SUBJ06mtu3D\active\SUBJ06mtu3D.osim";
-params.Nmuscles = size(lMoptGen,1);
 
 %% Choose Initial Conditions
 % muscle initial values
@@ -110,32 +132,6 @@ MusclesAllowedChange = 0.20;
 muscleBounds = [genericMuscleValues-MusclesAllowedChange*genericMuscleValues, ...
     genericMuscleValues+MusclesAllowedChange*genericMuscleValues];
 
-% maximal isometric force initial values
-% genericMaxForce = ones(params.Nmuscles,1);
-% maxForceBounds = ones(params.Nmuscles,2); maxForceBounds(:,1) = maxForceBounds(:,1)*0.5;
-% maxForceBounds(:,2) = maxForceBounds(:,2)*1.5;
-
-% cost function initial values
-% wE = 500;
-% wEexp = 2;
-% wqdotdot = 5e4;
-% wetorqAct = 1e6;
-% wpasstorq = 1e3;
-% wpasstorq_includesdamping = 0;
-% wa = 2e3;
-% waexp = 2;
-% wslack_ctrl = 1e-3;
-
-% initialCostWeights = ones(6,1);
-% CostAllowedChange = 0.50;    
-% costBounds = [initialCostWeights-CostAllowedChange*initialCostWeights, ...
-%     initialCostWeights+CostAllowedChange*initialCostWeights];
-
-% all initial values
-% initialCoefficients = [genericMuscleValues; genericMaxForce];
-% bounds = [muscleBounds; maxForceBounds];
-% initialCoefficients = [genericMuscleValues; initialCostWeights];
-% bounds = [muscleBounds; costBounds];
 initialCoefficients = genericMuscleValues;
 bounds = muscleBounds;
 params.initialCoefficients = genericMuscleValues;                           % save generic parameters to use in optimization
@@ -145,13 +141,10 @@ S = initializePredSimSettings(params);
 S.subject.TrackKin = false;
 S.subject.TrackGRF = false;
 S.solver.max_iter = 2e3;                                                    % after 2000 iterations the optimization stops
-% S.solver.IG_selection_gaitCyclePercent = 100;                               % IG represents 2 gait cycles
-
-% S.weights.q_dotdot = 0;
-% S.weights.pass_torq = 0;
+% S.solver.IG_selection_gaitCyclePercent = 100;                             % IG represents 1 gait cycle
 
 S.solver.run_as_batch_job = true;
-S.misc.subject_path = 'C:\Users\menth\Documents\Programmas\PredSim\Subjects\SUBJ06mtu3D\active';
+S.misc.subject_path = fullfile(osim_file_loc,'active');
 params.S = S;
 
 %% Choose CMA-ES Settings
@@ -168,20 +161,8 @@ opts.UBounds = bounds(:,2);                                                 % up
 opts.Resume = 0;                                                            % resume from best 
 opts.SaveVariables = 'on';
 
-%% Start Parallel Pool
-parpool('local');
-% c = parcluster;
-% delete(c.Jobs);
-
 %% Run CMA-ES
 [xmin, fmin] = cmaes('parallelObjectiveWrapper', initialCoefficients, sigma0, opts, params);
 
 %% Plot CMA-ES Stats
-plotcmaesdat()
-
-%% Plot Results
-
-% figure
-% hold on
-% plot(1:Nvar)
-% hold off
+% plotcmaesdat()
