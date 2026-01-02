@@ -1,4 +1,4 @@
-function [f,cot] = compute_fitness(R, model_info, params)
+function [f,cot] = compute_fitness(X, R, model_info, params)
 
 %% Compute Cost Function
 % load results data
@@ -39,8 +39,8 @@ end
 
 %% Fiber Length Penalty
 if(params.lMoptPenalty)
-    lMopt_max = 1.4;
-    lMopt_min = 0.4;
+    lMopt_max = 1.5;
+    lMopt_min = 0.3;
     plMopt = compute_range_penalty(R.muscles.lMtilde, lMopt_min, lMopt_max);
     f = f + plMopt * params.lMoptweight;
     fprintf('Fiber length penalty is: %.2f\n', plMopt)
@@ -55,6 +55,14 @@ if(params.lTstrainPenalty)
     plTstrain = compute_range_penalty(lTstrain, lTstrain_min, lTstrain_max);
     f = f + plTstrain * params.lTstrainweight;
     fprintf('Tendon strain penalty is: %.2f\n', plTstrain)
+end
+
+%% Parameter Deviation
+% Penalizes deviations from the initial parameters
+if(params.paramDeviationPenalty)
+    dev = sum( ( (params.initialCoefficients - X)./params.initialCoefficients).^2);
+    f = f + dev * params.paramDeviationweight;
+    fprintf('Parameter deviation penalty is: %.2f\n', dev)
 end
 
 %% Return metabolic cost

@@ -3,7 +3,7 @@ clc
 close all
 
 %% Add Path
-addpath('C:\Users\menth\Documents\Universiteit\FWO\T1.3')
+addpath('C:\Users\menth\Documents\Programmas\GitHub\MSK-OC-Personalization')
 addpath("C:\Users\menth\Documents\Programmas\PredSim")
 
 %% Import Libraries
@@ -32,11 +32,14 @@ KINdata = importdata(fullfile(kin_file_loc,kin_file_name));
 % MTUdata = load(fullfile(mtu_file_loc, mtu_file_name));
 
 %% Load Optimization Results
-CMAESres = load("variablescmaes.mat");
-optCoeffs = CMAESres.out.solutions.bestever.x;
+% CMAESres = load("variablescmaes.mat");
+% optCoeffs = CMAESres.out.solutions.bestever.x;
 % optCoeffs = CMAESres.xmin;
 
 % optCoeffs = [optCoeffs; ones(9,1)];
+
+CMASres = load("workerparam.mat");
+optCoeffs = CMASres.data.xhist(:,1,161);
 
 %% Choose Initial Conditions
 [lMoptGen, lTslackGen, Fmax] = readMTUparameters(genericModel);
@@ -44,17 +47,20 @@ optCoeffs = CMAESres.out.solutions.bestever.x;
 initialCoefficients = [lMoptGen; lTslackGen];
 
 %% Choose Simulation Parameters
-params.rescaleF = true;
+% optimization parameters
+params.rescaleF = false;
 params.FmaxGen = Fmax;
 params.initialCoefficients = initialCoefficients;                           % save generic parameters to use in optimization
-params.plot = true;
-params.trackGRF = false;
-params.pathRepo = "C:\Users\menth\Documents\Programmas\PredSim";
-params.kinematicsGuessFileMot = fullfile(kin_file_loc, kin_file_name);
-params.predsimResultFolder = pathOutputFolder;
 
-params.modelPath = fullfile(osim_file_loc, osim_file_name);
-params.modelSettings = fullfile(modelSettings_file_loc, modelSettings_file_name);
+% fitness shape
+params.trackGRF = false;
+params.IKweight = 1;
+params.PennAnglePenalty = true;
+params.PennAngleweight = 50;
+params.lMoptPenalty = true;
+params.lMoptweight = 25;
+params.lTstrainPenalty = false;
+params.lTstrainweight = 100;
 
 % params.lMdesired = MTUdata.data.TracklMtilde;
 % params.vMdesired = MTUdata.data.TrackvMtilde;
@@ -79,6 +85,14 @@ params.IKdesired = KINdata.data(:,2:20);
 % params.GRFtime = grfTime/grfDuration;
 % params.GRFdesired = GRFdata.data(:,[2:4,8:10]);
 
+params.Nmuscles = size(lMoptGen,1);
+
+% general settings
+params.pathRepo = "C:\Users\menth\Documents\Programmas\PredSim";
+params.kinematicsGuessFileMot = fullfile(kin_file_loc, kin_file_name); 
+params.predsimResultFolder = pathOutputFolder;
+params.modelPath = fullfile(osim_file_loc, osim_file_name);
+params.modelSettings = fullfile(modelSettings_file_loc, modelSettings_file_name);
 params.adaptedModelPath = "C:\Users\menth\Documents\Programmas\PredSim\Subjects\SUBJ06mtu3D\active\SUBJ06mtu3D.osim";
 params.Nmuscles = size(lMoptGen,1);
 
@@ -87,6 +101,7 @@ S = initializePredSimSettings(params);
 S.subject.TrackKin = false;
 S.subject.TrackGRF = false;
 % S.solver.max_iter = 2e3; % temporary
+S.misc.subject_path = 'C:\Users\menth\Documents\Programmas\PredSim\Subjects\SUBJ06mtu3D\active';
 params.S = S;
 
 %% Create Optimal Model

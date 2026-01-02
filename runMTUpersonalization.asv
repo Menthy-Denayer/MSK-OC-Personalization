@@ -16,7 +16,7 @@ init_option = questdlg('How to initialize muscle parameters?', ...
 	'Scaled Model','Existing Solution','cancel','cancel');
 
 %% Choose Output Directory
-pathOutputFolder = uigetdir("C:\Users\menth\Documents\Programmas\PredSimResults","Choose the output directory.");
+pathOutputFolder = uigetdir("","Choose the output directory.");
 
 %% Load Generic Model
 [osim_file_name, osim_file_loc] = uigetfile(".osim","Choose OpenSim model.");
@@ -56,11 +56,11 @@ max_ce_vel = 10;                                                            % st
 params.rescaleF = false;
 params.FmaxGen = Fmax;
 params.includeTendonStiffness = true;
-params.tendonStiffnessMuscles = ["gastroc", "soleus"];                      % scale tendon stiffness of these muscles
-params.tendonStiffnessDefault = [0.5; 0.5];                                 % default tendon stiffness (initial guess)
+params.tendonStiffnessMuscles = ["gastrocnemius", "soleus"];                % scale tendon stiffness of these muscles
+params.tendonStiffnessDefault = [0.5, 0.5];                                 % default tendon stiffness (initial guess)
 tendonStiffnessMin = 0.2;                                                   % min. allowed tendon stiffness
 tendonStiffnessMax = 1;                                                     % max. allowed tendon stiffness
-NtendonStiffnessMuscles = length(params.tendonStiffnessDefault);            % number of muscles to scale tendon stiffness 
+NtendonStiffnessMuscles = length(params.tendonStiffnessMuscles);            % number of muscles to scale tendon stiffness 
 
 % fitness shape
 params.trackGRF = false;
@@ -128,7 +128,7 @@ muscleBounds = [genericMuscleValues-MusclesAllowedChange*genericMuscleValues, ..
 % bounds = [muscleBounds; maxForceBounds];
 
 % muscles properties + tendon stiffness
-initialCoefficients = [genericMuscleValues; params.tendonStiffnessDefault];
+initialCoefficients = [genericMuscleValues params.tendonStiffnessDefault];
 tendonBounds = [ones(NtendonStiffnessMuscles,1)*tendonStiffnessMin ones(NtendonStiffnessMuscles,1)*tendonStiffnessMax];
 bounds = [muscleBounds; tendonBounds];
 params.initialCoefficients = initialCoefficients;                           % save generic parameters to use in optimization
@@ -142,8 +142,7 @@ params.initialCoefficients = initialCoefficients;                           % sa
 S = initializePredSimSettings(params);
 S.subject.TrackKin = false;
 S.subject.TrackGRF = false;
-% S.solver.max_iter = 2e3;                                                    % after 2000 iterations the optimization stops
-S.solver.max_iter = 5;
+S.solver.max_iter = 2e3;                                                    % after 2000 iterations the optimization stops
 % S.solver.IG_selection_gaitCyclePercent = 100;                               % IG represents 2 gait cycles
 
 % S.weights.q_dotdot = 0;
@@ -164,7 +163,7 @@ opts.PopSize = 8;                                                           % ma
 opts.Restarts = 0;
 opts.LBounds = bounds(:,1);                                                 % lower bounds
 opts.UBounds = bounds(:,2);                                                 % upper bounds
-opts.Resume = 0;                                                            % resume from best 
+opts.Resume = 1;                                                            % resume from best 
 opts.SaveVariables = 'on';
 
 %% Start Parallel Pool
@@ -177,3 +176,10 @@ delete(c.Jobs);
 
 %% Plot CMA-ES Stats
 plotcmaesdat()
+
+%% Plot Results
+
+% figure
+% hold on
+% plot(1:Nvar)
+% hold off

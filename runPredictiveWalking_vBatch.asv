@@ -10,12 +10,11 @@ S.solver.IG_selection = fullfile(params.kinematicsGuessFileMot);
 
 %% Change Tendon Stiffness Scale
 if(params.includeTendonStiffness)
-    Nmuscles = length(params.tendonStiffnessDefault);
-    stiff_cell = [];
+    Nmuscles = length(params.tendonStiffnessMuscles);
     for m = 1:Nmuscles
-        stiff_cell = [stiff_cell, {{char(params.tendonStiffnessMuscles(m))}, coeffs0(params.Nmuscles*2+m)}];
+        stiff_cell = [stiff_cel, {{params.tendonStiffnessMuscles(m)}, coeffs0()}]
     end
-    S.subject.tendon_stiff_scale = stiff_cell;  
+    S.subject.tendon_stiff_scale = {{'soleus','gastroc'},0.5};  
 end
 
 %% Run Predictive Simulation

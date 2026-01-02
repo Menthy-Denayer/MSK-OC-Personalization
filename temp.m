@@ -9,7 +9,6 @@ close all
 data1 = importdata("C:\Users\menth\OneDrive - Vrije Universiteit Brussel\PhD-Main\[01] main\WP1\T1.3\[03] data\SUBJ11\SUBJ11_gait1422_vTrackCost3e7-1GC.mot");
 data2 = importdata("C:\Users\menth\OneDrive - Vrije Universiteit Brussel\PhD-Main\[01] main\WP1\T1.3\[03] data\SUBJ07\SUBJ07_gait1422_vTrack5e7Cost-1GC.mot");
 data3 = importdata("C:\Users\menth\OneDrive - Vrije Universiteit Brussel\PhD-Main\[01] main\WP1\T1.3\[03] data\SUBJ04\SUBJ04_gait1422-kinTracking-PredSim-1GC.mot");
-data4 = importdata("")
 
 Ndata = size(data1.data,2);
 time1 = data1.data(:,1);

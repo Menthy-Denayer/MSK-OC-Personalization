@@ -44,7 +44,7 @@ adaptedModel.finalizeConnections();
 try
     adaptedModel.initSystem();
     adaptedModel.print(modelFile);
-    fprintf('Written model %s at %s\n', modelFile, datetime('now','format','HH:SS:MM'))
+    fprintf('Written model %s at %s\n', modelFile, datetime('now','format','HH:mm:ss'))
 %     fprintf('Model parameters are %0.2f', coeffs0);
 catch ME
     disp("ERROR writing model:");
