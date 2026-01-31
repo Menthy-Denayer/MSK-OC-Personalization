@@ -39,8 +39,8 @@ end
 
 %% Fiber Length Penalty
 if(params.lMoptPenalty)
-    lMopt_max = 1.5;
-    lMopt_min = 0.3;
+    lMopt_max = 1.4;
+    lMopt_min = 0.5;
     plMopt = compute_range_penalty(R.muscles.lMtilde, lMopt_min, lMopt_max);
     f = f + plMopt * params.lMoptweight;
     fprintf('Fiber length penalty is: %.2f\n', plMopt)
@@ -55,6 +55,17 @@ if(params.lTstrainPenalty)
     plTstrain = compute_range_penalty(lTstrain, lTstrain_min, lTstrain_max);
     f = f + plTstrain * params.lTstrainweight;
     fprintf('Tendon strain penalty is: %.2f\n', plTstrain)
+end
+
+%% Passive Muscle Force
+if(params.FpassPenalty)
+    Fpass_max = 0.2;
+    Fpass_min = -1;
+    Fpass_norm = R.muscles.Fpass./[model_info.muscle_info.parameters.FMo];
+
+    pFpass = compute_range_penalty(Fpass_norm, Fpass_min, Fpass_max);
+    f = f + pFpass * params.Fpassweight;
+    fprintf('Passive muscle force penalty is: %.2f\n', pFpass)
 end
 
 %% Parameter Deviation

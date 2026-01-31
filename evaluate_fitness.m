@@ -40,6 +40,8 @@ params.lTstrainPenalty = false;
 params.lTstrainweight = 100;
 params.paramDeviationPenalty = true;
 params.paramDeviationweight = 10;
+params.FpassPenalty = true;
+params.Fpassweight = 50;
 
 % plotting
 params.plot = false;
