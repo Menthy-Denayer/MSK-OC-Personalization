@@ -1,4 +1,42 @@
-function [f,cot,stats] = compute_fitness(X, R, model_info, params)
+function [f,cot] = compute_fitness(X, R, model_info, params)
+%% compute_fitness 
+% - Computes the fitness during the optimization process
+%
+%------------------------------------------------------------- INPUTS -------------------------------------------------------------
+% X                             | Nmuscles x 1 Double Array     | Desired MTU parameters (first Nmuscles/2 lMopt, next lTslack) 
+% R                             | struct                        | PredSim results structure
+% model_info                    | struct                        | PredSim model info structure
+% params                        | struct                        | Structure with settings
+%   IKtime                      | 100x1 Double Array            | Normalized reference time
+%   IKdesired                   | 100xNjoints Double Array      | Desired kinematics reference
+%   IKweight                    | Double                        | Weight of the IK tracking term
+%   PennAnglePenalty            | Boolean                       | Whether to penalize the pennation angle range
+%   PennAngleweight             | Double                        | Weight of the pennation angle range penalty term
+%   lMoptPenalty                | Boolean                       | Whether to penalize the optimal fibre length range
+%   lMoptweight                 | Double                        | Weight of the optimal fibre length range penalty term
+%   lTstrainPenalty             | Boolean                       | Whether to penalize the tendon slack length range
+%   lTstrainweight              | Double                        | Weight of the tendon slack length range penalty term
+%   FpassPenalty                | Boolean                       | Whether to penalize the passive muscle force range
+%   Fpassweight                 | Double                        | Weight of the passive muscle force range penalty term
+%   paramDeviationPenalty       | Boolean                       | Whether to penalize deviations from the initial parameters
+%   paramDeviationweight        | Double                        | Weight of the parameter deviation penalty term
+%   initialCoefficients         | Nmuscles x 1 Double Array     | Initial muscle parameters
+%   ExcludeTrackingJoints       | string                        | Optional: exclude joints inside error computation
+%
+%------------------------------------------------------------- OUTPUTS ------------------------------------------------------------
+% f                             | Double                        | Total computed fitness value
+% cot                           | Double                        | Cost of transport (J/(kg * m))
+%
+%----------------------------------------------------------- REQUIREMENTS ---------------------------------------------------------
+% 
+%
+%----------------------------------------------------------------------------------------------------------------------------------
+
+% Original Author: Menthy Denayer
+% Date: 05/December/2025
+
+% Last Update: Menthy Denayer
+% Date: 02/February/2026
 
 %% Compute Cost Function
 % load results data
@@ -26,28 +64,7 @@ IKpred = R.kinematics.Qs;                                                   % al
 IKsync = interp1(norm_time,IKpred(:,desir_joint_idx(desir_joint_idx>0)),params.IKtime,"linear");
 IKerr = sum(rmse(IKsync,params.IKdesired));
 f = f + IKerr * params.IKweight;
-stats.IKerr = IKerr;
 fprintf('Kinematics error is: %.2f\n', IKerr)
-
-% for i = 1:size(IKsync,2)
-%     figure 
-%     hold on
-%     title(desir_coo_names(i))
-%     plot(params.IKtime, IKsync(:,i),"red")
-%     plot(params.IKtime, params.IKdesired(:,i),"blue")
-%     legend(["predicted","desired"])
-%     hold off
-% end
-
-%% Compute GRF error
-if(params.trackGRF)
-    GRFpred = [R.ground_reaction.GRF_r R.ground_reaction.GRF_l];                % all ground reaction forces
-    GRFsync = interp1(norm_time,GRFpred,params.GRFtime,"linear");
-    GRFerr = sum(rmse(GRFsync,params.GRFdesired));
-    f = f + GRFerr * params.GRFweight;
-    stats.GRFerr = GRFerr;
-    fprintf('GRF error is: %.2f\n', GRFerr)
-end
 
 %% Pennation Angle Penalty
 if(params.PennAnglePenalty)
@@ -67,42 +84,17 @@ if(params.PennAnglePenalty)
     
     pPennAngle = pPennAngle_not_plantar + pPennAngle_plantar;
     f = f + pPennAngle * params.PennAngleweight;
-    stats.pPennAngle = pPennAngle;
     fprintf('Pennation angle penalty is: %.2f\n', pPennAngle)
 end
 
-%% Fiber Length Penalty (Physiological)
-% limit normalized fibre length for all muscles to physiologically 
-% acceptable ranges [ 0.3 - 1.4 ]
+%% Fiber Length Penalty
 if(params.lMoptPenalty)
-    lMopt_max = 1.4;
-    lMopt_min = 0.4;
+    lMopt_max = 1.4;                                                            % before 1.5
+    lMopt_min = 0.4;                                                            % before 0.5
     plMopt = compute_range_penalty(R.muscles.lMtilde, lMopt_min, lMopt_max);
     f = f + plMopt * params.lMoptweight;
-    stats.plMopt = plMopt;
     fprintf('Fiber length penalty is: %.2f\n', plMopt)
 end
-
-%% Fiber Length Penalty (Robustness)
-% limit normalized fibre lengths during stance to [0.6-1.35] for 
-% sagittal plane muscles
-% if(params.lMoptPenalty)
-%     muscleNames = ["hamstrings", "bifemsh", "glut_max", "rect_fem", "vasti", "gastroc", "soleus"];
-%     muscleIdxsLeft = contains(R.colheaders.muscles,muscleNames + "_l");
-%     muscleIdxsRight = contains(R.colheaders.muscles,muscleNames + "_r");
-%     leftStanceIdx = R.ground_reaction.idx_stance_l;
-%     rightStanceIdx = R.ground_reaction.idx_stance_r;
-%     leftMuscleData = R.muscles.lMtilde(leftStanceIdx,muscleIdxsLeft);
-%     rightMuscleData = R.muscles.lMtilde(rightStanceIdx,muscleIdxsRight);
-% 
-%     lMopt_max = 1.35;
-%     lMopt_min = 0.5;
-%     plMoptRobL = compute_range_penalty(leftMuscleData, lMopt_min, lMopt_max);
-%     plMoptRobR = compute_range_penalty(rightMuscleData, lMopt_min, lMopt_max);
-%     plMoptRob = (plMoptRobL + plMoptRobR)/2;
-%     f = f + plMoptRob * params.lMoptweight;
-%     fprintf('Fiber length penalty is: %.2f\n', plMoptRob)
-% end
 
 %% Tendon Slack Length
 if(params.lTstrainPenalty)
@@ -112,7 +104,6 @@ if(params.lTstrainPenalty)
 
     plTstrain = compute_range_penalty(lTstrain, lTstrain_min, lTstrain_max);
     f = f + plTstrain * params.lTstrainweight;
-    stats.plTstrain = plTstrain;
     fprintf('Tendon strain penalty is: %.2f\n', plTstrain)
 end
 
@@ -132,34 +123,15 @@ if(params.FpassPenalty)
     pFpassPlantar = compute_range_penalty(Fpass_norm(:,isPlantar), Fpass_min, Fpass_max_plantar);
     pFpass = pFpassNotPlantar + pFpassPlantar;
     f = f + pFpass * params.Fpassweight;
-    stats.pFpass = pFpass;
     fprintf('Passive muscle force penalty is: %.2f\n', pFpass)
 end
 
-%% Passive Muscle Work Penalty
-if(params.FpassWorkPenalty)
-    Jmax = 2;                                                                   % max allowed passive muscle work
-    muscleNames = ["hamstrings", "bifemsh", "glut_max", "rect_fem", "vasti"];   % these muscles cannot generate too much passive muscle work to generalize
-    isMuscle = contains(R.colheaders.muscles, muscleNames);
-    
-    Fpass= R.muscles.Fpass;                                                     % passive fiber force 
-    vMTU = R.muscles.vMT;                                                       % MTU velocities
-    Wpass = Fpass.*vMTU;                                                        % passive fiber work
-    Wpass = Wpass(:,isMuscle);                                                  % select only desired muscles
-    dt = R.time.mesh(2)-R.time.mesh_GC(1);                                      % time step
-    pFpassWork = sum(sum(max(Wpass-Jmax,0),1)*dt);                              % integrate over time
-    
-    f = f + pFpassWork * params.FpassWorkweight;
-    stats.pFpassWork = pFpassWork;
-    fprintf('Passive muscle work penalty is: %.2f\n', pFpassWork)
-end
 
 %% Parameter Deviation
 % Penalizes deviations from the initial parameters
 if(params.paramDeviationPenalty)
     dev = sum( ( (params.initialCoefficients - X)./params.initialCoefficients).^2);
     f = f + dev * params.paramDeviationweight;
-    stats.dev = dev;
     fprintf('Parameter deviation penalty is: %.2f\n', dev)
 end
 

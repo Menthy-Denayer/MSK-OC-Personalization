@@ -1,4 +1,30 @@
 function adaptMTUparameters(coeffs0, params, modelFile)
+%% adaptMTUparameters 
+% - Changes the MTU parameters to the desired ones
+%
+%------------------------------------------------------------- INPUTS -------------------------------------------------------------
+% coeffs0                       | Nmuscles x 1 Double Array     | Desired MTU parameters (first Nmuscles/2 lMopt, next lTslack) 
+% params                        | struct                        | Structure with settings
+%   modelPath                   | string                        | Input model path
+%   rescaleF                    | boolean                       | Whether to rescale Fmax based on the new muscle parameters
+%   FmaxGen                     | Nmuscles/2 x 1 Double Array   | Maximal isometric force in the generic model
+%   adaptedModelPath            | string                        | Path to the output model
+% modelFile                     | string                        | Name of the output model path
+%
+%------------------------------------------------------------- OUTPUTS ------------------------------------------------------------
+% adaptedModel                  | OpenSim Model                 | Adapted model saved at modelFile
+%
+%----------------------------------------------------------- REQUIREMENTS ---------------------------------------------------------
+% 
+%
+%----------------------------------------------------------------------------------------------------------------------------------
+
+% Original Author: Menthy Denayer
+% Date: 05/December/2025
+
+% Last Update: Menthy Denayer
+% Date: 05/December/2025 
+
 
 %% Import Libraries
 import org.opensim.modeling.*
@@ -23,7 +49,6 @@ if(params.rescaleF)
 end
 
 %% Read Muscle Parameters
-
 for muscleIdx = 1:Nmuscles/2
     currMuscleR = Muscles.get(muscleIdx-1);
     currMuscleR.setOptimalFiberLength(lMopt(muscleIdx));
