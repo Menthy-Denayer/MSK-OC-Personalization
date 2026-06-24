@@ -1,4 +1,27 @@
 function S = initializePredSimSettings(params)
+%% initializePredSimSettings 
+% - Initializes some settings for running PredSim simulations
+%
+%------------------------------------------------------------- INPUTS -------------------------------------------------------------
+% params                        | struct                        | Structure with settings
+%   pathRepo                    | string                        | Path to the PredSim repository
+%   modelSettings               | string                        | Path to the model settings file
+%   modelPath                   | string                        | Path to the OpenSim model
+%   predsimResultFolder         | string                        | Path to the PredSim results folder
+%
+%------------------------------------------------------------- OUTPUTS ------------------------------------------------------------
+% S                             | struct                        | PredSim settings structure
+%
+%----------------------------------------------------------- REQUIREMENTS ---------------------------------------------------------
+% 
+%
+%----------------------------------------------------------------------------------------------------------------------------------
+
+% Original Author: Menthy Denayer
+% Date: 29/November/2025
+
+% Last Update: Menthy Denayer
+% Date: 24/June/2026 
 
 %% Add Path to Repository
 addpath(params.pathRepo)

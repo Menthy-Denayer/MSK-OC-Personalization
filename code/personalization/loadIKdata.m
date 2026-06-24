@@ -1,4 +1,27 @@
 function [IKdata, normTime] = loadIKdata(data_loc,excludeJoints)
+%% loadIKdata 
+% - Loads the desired IK data for computing the RMSE during personalization
+%
+%------------------------------------------------------------- INPUTS -------------------------------------------------------------
+% params                        | struct                        | Structure with settings
+%   data_loc                    | string                        | Path to location of the data
+%   excludeJoints               | string                        | List of joints to exclude from the data
+%
+%------------------------------------------------------------- OUTPUTS ------------------------------------------------------------
+% IKdata                        | Ndata x Njoints Double Array  | IK data
+% normTime                      | Ndata x 1 Double Array        | Normalized time data
+%
+%----------------------------------------------------------- REQUIREMENTS ---------------------------------------------------------
+% 
+%
+%----------------------------------------------------------------------------------------------------------------------------------
+
+% Original Author: Menthy Denayer
+% Date: 15/January/2026
+
+% Last Update: Menthy Denayer
+% Date: 24/June/2026 
+
 %% Load Data
 KINdata = importdata(data_loc);
 

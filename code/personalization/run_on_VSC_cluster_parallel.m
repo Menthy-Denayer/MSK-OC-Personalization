@@ -1,5 +1,5 @@
 % --------------------------------------------------------------------------
-% run_on_VSC_cluster
+% run_on_VSC_cluster_parallel
 %   Run personalization on the VSC cluster. VUB provides compute resources to 
 %   researchers in the High Performance Computing service. The HPC clusters 
 %   of VUB are part of the Vlaams Supercomputer Centrum  (VSC).

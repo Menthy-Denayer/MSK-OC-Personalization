@@ -1,4 +1,34 @@
 function runPredictiveWalking_vBatch(coeffs0,params,modelFile,outputName)
+%% runPredictiveWalking_vBatch 
+% - Starts the predictive PredSim simulations for the desired set of 
+%   parameters
+%
+%------------------------------------------------------------- INPUTS ---------------------------------------------------------------------------------
+% coeffs0                       | Nmuscles x 1 Double Array                 | OpenSim model to read parameters from
+% params                        | struct                                    | Optimization settings structure
+%   S                           | struct                                    | PredSim settings structure
+%   includeTendonStiffness      | boolean                                   | Whether to include the tendon stiffness scale as an adjustable parameter
+%   tendonStiffnessDefault      | boolean                                   | Default muscle tendon stiffness
+%   tendonStiffnessMuscles      | string                                    | Names of muscle to adapt muscle tendon stiffness for
+%   kinematicsGuessFileMot      | string                                    | Path of the IK initial guess
+%   Nmuscles                    | double                                    | Number of muscles in the model
+% modelFile                     | string                                    | Path to the OpenSim model file
+% outputName                    | string                                    | Name of the PredSim results files
+%
+%------------------------------------------------------------- OUTPUTS --------------------------------------------------------------------------------
+%
+%
+%----------------------------------------------------------- REQUIREMENTS -----------------------------------------------------------------------------
+% 
+%
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+% Original Author: Menthy Denayer
+% Date: 29/November/2025
+
+% Last Update: Menthy Denayer
+% Date: 24/June/2026
+
 %% Adapt OpenSim Model
 muscleVarIdx = 1:params.Nmuscles*2;
 adaptMTUparameters(coeffs0(muscleVarIdx),params,modelFile);
