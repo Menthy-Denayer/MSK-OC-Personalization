@@ -1,12 +1,21 @@
+% --------------------------------------------------------------------------
+% plotPersonalizationWeightedWalking
+%   Process the results of the weighted walking simulations and create all
+%   the related plots from the manuscript.
+%
+% Original author: Menthy Denayer
+% Original date: 08/July/2026
+%
+% Last edit by: Menthy Denayer
+% Last edit date: 08/July/2026
+% 
+% --------------------------------------------------------------------------
+
 clear all
 clc
 close all
 
-%% Comments
-% - fix kinematics tx/tz because switched labels from experimental and not centered around 0
-
 %% Load Libraries
-addpath("C:\Users\medenaye\Documents\programs\GitHub\OpenSim-Processing\data-processing\utilities")
 addpath(pwd + "\helperFunctions")
 
 %% Define Variables
@@ -110,10 +119,9 @@ weightedWalkingEMGavgLim = mean(weightedWalkingEMGexpLim,3,"omitnan");
 weightedWalkingEMGstdLim = std(weightedWalkingEMGexpLim,0,3,"omitnan");
 
 %% Assign Dhondt2024 3seg EMG Columns
-[Dhondt2024_3seg_isLimEmg, Dhondt2024_3seg_isLimEmgIdxs] = ismember(Dhondt2024_3segemgColHeaders, EMGColHeadersLim);
-
-Dhondt2024_3segEmgDataLim = NaN(Ndata, NemgcolLim, NSUBJ);
-Dhondt2024_3segEmgDataLim(:,Dhondt2024_3seg_isLimEmgIdxs(Dhondt2024_3seg_isLimEmgIdxs>0),:) = Dhondt2024_3segEmgData(:,Dhondt2024_3seg_isLimEmg>0,:);
+emg_col_dhondt2024 = ["semiten_r", "bifemsh_r", "rect_fem_r", "vas_lat_r", "med_gas_r", "soleus_r","semiten_l", "bifemsh_l", "rect_fem_l", "vas_lat_l", "med_gas_l", "soleus_l"];
+[Dhondt2024_3seg_isLimEmg, Dhondt2024_3seg_isLimEmgIdxs] = ismember(Dhondt2024_3segemgColHeaders, emg_col_dhondt2024);
+Dhondt2024_3segEmgDataLim = Dhondt2024_3segEmgData(:,Dhondt2024_3seg_isLimEmg>0,:);
 
 %% Average Results
 GenericKinDataAvg = mean(GenericKinData,3,"omitnan");
@@ -187,6 +195,13 @@ WeightedWalking3kgKneeMaxExpStd = std(WeightedWalking3kgKneeMaxExpPerSUBJ,0,"all
 WeightedWalking4kgKneeMaxExpStd = std(WeightedWalking4kgKneeMaxExpPerSUBJ,0,"all");
 WeightedWalking5kgKneeMaxExpStd = std(WeightedWalking5kgKneeMaxExpPerSUBJ,0,"all");
 
+% compute knee flexion reduction
+WeightedWalking1kgKneeRedExpAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxExpPerSUBJ, WeightedWalking1kgKneeMaxExpPerSUBJ),"all","omitnan");
+WeightedWalking2kgKneeRedExpAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxExpPerSUBJ, WeightedWalking2kgKneeMaxExpPerSUBJ),"all","omitnan");
+WeightedWalking3kgKneeRedExpAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxExpPerSUBJ, WeightedWalking3kgKneeMaxExpPerSUBJ),"all","omitnan");
+WeightedWalking4kgKneeRedExpAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxExpPerSUBJ, WeightedWalking4kgKneeMaxExpPerSUBJ),"all","omitnan");
+WeightedWalking5kgKneeRedExpAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxExpPerSUBJ, WeightedWalking5kgKneeMaxExpPerSUBJ),"all","omitnan");
+
 WeightedWalking1kgKneeRedExpStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxExpPerSUBJ, WeightedWalking1kgKneeMaxExpPerSUBJ),0,"all","omitnan");
 WeightedWalking2kgKneeRedExpStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxExpPerSUBJ, WeightedWalking2kgKneeMaxExpPerSUBJ),0,"all","omitnan");
 WeightedWalking3kgKneeRedExpStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxExpPerSUBJ, WeightedWalking3kgKneeMaxExpPerSUBJ),0,"all","omitnan");
@@ -204,12 +219,12 @@ isKneeFlexion = contains(kinColHeaders,"knee_angle");
 
 %% Choose Lowest Cost Solution
 % Generic
-[GenericKinDataWeighted, GenericGrfDataWeighted, GenericKitDataWeighted, GenericEmgDataWeighted, GenericIdxHeelLWeighted] = choose_lowest_cost(...
+[GenericKinDataWeighted, GenericGrfDataWeighted, GenericKitDataWeighted, GenericEmgDataWeighted, GenericIdxHeelLWeighted, GenericCostData] = choose_lowest_cost(...
     GenericKinDataWeightedTrackIG, GenericGrfDataWeightedTrackIG, GenericKitDataWeightedTrackIG, GenericEmgDataWeightedTrackIG, GenericIdxHeelLTrackIG, GenericCostDataTrackIG,...
     GenericKinDataWeightedExpIG, GenericGrfDataWeightedExpIG, GenericKitDataWeightedExpIG, GenericEmgDataWeightedExpIG, GenericIdxHeelLExpIG, GenericCostDataExpIG);
 
 % Personal
-[PersonalKinDataWeighted, PersonalGrfDataWeighted, PersonalKitDataWeighted, PersonalEmgDataWeighted, PersonalIdxHeelLWeighted] = choose_lowest_cost(...
+[PersonalKinDataWeighted, PersonalGrfDataWeighted, PersonalKitDataWeighted, PersonalEmgDataWeighted, PersonalIdxHeelLWeighted, PersonalCostData] = choose_lowest_cost(...
     PersonalKinDataWeightedTrackIG, PersonalGrfDataWeightedTrackIG, PersonalKitDataWeightedTrackIG, PersonalEmgDataWeightedTrackIG, PersonalIdxHeelLTrackIG, PersonalCostDataTrackIG,...
     PersonalKinDataWeightedExpIG, PersonalGrfDataWeightedExpIG, PersonalKitDataWeightedExpIG, PersonalEmgDataWeightedExpIG, PersonalIdxHeelLExpIG, PersonalCostDataExpIG);
 
@@ -237,6 +252,13 @@ WeightedWalking2kgKneeMaxGenericStd = std(WeightedWalkingKneeMaxGeneric(:,2),0,"
 WeightedWalking3kgKneeMaxGenericStd = std(WeightedWalkingKneeMaxGeneric(:,3),0,"all","omitnan");
 WeightedWalking4kgKneeMaxGenericStd = std(WeightedWalkingKneeMaxGeneric(:,4),0,"all","omitnan");
 WeightedWalking5kgKneeMaxGenericStd = std(WeightedWalkingKneeMaxGeneric(:,5),0,"all","omitnan");
+
+% compute knee flexion reduction
+WeightedWalking1kgKneeRedGenericAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxGeneric, WeightedWalkingKneeMaxGeneric(:,1)),"all","omitnan");
+WeightedWalking2kgKneeRedGenericAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxGeneric, WeightedWalkingKneeMaxGeneric(:,2)),"all","omitnan");
+WeightedWalking3kgKneeRedGenericAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxGeneric, WeightedWalkingKneeMaxGeneric(:,3)),"all","omitnan");
+WeightedWalking4kgKneeRedGenericAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxGeneric, WeightedWalkingKneeMaxGeneric(:,4)),"all","omitnan");
+WeightedWalking5kgKneeRedGenericAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxGeneric, WeightedWalkingKneeMaxGeneric(:,5)),"all","omitnan");
 
 WeightedWalking1kgKneeRedGenericStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxGeneric, WeightedWalkingKneeMaxGeneric(:,1)),0,"all","omitnan");
 WeightedWalking2kgKneeRedGenericStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxGeneric, WeightedWalkingKneeMaxGeneric(:,2)),0,"all","omitnan");
@@ -268,6 +290,13 @@ WeightedWalking2kgKneeMaxPersonalStd = std(WeightedWalkingKneeMaxPersonal(:,2),0
 WeightedWalking3kgKneeMaxPersonalStd = std(WeightedWalkingKneeMaxPersonal(:,3),0,"all","omitnan");
 WeightedWalking4kgKneeMaxPersonalStd = std(WeightedWalkingKneeMaxPersonal(:,4),0,"all","omitnan");
 WeightedWalking5kgKneeMaxPersonalStd = std(WeightedWalkingKneeMaxPersonal(:,5),0,"all","omitnan");
+
+% compute knee flexion reduction
+WeightedWalking1kgKneeRedPersonalAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxPersonal, WeightedWalkingKneeMaxPersonal(:,1)),"all","omitnan");
+WeightedWalking2kgKneeRedPersonalAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxPersonal, WeightedWalkingKneeMaxPersonal(:,2)),"all","omitnan");
+WeightedWalking3kgKneeRedPersonalAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxPersonal, WeightedWalkingKneeMaxPersonal(:,3)),"all","omitnan");
+WeightedWalking4kgKneeRedPersonalAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxPersonal, WeightedWalkingKneeMaxPersonal(:,4)),"all","omitnan");
+WeightedWalking5kgKneeRedPersonalAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxPersonal, WeightedWalkingKneeMaxPersonal(:,5)),"all","omitnan");
 
 WeightedWalking1kgKneeRedPersonalStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxPersonal, WeightedWalkingKneeMaxPersonal(:,1)),0,"all","omitnan");
 WeightedWalking2kgKneeRedPersonalStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxPersonal, WeightedWalkingKneeMaxPersonal(:,2)),0,"all","omitnan");
@@ -366,6 +395,13 @@ WeightedWalking3kgKneeMaxDhondt2024_3segStd = std(WeightedWalkingKneeMaxDhondt20
 WeightedWalking4kgKneeMaxDhondt2024_3segStd = std(WeightedWalkingKneeMaxDhondt2024_3seg(:,4),0,"all","omitnan");
 WeightedWalking5kgKneeMaxDhondt2024_3segStd = std(WeightedWalkingKneeMaxDhondt2024_3seg(:,5),0,"all","omitnan");
 
+% compute knee flex reduction
+WeightedWalking1kgKneeRedDhondt2024_3segAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,1)),"all","omitnan");
+WeightedWalking2kgKneeRedDhondt2024_3segAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,2)),"all","omitnan");
+WeightedWalking3kgKneeRedDhondt2024_3segAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,3)),"all","omitnan");
+WeightedWalking4kgKneeRedDhondt2024_3segAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,4)),"all","omitnan");
+WeightedWalking5kgKneeRedDhondt2024_3segAvg = mean(compute_peek_knee_flex_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,5)),"all","omitnan");
+
 WeightedWalking1kgKneeRedDhondt2024_3segStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,1)),0,"all","omitnan");
 WeightedWalking2kgKneeRedDhondt2024_3segStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,2)),0,"all","omitnan");
 WeightedWalking3kgKneeRedDhondt2024_3segStd = std(compute_peek_knee_flex_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,3)),0,"all","omitnan");
@@ -404,8 +440,8 @@ WeightedWalkingDhondt2024_3segKitAvg = mean(Dhondt2024_3segKitDataWeighted,3,"om
 WeightedWalkingDhondt2024_3segKitStd = std(Dhondt2024_3segKitDataWeighted,0,3,"omitnan");
 
 % EMG
-WeightedWalkingDhondt2024_3segEmgAvg = mean(Dhondt2024_3segEmgDataWeighted,3,"omitnan");
-WeightedWalkingDhondt2024_3segEmgStd = std(Dhondt2024_3segEmgDataWeighted,0,3,"omitnan");
+WeightedWalkingDhondt2024_3segEmgAvg = mean(Dhondt2024_3segEmgDataWeighted(:,Dhondt2024_3seg_isLimEmg>0,:,:),3,"omitnan");
+WeightedWalkingDhondt2024_3segEmgStd = std(Dhondt2024_3segEmgDataWeighted(:,Dhondt2024_3seg_isLimEmg>0,:,:),0,3,"omitnan");
 
 %% Extract Sagittal Plane Data
 isSagittalPlaneKinematics = contains(kinColHeaders,"knee_angle") | contains(kinColHeaders,"hip_flexion") | contains(kinColHeaders,"ankle_angle");
@@ -415,79 +451,29 @@ Dhondt2024_3segkinColHeadersLimKin = Dhondt2024_3segkinColHeaders(Dhondt2024_3se
 isSagittalPlaneKinematicsDhondt2024_3seg = contains(Dhondt2024_3segkinColHeadersLimKin,"knee_angle") | contains(Dhondt2024_3segkinColHeadersLimKin,"hip_flexion") | contains(Dhondt2024_3segkinColHeadersLimKin,"ankle_angle");
 sagittalPlaneColsDhondt2024_3seg = 1:Nkincol; sagittalPlaneColsDhondt2024_3seg = sagittalPlaneColsDhondt2024_3seg(isSagittalPlaneKinematicsDhondt2024_3seg);
 
-%% Plot Experimental & Simulation Peak Knee Flexion Angles
-% Combine data experimental
-KneeMaxExpAvg = [normalWalkingKneeMaxExpAvg WeightedWalking1kgKneeMaxExpAvg WeightedWalking2kgKneeMaxExpAvg WeightedWalking3kgKneeMaxExpAvg WeightedWalking4kgKneeMaxExpAvg WeightedWalking5kgKneeMaxExpAvg];
-KneeMaxExpStd = [normalWalkingKneeMaxExpStd WeightedWalking1kgKneeMaxExpStd WeightedWalking2kgKneeMaxExpStd WeightedWalking3kgKneeMaxExpStd WeightedWalking4kgKneeMaxExpStd WeightedWalking5kgKneeMaxExpStd];
-
-% Combine data generic
-KneeMaxGenericAvg = [normalWalkingKneeMaxGenericAvg WeightedWalking1kgKneeMaxGenericAvg WeightedWalking2kgKneeMaxGenericAvg WeightedWalking3kgKneeMaxGenericAvg WeightedWalking4kgKneeMaxGenericAvg WeightedWalking5kgKneeMaxGenericAvg];
-KneeMaxGenericStd = [normalWalkingKneeMaxGenericStd WeightedWalking1kgKneeMaxGenericStd WeightedWalking2kgKneeMaxGenericStd WeightedWalking3kgKneeMaxGenericStd WeightedWalking4kgKneeMaxGenericStd WeightedWalking5kgKneeMaxGenericStd];
-
-% Combine data personal
-KneeMaxPersonalAvg = [normalWalkingKneeMaxPersonalAvg WeightedWalking1kgKneeMaxPersonalAvg WeightedWalking2kgKneeMaxPersonalAvg WeightedWalking3kgKneeMaxPersonalAvg WeightedWalking4kgKneeMaxPersonalAvg WeightedWalking5kgKneeMaxPersonalAvg];
-KneeMaxPersonalStd = [normalWalkingKneeMaxPersonalStd WeightedWalking1kgKneeMaxPersonalStd WeightedWalking2kgKneeMaxPersonalStd WeightedWalking3kgKneeMaxPersonalStd WeightedWalking4kgKneeMaxPersonalStd WeightedWalking5kgKneeMaxPersonalStd];
-
-% Combine data Dhondt2024_3seg
-KneeMaxDhondt2024_3segAvg = [normalWalkingKneeMaxDhondt2024_3segAvg WeightedWalking1kgKneeMaxDhondt2024_3segAvg WeightedWalking2kgKneeMaxDhondt2024_3segAvg WeightedWalking3kgKneeMaxDhondt2024_3segAvg WeightedWalking4kgKneeMaxDhondt2024_3segAvg WeightedWalking5kgKneeMaxDhondt2024_3segAvg];
-KneeMaxDhondt2024_3segStd = [normalWalkingKneeMaxDhondt2024_3segStd WeightedWalking1kgKneeMaxDhondt2024_3segStd WeightedWalking2kgKneeMaxDhondt2024_3segStd WeightedWalking3kgKneeMaxDhondt2024_3segStd WeightedWalking4kgKneeMaxDhondt2024_3segStd WeightedWalking5kgKneeMaxDhondt2024_3segStd];
-
-% Create figure
-fig = figure;
-set(gcf,"Units","centimeters")                                              % cm units for position
-set(gcf,"Position",[0 0 fig_width fig_height])                                             % IEEE 1-column: 8.89cm
-hold on 
-grid on
-b = bar(1:6,[KneeMaxExpAvg; KneeMaxGenericAvg; KneeMaxPersonalAvg; KneeMaxDhondt2024_3segAvg]);
-xendpoints = [b.XEndPoints];
-errorbar(xendpoints(1:Nweights+1), KneeMaxExpAvg, KneeMaxExpStd, '.', "vertical", "Color", "black")
-errorbar(xendpoints((Nweights+1)+1:2*(Nweights+1)), KneeMaxGenericAvg, KneeMaxGenericStd, '.', "vertical", "Color", "black")
-errorbar(xendpoints(2*(Nweights+1)+1:3*(Nweights+1)), KneeMaxPersonalAvg, KneeMaxPersonalStd, '.', "vertical", "Color", "black")
-errorbar(xendpoints(3*(Nweights+1)+1:end), KneeMaxDhondt2024_3segAvg, KneeMaxDhondt2024_3segStd, '.', "vertical", "Color", "black")
-xticks(1:6)
-xticklabels(["normal", "1 kg", "2 kg", "3 kg", "4 kg", "5 kg"])
-ylabel("Average Peak Knee Flexion Angle [°]")
-lg = legend(["Experimental", "Generic", "Personal", "Dhondt2024_3seg"],"Location","northoutside", "Orientation", "horizontal");
-lg.NumColumns = 2;
-
-% figure settings
-set(findall(fig,'-property','FontSize'),'FontSize',8)              % font size
-set(0,"DefaultFigureColor","w")                                     % white background
-set(0,"defaulttextinterpreter","tex")                               % tex style font
-set(0,"DefaultAxesFontName","Helvetica")                            % times new roman font
-set(gca,"Units","centimeters")                                      % cm units for position
-set(gca,"Position",[1 0.5 fig_width-1.3 fig_height-2])                                    % axes position (x, y, w, h)
-hold off
-ylim([52 70])
-
-if(export)
-    figName = "WeightedPeakKneeFlexionReduction_personal_dhondt2024_3seg_gait1422" + ".png";
-    exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
-end
-
 %% Plot Experimental & Simulation Peak Knee Flexion Reduction
 barColors = [[0.7,0.7,0.7]; [0,51,153]/255; [255,102,0]/255; [51,155,155]/255];
 
 % Combine data experimental
-KneeMaxReductionExpAvg = (KneeMaxExpAvg(1)-KneeMaxExpAvg(2:end))/KneeMaxExpAvg(1)*100;
+KneeMaxReductionExpAvg = [WeightedWalking1kgKneeRedExpAvg, WeightedWalking2kgKneeRedExpAvg, WeightedWalking3kgKneeRedExpAvg, WeightedWalking4kgKneeRedExpAvg, WeightedWalking5kgKneeRedExpAvg];
 KneeMaxReductionExpStd = [WeightedWalking1kgKneeRedExpStd, WeightedWalking2kgKneeRedExpStd, WeightedWalking3kgKneeRedExpStd, WeightedWalking4kgKneeRedExpStd, WeightedWalking5kgKneeRedExpStd];
 
 % Combine data generic
-KneeMaxReductionGenericAvg = (KneeMaxGenericAvg(1)-KneeMaxGenericAvg(2:end))/KneeMaxGenericAvg(1)*100;
+KneeMaxReductionGenericAvg = [WeightedWalking1kgKneeRedGenericAvg, WeightedWalking2kgKneeRedGenericAvg, WeightedWalking3kgKneeRedGenericAvg, WeightedWalking4kgKneeRedGenericAvg, WeightedWalking5kgKneeRedGenericAvg];
 KneeMaxReductionGenericStd = [WeightedWalking1kgKneeRedGenericStd, WeightedWalking2kgKneeRedGenericStd, WeightedWalking3kgKneeRedGenericStd, WeightedWalking4kgKneeRedGenericStd, WeightedWalking5kgKneeRedGenericStd];
 
 % Combine data personal
-KneeMaxReductionPersonalAvg = (KneeMaxPersonalAvg(1)-KneeMaxPersonalAvg(2:end))/KneeMaxPersonalAvg(1)*100;
+KneeMaxReductionPersonalAvg = [WeightedWalking1kgKneeRedPersonalAvg, WeightedWalking2kgKneeRedPersonalAvg, WeightedWalking3kgKneeRedPersonalAvg, WeightedWalking4kgKneeRedPersonalAvg, WeightedWalking5kgKneeRedPersonalAvg];
 KneeMaxReductionPersonalStd = [WeightedWalking1kgKneeRedPersonalStd, WeightedWalking2kgKneeRedPersonalStd, WeightedWalking3kgKneeRedPersonalStd, WeightedWalking4kgKneeRedPersonalStd, WeightedWalking5kgKneeRedPersonalStd];
 
 % Combine data Dhondt2024_3seg
-KneeMaxReductionDhondt2024_3segAvg = (KneeMaxDhondt2024_3segAvg(1)-KneeMaxDhondt2024_3segAvg(2:end))/KneeMaxDhondt2024_3segAvg(1)*100;
+KneeMaxReductionDhondt2024_3segAvg = [WeightedWalking1kgKneeRedDhondt2024_3segAvg, WeightedWalking2kgKneeRedDhondt2024_3segAvg, WeightedWalking3kgKneeRedDhondt2024_3segAvg, WeightedWalking4kgKneeRedDhondt2024_3segAvg, WeightedWalking5kgKneeRedDhondt2024_3segAvg];
 KneeMaxReductionDhondt2024_3segStd = [WeightedWalking1kgKneeRedDhondt2024_3segStd, WeightedWalking2kgKneeRedDhondt2024_3segStd, WeightedWalking3kgKneeRedDhondt2024_3segStd, WeightedWalking4kgKneeRedDhondt2024_3segStd, WeightedWalking5kgKneeRedDhondt2024_3segStd];
 
 % Create figure
 fig = figure;
 set(gcf,"Units","centimeters")                                              % cm units for position
-set(gcf,"Position",[0 0 fig_width fig_height/1.3])                                             % IEEE 1-column: 8.89cm
+set(gcf,"Position",[0 0 fig_width fig_height/1.3])                          % IEEE 1-column: 8.89cm
 hold on 
 % grid on
 b = bar(1:5,[KneeMaxReductionExpAvg; KneeMaxReductionGenericAvg; KneeMaxReductionPersonalAvg; KneeMaxReductionDhondt2024_3segAvg]);
@@ -505,18 +491,16 @@ errorbar(xendpoints(3*Nweights+1:end), KneeMaxReductionDhondt2024_3segAvg, KneeM
 xticks(1:5)
 xticklabels(["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"])
 ylabel(["Average Peak Knee Flexion"; "Angle Reduction [%]"],"FontWeight","bold")
-% lg = legend(["Experimental", "Generic", "Personal", "Dhondt2024_3seg"],"Location","northoutside", "Orientation", "horizontal");
 lg = legend(["Experimental", "Generic", "Personal", "D'Hondt2024 3 seg"],"Location","best");
-% lg.NumColumns = 2;
 lg.Box = "off";
 
 % figure settings
-set(findall(fig,'-property','FontSize'),'FontSize',8)              % font size
-set(0,"DefaultFigureColor","w")                                     % white background
-set(0,"defaulttextinterpreter","tex")                               % tex style font
-set(0,"DefaultAxesFontName","SansSerif")                            % times new roman font
-set(gca,"Units","centimeters")                                      % cm units for position
-set(gca,"Position",[1.4 0.45 fig_width-1.5 fig_height-2.75])                                    % axes position (x, y, w, h)
+set(findall(fig,'-property','FontSize'),'FontSize',8)                       % font size
+set(0,"DefaultFigureColor","w")                                             % white background
+set(0,"defaulttextinterpreter","tex")                                       % tex style font
+set(0,"DefaultAxesFontName","SansSerif")                                    % times new roman font
+set(gca,"Units","centimeters")                                              % cm units for position
+set(gca,"Position",[1.4 0.45 fig_width-1.5 fig_height-2.75])                % axes position (x, y, w, h)
 hold off
 axis tight
 
@@ -536,7 +520,6 @@ isForce = contains(grf_col_exp,"ground_force") & contains(grf_col_exp,"v");
 
 [normalWalkingKinExpAvgLim, normalWalkingKinExpStdLim, weightedWalkingKinExpAvgLim, weightedWalkingKinExpStdLim] = extract_experimental_data(expData, "kinematics", "Ik", SUBJID, Ndata, Nweights, isLimKINexp>0);
 [~,~,weightedWalkingGrfExpAvgLim, weightedWalkingGrfExpStdLim] = extract_experimental_data(expData, "GRF", "GRF", SUBJID, Ndata, Nweights, isForce);
-% [weightedWalkingEmgExpAvgLim, weightedWalkingEmgExpStdLim] = extract_experimental_data(expData, "EMG", "EMG", SUBJID, Ndata, Nweights, EMGColHeaders);
 
 %% Compute Experimental AVG & STD Across Subjects
 normalWalkingExpKinAvg = mean(normalWalkingKinExpAvgLim,3,"omitnan");
@@ -557,69 +540,8 @@ isLeftGrf = contains(GRFColHeaders,"Left");
 
 % shift EMG
 isLeftEmg = NemgcolLim/2+1:NemgcolLim;
-
-Dhondt2024_3segEmgDataWeightedLim = NaN(Ndata, NemgcolLim, NSUBJ, Nweights);
-Dhondt2024_3segEmgDataWeightedLim(:,Dhondt2024_3seg_isLimEmgIdxs(Dhondt2024_3seg_isLimEmgIdxs>0),:,:) = Dhondt2024_3segEmgDataWeighted(:,Dhondt2024_3seg_isLimEmg>0,:,:);
-
+Dhondt2024_3segEmgDataWeightedLim = Dhondt2024_3segEmgDataWeighted(:,Dhondt2024_3seg_isLimEmg>0,:,:);
 [GenericEmgDataWeightedShifted, PersonalEmgDataWeightedShifted, Dhondt2024_3segEmgDataWeightedShifted] = shift_sim_data(isLeftEmg, GenericEmgDataWeighted(:,isLimEMG>0,:,:), PersonalEmgDataWeighted(:,isLimEMG>0,:,:), Dhondt2024_3segEmgDataWeightedLim, GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted, Dhondt2024_3segIdxHeelLWeighted);
-
-%% Debug Plot
-% color = makeGroupColors(24/360,Nweights+1,1,0.3,0.95)';
-% for i = 1:Nkincol
-%     for j = 1:NSUBJ
-%         figure
-%         hold on
-%         for k = 1:Nweights
-%             % figure
-%             % hold on
-%             % plot_mean_std(resampTime, weightedWalkingKinExpAvgLim(:,i,j,k),weightedWalkingKinExpStdLim(:,i,j,k),"black",1,"-")
-%             % plot(resampTime, GenericKinDataWeightedShifted(:,i,j,k),"Color","magenta")
-%             plot(resampTime, PersonalKinDataWeightedShifted(:,i,j,k),"Color",color(:,k)')
-%             % plot(resampTime, Dhondt2024_3segKinDataWeightedShifted(:,i,j,k),"Color","blue")
-%             % legend(["", "Exp", "Generic", "Personal", "Dhondt2024_3seg"])
-%             % hold off
-%         end
-%         title(kinColHeaders(i) + " - SUBJECT " + num2str(j))
-%         hold off
-%     end
-% end
-
-% for i = 1:Ngrfcol
-%     for j = 1:NSUBJ
-%         figure
-%         hold on
-%         for k = 2
-%             % figure
-%             % hold on
-%             plot_mean_std(resampTime, weightedWalkingGrfExpAvgLim(:,i,j,k),weightedWalkingGrfExpStdLim(:,i,j,k),"black",1)
-%             plot(resampTime, GenericGrfDataWeightedShifted(:,i,j,k),"Color","magenta")
-%             plot(resampTime, PersonalGrfDataWeightedShifted(:,i,j,k),"Color","red")
-%             plot(resampTime, Dhondt2024_3segGrfDataWeightedShifted(:,i,j,k),"Color","blue")
-%             legend(["", "Exp", "Generic", "Personal", "Dhondt2024_3seg"])
-%             % hold off
-%         end
-%         hold off
-%     end
-% end
-
-% for i = 1:NemgcolLim
-%     for j = 1:NSUBJ
-%         figure
-%         hold on
-%         for k = 1:Nweights
-%             % figure
-%             % hold on
-%             plot_mean_std(resampTime, weightedWalkingEMGexpLim(:,i,j,k),NaN(Ndata,1,1,1),"black",1)
-%             plot(resampTime, GenericEmgDataWeightedShifted(:,i,j,k),"Color","magenta")
-%             plot(resampTime, PersonalEmgDataWeightedShifted(:,i,j,k),"Color","red")
-%             plot(resampTime, Dhondt2024_3segEmgDataWeightedShifted(:,i,j,k),"Color","blue")
-%             legend(["", "Exp", "Generic", "Personal", "Dhondt2024_3seg"])
-%             % hold off
-%         end
-%         title(EMGColHeadersLim(i) + " - SUBJECT " + num2str(j))
-%         hold off
-%     end
-% end
 
 %% Compute Metrics
 % Generic
@@ -728,13 +650,6 @@ rmse_list_dhondt2024_3seg_kin_sagg_std = std(rmse_list_dhondt2024_3seg_kin_sagg,
 exp_match_list_dhondt2024_3seg_kin_sagg_avg = mean(exp_match_list_dhondt2024_3seg_kin_sagg,1,"omitnan");
 exp_match_list_dhondt2024_3seg_kin_sagg_std = std(exp_match_list_dhondt2024_3seg_kin_sagg,0,1,"omitnan");
 
-% titles
-titletxt = strrep(kinColHeaders(sagittalPlaneCols),"_"," ");
-
-plot_metrics_bar(R_list_generic_kin_sagg_avg, R_list_personal_kin_sagg_avg, R_list_dhondt2024_3seg_kin_sagg_avg, R_list_generic_kin_sagg_std, R_list_personal_kin_sagg_std, R_list_dhondt2024_3seg_kin_sagg_std, fig_width, fig_height, titletxt, "Average Correlation Coefficient [-]", export, "weighted_R_personal_dhondt2024_3seg_generic" + figFileType)
-plot_metrics_bar(rmse_list_generic_kin_sagg_avg, rmse_list_personal_kin_sagg_avg, rmse_list_dhondt2024_3seg_kin_sagg_avg, rmse_list_generic_kin_sagg_std, rmse_list_personal_kin_sagg_std, rmse_list_dhondt2024_3seg_kin_sagg_std, fig_width, fig_height, titletxt, "Average RMSE [°]", export, "weighted_RMSE_personal_dhondt2024_3seg_generic" + figFileType)
-plot_metrics_bar(exp_match_list_generic_kin_sagg_avg, exp_match_list_personal_kin_sagg_avg, exp_match_list_dhondt2024_3seg_kin_sagg_avg, exp_match_list_generic_kin_sagg_std, exp_match_list_personal_kin_sagg_std, exp_match_list_dhondt2024_3seg_kin_sagg_std, fig_width, fig_height, titletxt, "Average Experimental Match [%]", export, "weighted_exp_match_personal_dhondt2024_3seg_generic" + figFileType)
-
 %% Compute Average Improvements
 % average R over all subjects
 avg_R_list_kin_generic = mean(R_list_kin_generic,1);
@@ -782,8 +697,8 @@ for i = 1:Nweights
 
     % compute average R improvements (including not sagittal plane)
     % positive means R increased
-    [avg_percent_R_kin(i), ~] = compute_R_average_improvement(avg_R_list_kin_personal(:,i,:), avg_R_list_kin_generic(:,i,:), NaN, NaN, NaN, NaN,['personal model (all kinematics) ' num2str(i) ' kg']);
-    [avg_percent_R_kin_dhondt2024_3seg(i), ~] = compute_R_average_improvement(avg_R_list_kin_dhondt2024_3seg(:,i,:), avg_R_list_kin_generic(:,i,:), NaN, NaN, NaN, NaN, ['Dhondt2024_3seg model (all kinematics) ' num2str(i) ' kg']);
+    [avg_percent_R_kin(i), ~] = compute_R_average_improvement(avg_R_list_kin_personal(:,i,:), avg_R_list_kin_generic(:,i,:), NaN, NaN, NaN, NaN,['personal model (all DOF) ' num2str(i) ' kg']);
+    [avg_percent_R_kin_dhondt2024_3seg(i), ~] = compute_R_average_improvement(avg_R_list_kin_dhondt2024_3seg(:,i,:), avg_R_list_kin_generic(:,i,:), NaN, NaN, NaN, NaN, ['Dhondt2024_3seg model (all DOF) ' num2str(i) ' kg']);
     
     % compute average RMSE sagittal plane improvements
     % negative means RMSE error decreased
@@ -792,8 +707,8 @@ for i = 1:Nweights
 
     % compute average RMSE (including not sagittal plane)
     % negative means RMSE error decreased
-    [avg_percent_rmse_kin(i), ~] = compute_RMSE_average_improvement(avg_rmse_list_kin_personal(:,i,:), avg_rmse_list_kin_generic(:,i,:), avg_rmse_list_grf_personal(:,i,:), avg_rmse_list_grf_generic(:,i,:), ['personal model (all kinematics) ' num2str(i) ' kg']);
-    [avg_percent_rmse_kin_dhondt2024_3seg(i), ~] = compute_RMSE_average_improvement(avg_rmse_list_kin_dhondt2024_3seg(:,i,:), avg_rmse_list_kin_generic(:,i,:), avg_rmse_list_grf_dhondt2024_3seg(:,i,:), avg_rmse_list_grf_generic(:,i,:), ['Dhondt2024_3seg model (all kinematics) ' num2str(i) ' kg']);
+    [avg_percent_rmse_kin(i), ~] = compute_RMSE_average_improvement(avg_rmse_list_kin_personal(:,i,:), avg_rmse_list_kin_generic(:,i,:), avg_rmse_list_grf_personal(:,i,:), avg_rmse_list_grf_generic(:,i,:), ['personal model (all DOF) ' num2str(i) ' kg']);
+    [avg_percent_rmse_kin_dhondt2024_3seg(i), ~] = compute_RMSE_average_improvement(avg_rmse_list_kin_dhondt2024_3seg(:,i,:), avg_rmse_list_kin_generic(:,i,:), avg_rmse_list_grf_dhondt2024_3seg(:,i,:), avg_rmse_list_grf_generic(:,i,:), ['Dhondt2024_3seg model (all DOF) ' num2str(i) ' kg']);
 end
 
 %% Print Matrix Average Improvements
@@ -801,72 +716,71 @@ end
 avg_percent_R_kin_sagg_matrix = round([avg_percent_R_kin_sagg, avg_percent_R_kin_sagg_dhondt2024_3seg],2);
 max_percent_R_kin_sagg_matrix = max(avg_percent_R_kin_sagg_matrix,[],2);
 isBestRkin = avg_percent_R_kin_sagg_matrix == max_percent_R_kin_sagg_matrix;
-print_matrix_latex(avg_percent_R_kin_sagg_matrix,["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRkin)
+print_matrix_latex(avg_percent_R_kin_sagg_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRkin,[])
 
 % print average R kinematics
 avg_percent_R_kin_matrix = round([avg_percent_R_kin, avg_percent_R_kin_dhondt2024_3seg],2);
 max_percent_R_kin_matrix = max(avg_percent_R_kin_matrix,[],2);
 isBestRkin = avg_percent_R_kin_matrix == max_percent_R_kin_matrix;
-print_matrix_latex(avg_percent_R_kin_matrix,["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRkin)
+print_matrix_latex(avg_percent_R_kin_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRkin,[])
 
 % print average RMSE sagittal kinematics
 avg_percent_rmse_kin_sagg_matrix = round([avg_percent_rmse_kin_sagg, avg_percent_rmse_kin_sagg_dhondt2024_3seg],2);
 max_percent_rmse_kin_sagg_matrix = min(avg_percent_rmse_kin_sagg_matrix,[],2);
 isBestRMSEkin = avg_percent_rmse_kin_sagg_matrix == max_percent_rmse_kin_sagg_matrix;
-print_matrix_latex(avg_percent_rmse_kin_sagg_matrix,["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRMSEkin)
+print_matrix_latex(avg_percent_rmse_kin_sagg_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRMSEkin,[])
 
 % print average RMSE kinematics
 avg_percent_rmse_kin_matrix = round([avg_percent_rmse_kin, avg_percent_rmse_kin_dhondt2024_3seg],2);
 max_percent_rmse_kin_matrix = min(avg_percent_rmse_kin_matrix,[],2);
 isBestRMSEkin = avg_percent_rmse_kin_matrix == max_percent_rmse_kin_matrix;
-print_matrix_latex(avg_percent_rmse_kin_matrix,["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRMSEkin)
+print_matrix_latex(avg_percent_rmse_kin_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRMSEkin,[])
 
 % print average R GRF
 avg_percent_R_grf_matrix = round([avg_percent_R_grf, avg_percent_R_grf_dhondt2024_3seg],2);
 max_percent_R_grf_matrix = max(avg_percent_R_grf_matrix,[],2);
 isBestRgrf = avg_percent_R_grf_matrix == max_percent_R_grf_matrix;
-print_matrix_latex(avg_percent_R_grf_matrix,["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRgrf)
+print_matrix_latex(avg_percent_R_grf_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRgrf,[])
 
 % print average RMSE GRF
 avg_percent_rmse_grf_matrix = round([avg_percent_rmse_grf, avg_percent_rmse_grf_dhondt2024_3seg],2);
 max_percent_rmse_grf_matrix = min(avg_percent_rmse_grf_matrix,[],2);
 isBestRMSEgrf = avg_percent_rmse_grf_matrix == max_percent_rmse_grf_matrix;
-print_matrix_latex(avg_percent_rmse_grf_matrix,["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRMSEgrf)
+print_matrix_latex(avg_percent_rmse_grf_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRMSEgrf,[])
 
 %% Save Metrics
-% open metrics file
-load("metrics.mat");
-
-% kinematics, R
-metrics.kinematics.weighted.R.personal = R_list_kin_personal;
-metrics.kinematics.weighted.R.generic = R_list_kin_generic;
-metrics.kinematics.weighted.R.dhondt2024_3seg = R_list_kin_dhondt2024_3seg;
-
-% kinematics, RMSE
-metrics.kinematics.weighted.RMSE.personal = rmse_list_kin_personal;
-metrics.kinematics.weighted.RMSE.generic = rmse_list_kin_generic;
-metrics.kinematics.weighted.RMSE.dhondt2024_3seg = rmse_list_kin_dhondt2024_3seg;
-
-% GRFs, R
-metrics.ground_reaction.weighted.R.personal = R_list_grf_personal;
-metrics.ground_reaction.weighted.R.generic = R_list_grf_generic;
-metrics.ground_reaction.weighted.R.dhondt2024_3seg = R_list_grf_dhondt2024_3seg;
-
-% GRFs, RMSE
-metrics.ground_reaction.weighted.RMSE.personal = rmse_list_grf_personal;
-metrics.ground_reaction.weighted.RMSE.generic = rmse_list_grf_generic;
-metrics.ground_reaction.weighted.RMSE.dhondt2024_3seg = rmse_list_grf_dhondt2024_3seg;
-
-% EMG, R
-metrics.muscle_activations.weighted.R.personal = R_list_emg_personal;
-metrics.muscle_activations.weighted.R.generic = R_list_emg_generic;
-metrics.muscle_activations.weighted.R.dhondt2024_3seg = R_list_emg_dhondt2024_3seg;
-
-% save metrics
-save("metrics.mat", "metrics")
+% % open metrics file
+% load("metrics.mat");
+% 
+% % kinematics, R
+% metrics.kinematics.weighted.R.personal = R_list_kin_personal;
+% metrics.kinematics.weighted.R.generic = R_list_kin_generic;
+% metrics.kinematics.weighted.R.dhondt2024_3seg = R_list_kin_dhondt2024_3seg;
+% 
+% % kinematics, RMSE
+% metrics.kinematics.weighted.RMSE.personal = rmse_list_kin_personal;
+% metrics.kinematics.weighted.RMSE.generic = rmse_list_kin_generic;
+% metrics.kinematics.weighted.RMSE.dhondt2024_3seg = rmse_list_kin_dhondt2024_3seg;
+% 
+% % GRFs, R
+% metrics.ground_reaction.weighted.R.personal = R_list_grf_personal;
+% metrics.ground_reaction.weighted.R.generic = R_list_grf_generic;
+% metrics.ground_reaction.weighted.R.dhondt2024_3seg = R_list_grf_dhondt2024_3seg;
+% 
+% % GRFs, RMSE
+% metrics.ground_reaction.weighted.RMSE.personal = rmse_list_grf_personal;
+% metrics.ground_reaction.weighted.RMSE.generic = rmse_list_grf_generic;
+% metrics.ground_reaction.weighted.RMSE.dhondt2024_3seg = rmse_list_grf_dhondt2024_3seg;
+% 
+% % EMG, R
+% metrics.muscle_activations.weighted.R.personal = R_list_emg_personal;
+% metrics.muscle_activations.weighted.R.generic = R_list_emg_generic;
+% metrics.muscle_activations.weighted.R.dhondt2024_3seg = R_list_emg_dhondt2024_3seg;
+% 
+% % save metrics
+% save("metrics.mat", "metrics")
 
 %% Perform T-Tests for Sagittal Plane Peaks (Personal)
-% TO CHECK: taking 50:end but left/right is different
 isJointAngle = contains(kinColHeaders,"ankle_angle");
 [hListAnklePlantar, pListAnklePlantar, ~, ~, dzListAnklePlantar, deltaListAvgAnklePlantar, deltaListStdAnklePlantar] = perform_ttest_kin(PersonalKinDataShifted, PersonalKinDataWeightedShifted, isJointAngle, -1, 50:Ndata, NSUBJ);
 [hListAnkleDorsi, pListAnkleDorsi, ~, ~, dzListAnkleDorsi, deltaListAvgAnkleDorsi, deltaListStdAnkleDorsi] = perform_ttest_kin(PersonalKinDataShifted, PersonalKinDataWeightedShifted, isJointAngle, 1, [], NSUBJ);
@@ -934,7 +848,7 @@ end
 %% Print Statistics Results
 % print_struct_latex(statsSummaryKin, "version", "p", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 0.05, -1, '%.4f')
 % print_struct_latex(statsSummaryKin, "version", "dz", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 1, 1, '%.4f')
-print_struct_latex(statsSummaryEMG, "version", "p", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 0.05, -1, '%.4f')
+% print_struct_latex(statsSummaryEMG, "version", "p", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 0.05, -1, '%.4f')
 % print_struct_latex(statsSummaryEMG, "version", "dz", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 1, 1, '%.4f')
 
 % print_struct_latex(statsSummaryKin, "version", "delta", "std", ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 100, 1, [])
@@ -948,11 +862,9 @@ kitLabels = repmat("Joint Moment [Nm]", Nkincol, 1); kitLabels(isTrans) = "Joint
 emgLabels = repmat("Activation [-]", Nemgcol, 1);
 
 jointNames = extractBefore(kinColHeaders,"_"); jointNames = strcat(upper(extractBefore(jointNames,2)), extractAfter(jointNames,1));
-% kinLabels = jointNames + " " + kinLabels;
 kitLabels = jointNames + " " + kitLabels;
 
 muscleNames = extractBefore(EMGColHeaders,"_"); muscleNames = strcat(upper(extractBefore(muscleNames,2)), extractAfter(muscleNames,1));
-% emgLabels = muscleNames' + " " + emgLabels;
 emgLabelsLim = emgLabels(isLimEMG>0);
 
 %% Add Labels Directions
@@ -1008,27 +920,19 @@ legendtxt(2) = "normal";
 legendtxt(4:2:end) = string(1:Nweights) + " kg";
 color = makeGroupColors(24/360,Nweights+1,1,0.3,0.95)';
 
-% create tiley layout
+% create tiled layout
 t = tiledlayout(1,3,"TileSpacing","tight","Padding","tight");
 t.InnerPosition = [0.08 0.15 0.75 0.75];
-set(gcf,"Units","centimeters")                                          % cm units for position
-set(gcf,"Position",[0 0 fig_width*2 fig_height/1.4])                          % IEEE 1-column: 8.89cm
+set(gcf,"Units","centimeters")                                              % cm units for position
+set(gcf,"Position",[0 0 fig_width*2 fig_height/1.4])                        % IEEE 1-column: 8.89cm
 
-% for i = 1:Nkincol
 for i = sagittalPlaneCols(1:3)
-% for i = sagittalPlaneColsDhondt2024_3seg
-    % fig = figure;
     nexttile
-    % set(gcf,"Units","centimeters")                                          % cm units for position
-    % set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
-    % grid on
     hold on
     XaxisLine = plot([0 1],[0 0],"Color","black","LineWidth",0.5);
     plot_mean_std(resampTime,PersonalKinDataAvg(:,i),PersonalKinDataSTD(:,i),color(:,1)', linewidth, "-")
-    % plot_mean_std(resampTime,Dhondt2024_3segKinDataAvg(:,i),Dhondt2024_3segKinDataSTD(:,i),color(:,1)',1);
     for j = 1:Nweights
         plot_mean_std(resampTime,WeightedWalkingPersonalKinAvg(:,i,:,j),WeightedWalkingPersonalKinStd(:,i,:,j),color(:,j+1)', linewidth,"-")
-        % plot_mean_std(resampTime,WeightedWalkingDhondt2024_3segKinAvg(:,i,:,j),WeightedWalkingDhondt2024_3segKinStd(:,i,:,j),color(:,j+1)', 1)
     end
 
     if(isHip(i))
@@ -1046,7 +950,6 @@ for i = sagittalPlaneCols(1:3)
         draw_weight_arrow(includeAnklePlantar, Nweights, maxAnklePlantar, deltaListAvgAnklePlantar, -1, color, -0.2, 0.22, 0, -1, 0.5, 0.02)
     end
 
-    % legend(legendtxt,"Location","bestoutside")
     xlabel("Gait Cycle [-]","FontWeight","bold")
     ylabel(kinLabelsExt(i,:),"FontWeight","bold")
     title(jointNames(i) + " Joint Angle")
@@ -1055,22 +958,15 @@ for i = sagittalPlaneCols(1:3)
     set(0,"DefaultFigureColor","w")                                         % white background
     set(0,"defaulttextinterpreter","tex")                                   % tex style font
     set(0,"DefaultAxesFontName","SansSerif")                                % times new roman font
-    % set(gca,"Units","centimeters")                                          % cm units for position
-    % set(gca,"Position",[1 0.8 fig_width-3.5 fig_height-1.5])              % axes position (x, y, w, h)
     hold off
     axis tight
-
-    % if(export)
-    %     figName = "personal_gait1422_kin_weightedWalking_" + kinColHeaders(i) + figFileType;
-    %     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
-    % end
 end
 
 lg = legend([""; legendtxt],"Location","bestoutside");
 lg.Layout.Tile = 'East';
 lg.Box = "off";
 
-set(findall(t,'-property','FontSize'),'FontSize',8)                   % font size
+set(findall(t,'-property','FontSize'),'FontSize',8)                         % font size
 
 if(export)
     figName = "personal_gait2128_kin_weightedWalking" + figFileType;
@@ -1111,18 +1007,15 @@ legendtxt(2) = "normal";
 legendtxt(4:2:end) = string(1:Nweights) + " kg";
 color = makeGroupColors(220/360,Nweights+1,1,0.3,0.9)';
 
-% create tiley layout
+% create tiled layout
 t = tiledlayout(1,3,"TileSpacing","tight","Padding","tight");
 t.InnerPosition = [0.08 0.15 0.75 0.75];
-set(gcf,"Units","centimeters")                                          % cm units for position
+set(gcf,"Units","centimeters")                                                % cm units for position
 set(gcf,"Position",[0 0 fig_width*2 fig_height/1.4])                          % IEEE 1-column: 8.89cm
 
 % for i = 1:Nkincol
 for i = sagittalPlaneCols(1:3)
     nexttile
-    % set(gcf,"Units","centimeters")                                          % cm units for position
-    % set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
-    % grid on
     hold on
     XaxisLine = plot([0 1],[0 0],"Color","black","LineWidth",0.5);
     plot_mean_std(resampTime, GenericKinDataAvg(:,i), GenericKinDataSTD(:,i),color(:,1)', linewidth, "-")
@@ -1145,7 +1038,6 @@ for i = sagittalPlaneCols(1:3)
         draw_weight_arrow(includeAnklePlantar_generic, Nweights, maxAnklePlantar, deltaListAvgAnklePlantar_generic, -1, color, 0.3, 0.08, 0, -1, 0.5, 0.02)
     end
 
-    % legend(legendtxt,"Location","bestoutside")
     xlabel("Gait Cycle [-]","FontWeight","bold")
     ylabel(kinLabelsExt(i,:),"FontWeight","bold")
     title(jointNames(i) + " Joint Angle")
@@ -1154,8 +1046,6 @@ for i = sagittalPlaneCols(1:3)
     set(0,"DefaultFigureColor","w")                                         % white background
     set(0,"defaulttextinterpreter","tex")                                   % tex style font
     set(0,"DefaultAxesFontName","SansSerif")                                % times new roman font
-    % set(gca,"Units","centimeters")                                          % cm units for position
-    % set(gca,"Position",[1 0.8 fig_width-3.5 fig_height-1.5])              % axes position (x, y, w, h)
     hold off
     axis tight
 end
@@ -1164,7 +1054,7 @@ lg = legend([""; legendtxt],"Location","bestoutside");
 lg.Layout.Tile = 'East';
 lg.Box = "off";
 
-set(findall(t,'-property','FontSize'),'FontSize',8)                   % font size
+set(findall(t,'-property','FontSize'),'FontSize',8)                         % font size
 
 if(export)
     figName = "generic_gait2128_kin_weightedWalking" + figFileType;
@@ -1178,9 +1068,9 @@ for i = 1:Ngrfcol
     set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
     grid on
     hold on
-    plot_mean_std(resampTime,PersonalGRFDataAvg(:,i),PersonalGRFDataSTD(:,i),color(:,1)', 1)
+    plot_mean_std(resampTime,PersonalGRFDataAvg(:,i),PersonalGRFDataSTD(:,i),color(:,1)', 1, "-")
     for j = 1:Nweights
-        plot_mean_std(resampTime,WeightedWalkingPersonalGrfAvg(:,i,:,j),WeightedWalkingPersonalGrfStd(:,i,:,j),color(:,j)', 1)
+        plot_mean_std(resampTime,WeightedWalkingPersonalGrfAvg(:,i,:,j),WeightedWalkingPersonalGrfStd(:,i,:,j),color(:,j)', 1, "-")
     end
     legend(legendtxt,"Location","bestoutside")
     xlabel("Gait Cycle [-]")
@@ -1192,7 +1082,7 @@ for i = 1:Ngrfcol
     set(0,"defaulttextinterpreter","tex")                                   % tex style font
     set(0,"DefaultAxesFontName","Helvetica")                                % times new roman font
     set(gca,"Units","centimeters")                                          % cm units for position
-    set(gca,"Position",[1 0.8 fig_width-3.5 fig_height-1.5])              % axes position (x, y, w, h)
+    set(gca,"Position",[1 0.8 fig_width-3.5 fig_height-1.5])                % axes position (x, y, w, h)
     hold off
     axis tight
 
@@ -1209,9 +1099,9 @@ for i = sagittalPlaneCols
     set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
     grid on
     hold on
-    plot_mean_std(resampTime,PersonalKitDataAvg(:,i),PersonalKitDataSTD(:,i),color(:,1)', 1)
+    plot_mean_std(resampTime,PersonalKitDataAvg(:,i),PersonalKitDataSTD(:,i),color(:,1)', 1,"-")
     for j = 1:Nweights
-        plot_mean_std(resampTime,WeightedWalkingPersonalKitAvg(:,i,:,j),WeightedWalkingPersonalKitStd(:,i,:,j),color(:,j)', 1)
+        plot_mean_std(resampTime,WeightedWalkingPersonalKitAvg(:,i,:,j),WeightedWalkingPersonalKitStd(:,i,:,j),color(:,j)', 1, "-")
     end
     legend(legendtxt,"Location","bestoutside")
     xlabel("Gait Cycle [-]")
@@ -1223,7 +1113,7 @@ for i = sagittalPlaneCols
     set(0,"defaulttextinterpreter","tex")                                   % tex style font
     set(0,"DefaultAxesFontName","Helvetica")                                % times new roman font
     set(gca,"Units","centimeters")                                          % cm units for position
-    set(gca,"Position",[1 0.8 fig_width-3.5 fig_height-1.5])              % axes position (x, y, w, h)
+    set(gca,"Position",[1 0.8 fig_width-3.5 fig_height-1.5])                % axes position (x, y, w, h)
     hold off
     axis tight
 
@@ -1231,6 +1121,54 @@ for i = sagittalPlaneCols
         figName = "personal_gait1422_kit_weightedWalking_" + kinColHeaders(i) + "_moment" + figFileType;
         exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
     end
+end
+
+%% Plot EMG Results
+% color
+color = makeGroupColors(24/360,Nweights+1,1,0.3,0.95)';
+
+% labels
+muscleNamesPlot = ["", "", "", "Vasti", "Gastrocnemius", "Soleus"];
+
+t = tiledlayout(1,3,"TileSpacing","tight","Padding","tight");
+t.InnerPosition = [0.08 0.15 0.75 0.75];
+set(gcf,"Units","centimeters")                                          % cm units for position
+set(gcf,"Position",[0 0 fig_width*2 fig_height/1.7])                          % IEEE 1-column: 8.89cm
+
+for i = 4:6
+    legendtxt = [];
+    nexttile
+    hold on
+    emgLeg1 = plot_emg_active(resampTime, normalWalkingEMGavgLim(:,i), 0.15, color(:,1)', 0.98, 1);
+    plot_mean_std(resampTime,PersonalEmgDataAvg(:,i),PersonalEmgDataSTD(:,i),color(:,1)', linewidth, "-")
+
+    % update legend
+    legendtxt = [legendtxt strings(1,length(emgLeg1)) "" "normal"];
+    for j = 1:Nweights
+        emgLeg2 = plot_emg_active(resampTime, weightedWalkingEMGavgLim(:,i,j), 0.15, color(:,j+1)', 0.98-0.02*j, 1-0.02*j);
+        plot_mean_std(resampTime,WeightedWalkingPersonalEmgAvg(:,i,:,j),WeightedWalkingPersonalEmgStd(:,i,:,j),color(:,j+1)', linewidth, "-")
+        legendtxt = [legendtxt strings(1,length(emgLeg2)) "" num2str(j) + " kg"];
+    end
+    xlabel("Gait Cycle [-]","FontWeight","bold")
+    ylabel(emgLabelsExt(i,:),"FontWeight","bold")
+    title(muscleNamesPlot(i),"FontWeight","bold")
+    ylim([0 1])
+
+    % figure settings
+    set(0,"DefaultFigureColor","w")                                         % white background
+    set(0,"defaulttextinterpreter","tex")                                   % tex style font
+    set(0,"DefaultAxesFontName","SansSerif")                                % times new roman font
+    hold off
+end
+
+lg = legend(legendtxt,"Location","bestoutside");
+lg.Layout.Tile = 'East';
+lg.Box = "off"; 
+set(findall(t,'-property','FontSize'),'FontSize',8)                         % font size
+
+if(export)
+    figName = "personal_gait2128_emg_weightedWalking" + figFileType;
+    exportgraphics(t,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
 end
 
 %% Plot EMG Results
@@ -1248,12 +1186,7 @@ set(gcf,"Position",[0 0 fig_width*2 fig_height/1.7])                          % 
 
 for i = 1:3
     legendtxt = [];
-
-    % fig = figure;
     nexttile
-    % set(gcf,"Units","centimeters")                                          % cm units for position
-    % set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
-    % grid on
     hold on
     emgLeg1 = plot_emg_active(resampTime, normalWalkingEMGavgLim(:,i), 0.05, color(:,1)', 0.98, 1);
     plot_mean_std(resampTime,PersonalEmgDataAvg(:,i),PersonalEmgDataSTD(:,i),color(:,1)', linewidth, "-")
@@ -1265,31 +1198,22 @@ for i = 1:3
         plot_mean_std(resampTime,WeightedWalkingPersonalEmgAvg(:,i,:,j),WeightedWalkingPersonalEmgStd(:,i,:,j),color(:,j+1)', linewidth, "-")
         legendtxt = [legendtxt strings(1,length(emgLeg2)) "" num2str(j) + " kg"];
     end
-    % legend(legendtxt,"Location","bestoutside")
     xlabel("Gait Cycle [-]","FontWeight","bold")
     ylabel(emgLabelsExt(i,:),"FontWeight","bold")
     title(muscleNamesPlot(i),"FontWeight","bold")
     ylim([0 1])
 
     % figure settings
-    % set(findall(t,'-property','FontSize'),'FontSize',8)                   % font size
     set(0,"DefaultFigureColor","w")                                         % white background
     set(0,"defaulttextinterpreter","tex")                                   % tex style font
     set(0,"DefaultAxesFontName","SansSerif")                                % times new roman font
-    % set(gca,"Units","centimeters")                                          % cm units for position
-    % set(gca,"Position",[1 0.8 fig_width-3.5 fig_height-1.5])              % axes position (x, y, w, h)
     hold off
-
-    % if(export)
-    %     figName = "personal_gait1422_emg_weightedWalking_" + EMGColHeaders(i) + figFileType;
-    %     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
-    % end
 end
 
 lg = legend(legendtxt,"Location","bestoutside");
 lg.Layout.Tile = 'East';
 lg.Box = "off"; 
-set(findall(t,'-property','FontSize'),'FontSize',8)                   % font size
+set(findall(t,'-property','FontSize'),'FontSize',8)                         % font size
 
 if(export)
     figName = "personal_gait2128_emg_weightedWalking_2" + figFileType;
@@ -1377,124 +1301,11 @@ function WalkingKneeRed = compute_peek_knee_flex_red(normalData, weightedData)
 
 end
 
-function [R_list, rmse_list, exp_match_list] = compute_metrics(data1, data2, std_data)
-% assumes data1 & data2 represent same part of gait cycle & are synchronized
-    Ncolumns = size(data1, 2);
-    R_list = zeros(Ncolumns, 1);
-    rmse_list = zeros(Ncolumns, 1);
-    exp_match_list = zeros(Ncolumns,1);
-    for i = 1:Ncolumns
-        R_list(i) = compute_pearson_corr_coeff(data1(:,i), data2(:,i));
-        rmse_list(i) = compute_rmse(data1(:,i), data2(:,i));
-        if(~isnan(std_data))
-            exp_match_list(i) = compute_exp_match(data1(:,i), std_data(:,i), data2(:,i));
-        end
-    end
-end
-
-function rmse_res = compute_rmse(data1, data2)
-% data 1 & data 2 should represent same part of gait cycle
-    rmse_res = rmse(data1, data2);
-end
-
-% Compute experimental match
-function exp_match = compute_exp_match(exp_mean, exp_std, pred_mean)
-% Computes percentage of gait cylce for which pred_mean lies within 
-% exp_mean +- exp_std
-
-    if(all(isnan(exp_std)))
-        exp_match = NaN;
-    else
-        
-        Ndata = size(pred_mean,1);
-    
-        low_bound = exp_mean - exp_std;
-        upp_bound = exp_mean + exp_std;
-    
-        withinBounds = (pred_mean >= low_bound) & (pred_mean <= upp_bound);
-        exp_match = sum(withinBounds)/Ndata*100;
-    end
-end
-
-% Compute Pearson Correlation Coefficient
-function r = compute_pearson_corr_coeff(data1, data2)
-% data 1 & data 2 should represent same part of gait cycle
-
-    % TO ADD: add some synchronization step
-    
-    n = length(data1);                                  % length of data array
-
-    sumx = sum(data1);                                  % sum of data elements list 1
-    sumx2 = sum(data1.^2);                              % data elements squared list 1
-    sumy = sum(data2);                                  % sum of data elements list 2
-    sumy2 = sum(data2.^2);                              % data elements squared list 2
-    sumxy = sum(data1.*data2);                          % dot product list 1 & list 2
-
-    num = n*sumxy - sumx*sumy;                          % numerator
-    den2 = (n*sumx2 - (sumx)^2)*(n*sumy2 - (sumy)^2);   % denumerator squared
-
-    r = num/sqrt(den2);                                 % Pearson correlation coefficient 
-
-end
-
-function plot_metrics_bar(generic_metric_avg, personal_metric_avg, dhondt2024_3seg_metric_avg, generic_metric_std, personal_metric_std, dhondt2024_3seg_metric_std, fig_width, fig_height, titletxt, ylabeltxt, export, figName)
-
-Nvar = size(personal_metric_avg,3);
-Nweights = size(personal_metric_avg,2);
-
-% tile layout
-tileNmb = [1:2:6, 2:2:6];
-
-fig = figure;
-t = tiledlayout(3,2,"TileSpacing","tight","Padding","tight");
-t.InnerPosition = [0.1 0.05 0.88 0.78];
-set(gcf,"Units","centimeters")                                          % cm units for position
-set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
-
-for i = 1:Nvar
-    % Create figure
-    % fig = figure;
-    nexttile(tileNmb(i))
-    % set(gcf,"Units","centimeters")                                              % cm units for position
-    % set(gcf,"Position",[0 0 fig_width fig_height])                                             % IEEE 1-column: 8.89cm
-    hold on 
-    grid on
-    b = bar(1:5,[generic_metric_avg(:,:,i); personal_metric_avg(:,:,i); dhondt2024_3seg_metric_avg(:,:,i)]);
-    xendpoints = [b.XEndPoints];
-    errorbar(xendpoints(1:Nweights), generic_metric_avg(:,:,i), generic_metric_std(:,:,i), '.', "vertical", "Color", "black")
-    errorbar(xendpoints(Nweights+1:2*Nweights), personal_metric_avg(:,:,i), personal_metric_std(:,:,i), '.', "vertical", "Color", "black")
-    errorbar(xendpoints(2*Nweights+1:3*Nweights), dhondt2024_3seg_metric_avg(:,:,i), dhondt2024_3seg_metric_std(:,:,i), '.', "vertical", "Color", "black")
-    xticks(1:5)
-    xticklabels(["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"])
-    % ylabel(ylabeltxt)
-    % legend(["Generic", "Personal", "Dhondt2024_3seg"],"Location","northoutside", "Orientation", "horizontal")
-    title(titletxt(i))
-    hold off
-    axis tight
-    
-end
-
-ylabel(t, ylabeltxt,"FontSize",8,"FontWeight","bold","FontName","Times")
-lg = legend(["Generic", "Personal", "Dhondt2024_3seg"],"Location","northoutside", "Orientation", "horizontal");
-lg.Layout.Tile = 'north';
-
-% figure settings
-set(findall(fig,'-property','FontSize'),'FontSize',8)              % font size
-set(0,"DefaultFigureColor","w")                                     % white background
-set(0,"defaulttextinterpreter","tex")                               % tex style font
-set(0,"DefaultAxesFontName","Times")                            % times new roman font
-
-if(export)
-    exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
-end
-
-end
-
-function [KinData, GrfData, KitData, EmgData, IdxHeelL] = choose_lowest_cost(...
+function [KinData, GrfData, KitData, EmgData, IdxHeelL, CostData] = choose_lowest_cost(...
     KinDataTrackIG, GrfDataTrackIG, KitDataTrackIG, EmgDataTrackIG, IdxHeelLTrackIG, CostDataTrackIG,...
     KinDataExpIG, GrfDataExpIG, KitDataExpIG, EmgDataExpIG, IdxHeelLExpIG, CostDataExpIG)
 
-% Choose solution with lowest cost function value
+    % Choose solution with lowest cost function value
     isExpIGlower = CostDataExpIG < CostDataTrackIG;
     
     KinData = KinDataTrackIG;
@@ -1502,6 +1313,7 @@ function [KinData, GrfData, KitData, EmgData, IdxHeelL] = choose_lowest_cost(...
     KitData = KitDataTrackIG;
     EmgData = EmgDataTrackIG;
     IdxHeelL = IdxHeelLTrackIG;
+    CostData = CostDataTrackIG;
 
     NSUBJ = size(KinData,3);
     Ncol = size(KinData,4);
@@ -1514,6 +1326,7 @@ function [KinData, GrfData, KitData, EmgData, IdxHeelL] = choose_lowest_cost(...
                 KitData(:,:,i,j) = KitDataExpIG(:,:,i,j);
                 EmgData(:,:,i,j) = EmgDataExpIG(:,:,i,j);
                 IdxHeelL(i,j) = IdxHeelLExpIG(i,j);
+                CostData(i,j) = CostDataExpIG(i,j);
             end
         end
     end
@@ -1536,91 +1349,6 @@ function [GenericDataWeightedShifted, PersonalDataWeightedShifted, Dhondt2024_3s
             Dhondt2024_3segDataWeightedShifted(:,conditionBool,i,j) = circshift(Dhondt2024_3segDataWeightedShifted(:,conditionBool,i,j),-Dhondt2024_3segIdxHeelLWeighted(i,j),1);
         end
     end
-end
-
-function [avg_percent_R_kin_sagg, avg_percent_R_grf] = compute_R_average_improvement(avg_R_list_kin_personal, avg_R_list_kin_generic, avg_R_list_grf_personal, avg_R_list_grf_generic, avg_R_list_emg_personal, avg_R_list_emg_generic, identifier)
-    % compute average R sagittal plane improvements
-    % postive means R increased
-    rel_dR_kin_sagg = (avg_R_list_kin_personal - avg_R_list_kin_generic);
-    rel_dR_grf = (avg_R_list_grf_personal - avg_R_list_grf_generic);
-    rel_dR_emg = (avg_R_list_emg_personal - avg_R_list_emg_generic);
-    
-    % deltaR = Rpersonal - Rgeneric
-    max_dR_kin_sagg = 1-avg_R_list_kin_generic;
-    max_dr_grf = 1-avg_R_list_grf_generic;
-    max_dr_emg = 1-avg_R_list_emg_generic;
-    
-    % maximum possible change = 1 - Rgeneric
-    percent_R_kin_sagg = rel_dR_kin_sagg./max_dR_kin_sagg*100;
-    percent_R_grf = rel_dR_grf./max_dr_grf*100;
-    percent_R_emg = rel_dR_emg./max_dr_emg*100;
-    
-    % maximum possible change = deltaR/maxDR 
-    avg_percent_R_kin_sagg = mean(percent_R_kin_sagg);
-    avg_percent_R_grf = mean(percent_R_grf);
-    avg_percent_R_emg = mean(percent_R_emg);
-    
-    % print results
-    fprintf(['\n** Printing R Metrics for ' identifier ' **\n'])
-    fprintf('The pearson correlation coefficient R reached on average %.2f%% of the maximal improvement for the sagittal plane kinematics\n', avg_percent_R_kin_sagg)
-    fprintf('The pearson correlation coefficient R reached on average %.2f%% of the maximal improvement for the ground reaction forces\n', avg_percent_R_grf)
-    fprintf('The pearson correlation coefficient R reached on average %.2f%% of the maximal improvement for the EMG\n', avg_percent_R_emg)
-end
-
-function [avg_percent_rmse_kin_sagg, avg_percent_rmse_grf] = compute_RMSE_average_improvement(avg_rmse_list_kin_personal, avg_rmse_list_kin_generic, avg_rmse_list_grf_personal, avg_rmse_list_grf_generic, identifier)
-
-    percent_rmse_kin_sagg = (avg_rmse_list_kin_personal - avg_rmse_list_kin_generic)./avg_rmse_list_kin_generic*100;
-    percent_rmse_grf = (avg_rmse_list_grf_personal - avg_rmse_list_grf_generic)./avg_rmse_list_grf_generic*100;
-    
-    avg_percent_rmse_kin_sagg = mean(percent_rmse_kin_sagg);
-    avg_percent_rmse_grf = mean(percent_rmse_grf);
-    
-    % print results
-    fprintf(['\n** Printing RMSE Metrics for ' identifier ' **\n'])
-    if(avg_percent_rmse_kin_sagg > 0)
-        fprintf('The RMSE INCREASED on average by %.2f%% for the sagittal plane kinematics\n', avg_percent_rmse_kin_sagg)
-    else
-        fprintf('The RMSE DECREASED on average by %.2f%% for the sagittal plane kinematics\n', -avg_percent_rmse_kin_sagg)
-    end
-
-    if(avg_percent_rmse_grf > 0)
-        fprintf('The RMSE INCREASED on average by %.2f%% for the ground reaction forces\n', avg_percent_rmse_grf)
-    else
-        fprintf('The RMSE DECREASED on average by %.2f%% for the ground reaction forces\n', -avg_percent_rmse_grf)
-    end
-end
-
-function print_matrix_latex(matrix, colheaders, rownames, dataMask)
-% print matrix in Latex format
-    Nrow = size(matrix,1);
-    Ncol = size(matrix,2);
-
-    % print data
-    for i = 1:Nrow+1
-        for j = 1:Ncol+1
-            if(j < Ncol+1)
-                token = '& ';
-            elseif(i == 1 && j == Ncol + 1)
-                token = '\\\\ \\hline';
-            else
-                token = '\\\\';
-            end
-
-            if(i == 1 && j == 1)
-                fprintf(token)
-            elseif(i == 1 && j > 1)
-                fprintf('\\textbf{' + string(colheaders(j-1)) + '} ' + token)
-            elseif(i > 1 && j == 1)
-                fprintf('\\textbf{' + string(rownames(i-1)) + '} ' + token)
-            elseif(matrix(i-1,j-1) == i || dataMask(i-1,j-1) == 1)
-                fprintf(['\\textbf{%.2f} ' token], matrix(i-1,j-1))
-            else
-                fprintf(['%.2f ' token], matrix(i-1,j-1))
-            end
-        end
-        fprintf('\n')
-    end
-
 end
 
 function [hList, pList, ciList, statsList, dzList, deltaListAvg, deltaListStd] = perform_ttest_kin(normalData, weightedData, isJointAngle, sign, IdxRange, NSUBJ)

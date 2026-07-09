@@ -1,9 +1,21 @@
+% --------------------------------------------------------------------------
+% plotWeightedWalkingTrends
+%   Plot the experimental vs predicted changes in sagittal plane 
+%   kinematics.
+%
+% Original author: Menthy Denayer
+% Original date: 08/July/2026
+%
+% Last edit by: Menthy Denayer
+% Last edit date: 08/July/2026
+% 
+% --------------------------------------------------------------------------
+
 clear all
 clc
 close all
 
 %% Load Libraries
-addpath("C:\Users\medenaye\Documents\programs\GitHub\OpenSim-Processing\data-processing\utilities")
 addpath(pwd + "\helperFunctions")
 
 %% Define Variables
@@ -58,15 +70,6 @@ Ntrials = size(expData.data.SUBJ4.kinematics.IkdataNormal,3);
 % Load personalized model results
 [PersonalKinData, PersonalGrfData, PersonalKitData, PersonalEmgData, ~, ~, ~, PersonalIdxHeelL, kinColHeaders, GRFColHeaders, EMGColHeaders] = average_results(resampTime, Nkincol, Ngrfcol, Nemgcol, resultsDIR, ResultsFolders, resultsSubFolder, personalKeyWords, 1);
 
-% Falisse 2022 scaled
-falisse2022SubFolders = repmat("Falisse2022",1,NSUBJ) + "/" + ["SUBJ04_Falisse2022_20022026", "SUBJ06_Falisse2022_20022026", "SUBJ07_Falisse2022_20022026", "SUBJ09_Falisse2022_20022026", "SUBJ10_Falisse2022_20022026", "SUBJ11_Falisse2022_20022026"];
-[Falisse2022KinData, Falisse2022GrfData, Falisse2022KitData, Falisse2022EmgData, ~, ~, ~, Falisse2022IdxHeelL,Falisse2022kinColHeaders,~,Falisse2022emgColHeaders] = average_results(resampTime, 29, Ngrfcol, 92, resultsDIR, ResultsFolders, falisse2022SubFolders, falisseKeyWords, 1);
-FalisseisLimKin = ismember(Falisse2022kinColHeaders, kinColHeaders);
-
-Falisse2022KinDataLim = Falisse2022KinData(:,FalisseisLimKin>0,:);
-Falisse2022GrfDataLim = Falisse2022GrfData(:,:,:);
-Falisse2022KitDataLim = Falisse2022KitData(:,FalisseisLimKin>0,:);
-
 %% Save Experimental Weighted Results
 isKneeFlexion = contains(expData.data.headers.kinematics,"knee_angle") & ~contains(expData.data.headers.kinematics,"beta");
 isHipFlexion = contains(expData.data.headers.kinematics,"hip_flexion");
@@ -104,33 +107,33 @@ WeightedWalking4kgAnkleMaxExp = NaN(NSUBJ, Ntrials);
 WeightedWalking5kgAnkleMaxExp = NaN(NSUBJ, Ntrials);
 
 for subjID = 1:NSUBJ
-    normalWalkingKneeMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isKneeFlexion, "Normal", Ntrials, -1);
-    WeightedWalking1kgKneeMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isKneeFlexion, "1kg", Ntrials, -1);
-    WeightedWalking2kgKneeMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isKneeFlexion, "2kg", Ntrials, -1);
-    WeightedWalking3kgKneeMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isKneeFlexion, "3kg", Ntrials, -1);
-    WeightedWalking4kgKneeMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isKneeFlexion, "4kg", Ntrials, -1);
-    WeightedWalking5kgKneeMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isKneeFlexion, "5kg", Ntrials, -1);
+    normalWalkingKneeMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isKneeFlexion, "Normal", Ntrials, -1, []);
+    WeightedWalking1kgKneeMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isKneeFlexion, "1kg", Ntrials, -1, []);
+    WeightedWalking2kgKneeMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isKneeFlexion, "2kg", Ntrials, -1, []);
+    WeightedWalking3kgKneeMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isKneeFlexion, "3kg", Ntrials, -1, []);
+    WeightedWalking4kgKneeMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isKneeFlexion, "4kg", Ntrials, -1, []);
+    WeightedWalking5kgKneeMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isKneeFlexion, "5kg", Ntrials, -1, []);
 
-    normalWalkingHipFlexMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "Normal", Ntrials, 1);
-    WeightedWalking1kgHipFlexMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "1kg", Ntrials, 1);
-    WeightedWalking2kgHipFlexMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "2kg", Ntrials, 1);
-    WeightedWalking3kgHipFlexMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "3kg", Ntrials, 1);
-    WeightedWalking4kgHipFlexMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "4kg", Ntrials, 1);
-    WeightedWalking5kgHipFlexMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "5kg", Ntrials, 1);
+    normalWalkingHipFlexMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "Normal", Ntrials, 1, []);
+    WeightedWalking1kgHipFlexMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "1kg", Ntrials, 1, []);
+    WeightedWalking2kgHipFlexMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "2kg", Ntrials, 1, []);
+    WeightedWalking3kgHipFlexMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "3kg", Ntrials, 1, []);
+    WeightedWalking4kgHipFlexMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "4kg", Ntrials, 1, []);
+    WeightedWalking5kgHipFlexMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "5kg", Ntrials, 1, []);
 
-    normalWalkingHipExtMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "Normal", Ntrials, -1);
-    WeightedWalking1kgHipExtMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "1kg", Ntrials, -1);
-    WeightedWalking2kgHipExtMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "2kg", Ntrials, -1);
-    WeightedWalking3kgHipExtMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "3kg", Ntrials, -1);
-    WeightedWalking4kgHipExtMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "4kg", Ntrials, -1);
-    WeightedWalking5kgHipExtMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isHipFlexion, "5kg", Ntrials, -1);
+    normalWalkingHipExtMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "Normal", Ntrials, -1, []);
+    WeightedWalking1kgHipExtMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "1kg", Ntrials, -1, []);
+    WeightedWalking2kgHipExtMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "2kg", Ntrials, -1, []);
+    WeightedWalking3kgHipExtMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "3kg", Ntrials, -1, []);
+    WeightedWalking4kgHipExtMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "4kg", Ntrials, -1, []);
+    WeightedWalking5kgHipExtMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isHipFlexion, "5kg", Ntrials, -1, []);
 
-    normalWalkingAnkleMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isAnklePlantar, "Normal", Ntrials, -1);
-    WeightedWalking1kgAnkleMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isAnklePlantar, "1kg", Ntrials, -1);
-    WeightedWalking2kgAnkleMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isAnklePlantar, "2kg", Ntrials, -1);
-    WeightedWalking3kgAnkleMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isAnklePlantar, "3kg", Ntrials, -1);
-    WeightedWalking4kgAnkleMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isAnklePlantar, "4kg", Ntrials, -1);
-    WeightedWalking5kgAnkleMaxExp(subjID,:) = compute_peak_knee_flex_exp(expData, SUBJID(subjID), isAnklePlantar, "5kg", Ntrials, -1);
+    normalWalkingAnkleMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isAnklePlantar, "Normal", Ntrials, -1, 50:80);
+    WeightedWalking1kgAnkleMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isAnklePlantar, "1kg", Ntrials, -1, 50:80);
+    WeightedWalking2kgAnkleMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isAnklePlantar, "2kg", Ntrials, -1, 50:80);
+    WeightedWalking3kgAnkleMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isAnklePlantar, "3kg", Ntrials, -1, 50:80);
+    WeightedWalking4kgAnkleMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isAnklePlantar, "4kg", Ntrials, -1, 50:80);
+    WeightedWalking5kgAnkleMaxExp(subjID,:) = compute_peak_exp(expData, SUBJID(subjID), isAnklePlantar, "5kg", Ntrials, -1, 50:80);
 end
 
 % compute knee average per subject
@@ -169,7 +172,6 @@ WeightedWalking5kgAnkleMaxExpPerSUBJ = mean(WeightedWalking5kgAnkleMaxExp,2,"omi
 [GenericKinDataWeightedExpIG, GenericGrfDataWeightedExpIG, GenericKitDataWeightedExpIG, GenericEmgDataWeightedExpIG, ~, ~, GenericCostDataExpIG, GenericIdxHeelLExpIG, ~, ~, ~] = average_results(resampTime, Nkincol, Ngrfcol, Nemgcol, resultsDIR, ResultsFolders, expIGsubFolderGeneric, weightedKeyWords, Nweights);
 
 %% Save Personal Weighted Results
-isKneeFlexion = contains(kinColHeaders,"knee_angle");
 [PersonalKinDataWeightedTrackIG, PersonalGrfDataWeightedTrackIG, PersonalKitDataWeightedTrackIG, PersonalEmgDataWeightedTrackIG, ~, ~, PersonalCostDataTrackIG, PersonalIdxHeelLTrackIG, ~, ~, ~] = average_results(resampTime, Nkincol, Ngrfcol, Nemgcol, resultsDIR, ResultsFolders, trackIGsubFolderPersonal, weightedKeyWords, Nweights);
 [PersonalKinDataWeightedExpIG, PersonalGrfDataWeightedExpIG, PersonalKitDataWeightedExpIG, PersonalEmgDataWeightedExpIG, ~, ~, PersonalCostDataExpIG, PersonalIdxHeelLExpIG, ~, ~, ~] = average_results(resampTime, Nkincol, Ngrfcol, Nemgcol, resultsDIR, ResultsFolders, expIGsubFolderPersonal, weightedKeyWords, Nweights);
 
@@ -184,25 +186,12 @@ isKneeFlexion = contains(kinColHeaders,"knee_angle");
     PersonalKinDataWeightedTrackIG, PersonalGrfDataWeightedTrackIG, PersonalKitDataWeightedTrackIG, PersonalEmgDataWeightedTrackIG, PersonalIdxHeelLTrackIG, PersonalCostDataTrackIG,...
     PersonalKinDataWeightedExpIG, PersonalGrfDataWeightedExpIG, PersonalKitDataWeightedExpIG, PersonalEmgDataWeightedExpIG, PersonalIdxHeelLExpIG, PersonalCostDataExpIG);
 
-%% Save Falisse2022 Weighted Results
-isKneeFlexion = contains(Falisse2022kinColHeaders,"knee_angle");
-falisse2022SubFolders = repmat("Falisse2022",1,NSUBJ) + "/" + ["SUBJ04_Falisse2022_20022026", "SUBJ06_Falisse2022_20022026", "SUBJ07_Falisse2022_20022026", "SUBJ09_Falisse2022_20022026", "SUBJ10_Falisse2022_20022026", "SUBJ11_Falisse2022_20022026"];
-falisse2022SubFolders = falisse2022SubFolders + "/weightedWalking";
-[Falisse2022KinDataWeighted, Falisse2022GrfDataWeighted, Falisse2022KitDataWeighted, Falisse2022EmgDataWeighted, ~, ~, ~, Falisse2022IdxHeelLWeighted, ~, ~, ~] = average_results(resampTime, 29, Ngrfcol, 92, resultsDIR, ResultsFolders, falisse2022SubFolders, weightedKeyWords, Nweights);
-
-% store data for each subject
-normalWalkingKneeMaxFalisse2022 = NaN(NSUBJ, 1);
-WeightedWalkingKneeMaxFalisse2022 = NaN(NSUBJ, Nweights);
-for subjID = 1:NSUBJ
-    normalWalkingKneeMaxFalisse2022(subjID) = compute_peak_sim(Falisse2022KinData, isKneeFlexion, subjID, -1, []);
-    WeightedWalkingKneeMaxFalisse2022(subjID,:) = compute_peak_sim(Falisse2022KinDataWeighted, isKneeFlexion, subjID, -1, []);
-end
 
 %% Shift Left Simulation Data
 % shift kinematics
 isLeftKin = contains(kinColHeaders,"_l") & ~contains(kinColHeaders,"pelvis");
-[GenericKinDataShifted, PersonalKinDataShifted, ~] = shift_sim_data(isLeftKin, GenericKinData, PersonalKinData, Falisse2022KinData(:,FalisseisLimKin>0,:,:), GenericIdxHeelL, PersonalIdxHeelL, Falisse2022IdxHeelL);
-[GenericKinDataWeightedShifted, PersonalKinDataWeightedShifted, ~] = shift_sim_data(isLeftKin, GenericKinDataWeighted, PersonalKinDataWeighted, Falisse2022KinDataWeighted(:,FalisseisLimKin>0,:,:), GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted, Falisse2022IdxHeelLWeighted);
+[GenericKinDataShifted, PersonalKinDataShifted] = shift_sim_data(isLeftKin, GenericKinData, PersonalKinData, GenericIdxHeelL, PersonalIdxHeelL);
+[GenericKinDataWeightedShifted, PersonalKinDataWeightedShifted] = shift_sim_data(isLeftKin, GenericKinDataWeighted, PersonalKinDataWeighted, GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted);
 
 %% Save Generic Weighted Results
 isKneeFlexion = contains(kinColHeaders,"knee_angle") & ~contains(kinColHeaders,"beta");
@@ -271,15 +260,6 @@ for subjID = 1:NSUBJ
     WeightedWalkingAnkleMaxPersonal(subjID,:) = compute_peak_sim(PersonalKinDataWeightedShifted, isAnklePlantar, subjID, -1, 50:100);
 end
 
-
-%% Extract Sagittal Plane Data
-isSagittalPlaneKinematics = contains(kinColHeaders,"knee_angle") | contains(kinColHeaders,"hip_flexion") | contains(kinColHeaders,"ankle_angle");
-sagittalPlaneCols = 1:Nkincol; sagittalPlaneCols = sagittalPlaneCols(isSagittalPlaneKinematics);
-
-Falisse2022kinColHeadersLimKin = Falisse2022kinColHeaders(FalisseisLimKin);
-isSagittalPlaneKinematicsFalisse2022 = contains(Falisse2022kinColHeadersLimKin,"knee_angle") | contains(Falisse2022kinColHeadersLimKin,"hip_flexion") | contains(Falisse2022kinColHeadersLimKin,"ankle_angle");
-sagittalPlaneColsFalisse2022 = 1:Nkincol; sagittalPlaneColsFalisse2022 = sagittalPlaneColsFalisse2022(isSagittalPlaneKinematicsFalisse2022);
-
 %% Extract Experimental Data
 % find kinematics corresponding columns
 kin_col_exp = expData.data.headers.kinematics;
@@ -300,7 +280,6 @@ kitLabels = repmat("Joint Moment [Nm]", Nkincol, 1); kitLabels(isTrans) = "Joint
 emgLabels = repmat("Activation [-]", Nemgcol, 1);
 
 jointNames = extractBefore(kinColHeaders,"_"); jointNames = strcat(upper(extractBefore(jointNames,2)), extractAfter(jointNames,1));
-% kinLabels = jointNames + " " + kinLabels;
 kitLabels = jointNames + " " + kitLabels;
 
 %% Add Labels Directions
@@ -403,6 +382,9 @@ KneeMaxRedPerPerSUBJ = [KneeMax1kgRedPerPerSUBJ; KneeMax2kgRedPerPerSUBJ; KneeMa
 KneeRMSEGen = rmse(KneeMaxRedExpPerSUBJ, KneeMaxRedGenPerSUBJ);
 KneeRMSEPer = rmse(KneeMaxRedExpPerSUBJ, KneeMaxRedPerPerSUBJ);
 
+KneeRMSEGenPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, KneeMax1kgRedExpPerSUBJ, KneeMax2kgRedExpPerSUBJ, KneeMax3kgRedExpPerSUBJ, KneeMax4kgRedExpPerSUBJ, KneeMax5kgRedExpPerSUBJ, KneeMax1kgRedGenPerSUBJ, KneeMax2kgRedGenPerSUBJ, KneeMax3kgRedGenPerSUBJ, KneeMax4kgRedGenPerSUBJ, KneeMax5kgRedGenPerSUBJ);
+KneeRMSEPerPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, KneeMax1kgRedExpPerSUBJ, KneeMax2kgRedExpPerSUBJ, KneeMax3kgRedExpPerSUBJ, KneeMax4kgRedExpPerSUBJ, KneeMax5kgRedExpPerSUBJ, KneeMax1kgRedPerPerSUBJ, KneeMax2kgRedPerPerSUBJ, KneeMax3kgRedPerPerSUBJ, KneeMax4kgRedPerPerSUBJ, KneeMax5kgRedPerPerSUBJ);
+
 % hip flexion
 HipFlexMaxRedExpPerSUBJ = [HipFlexMax1kgRedExpPerSUBJ; HipFlexMax2kgRedExpPerSUBJ; HipFlexMax3kgRedExpPerSUBJ; HipFlexMax4kgRedExpPerSUBJ; HipFlexMax5kgRedExpPerSUBJ];
 HipFlexMaxRedGenPerSUBJ = [HipFlexMax1kgRedGenPerSUBJ; HipFlexMax2kgRedGenPerSUBJ; HipFlexMax3kgRedGenPerSUBJ; HipFlexMax4kgRedGenPerSUBJ; HipFlexMax5kgRedGenPerSUBJ];
@@ -410,6 +392,9 @@ HipFlexMaxRedPerPerSUBJ = [HipFlexMax1kgRedPerPerSUBJ; HipFlexMax2kgRedPerPerSUB
 
 HipFlexRMSEGen = rmse(HipFlexMaxRedExpPerSUBJ, HipFlexMaxRedGenPerSUBJ);
 HipFlexRMSEPer = rmse(HipFlexMaxRedExpPerSUBJ, HipFlexMaxRedPerPerSUBJ);
+
+HipFlexRMSEGenPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipFlexMax1kgRedExpPerSUBJ, HipFlexMax2kgRedExpPerSUBJ, HipFlexMax3kgRedExpPerSUBJ, HipFlexMax4kgRedExpPerSUBJ, HipFlexMax5kgRedExpPerSUBJ, HipFlexMax1kgRedGenPerSUBJ, HipFlexMax2kgRedGenPerSUBJ, HipFlexMax3kgRedGenPerSUBJ, HipFlexMax4kgRedGenPerSUBJ, HipFlexMax5kgRedGenPerSUBJ);
+HipFlexRMSEPerPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipFlexMax1kgRedExpPerSUBJ, HipFlexMax2kgRedExpPerSUBJ, HipFlexMax3kgRedExpPerSUBJ, HipFlexMax4kgRedExpPerSUBJ, HipFlexMax5kgRedExpPerSUBJ, HipFlexMax1kgRedPerPerSUBJ, HipFlexMax2kgRedPerPerSUBJ, HipFlexMax3kgRedPerPerSUBJ, HipFlexMax4kgRedPerPerSUBJ, HipFlexMax5kgRedPerPerSUBJ);
 
 % hip extension
 HipExtMaxRedExpPerSUBJ = [HipExtMax1kgRedExpPerSUBJ; HipExtMax2kgRedExpPerSUBJ; HipExtMax3kgRedExpPerSUBJ; HipExtMax4kgRedExpPerSUBJ; HipExtMax5kgRedExpPerSUBJ];
@@ -419,6 +404,9 @@ HipExtMaxRedPerPerSUBJ = [HipExtMax1kgRedPerPerSUBJ; HipExtMax2kgRedPerPerSUBJ; 
 HipExtRMSEGen = rmse(HipExtMaxRedExpPerSUBJ, HipExtMaxRedGenPerSUBJ);
 HipExtRMSEPer = rmse(HipExtMaxRedExpPerSUBJ, HipExtMaxRedPerPerSUBJ);
 
+HipExtRMSEGenPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipExtMax1kgRedExpPerSUBJ, HipExtMax2kgRedExpPerSUBJ, HipExtMax3kgRedExpPerSUBJ, HipExtMax4kgRedExpPerSUBJ, HipExtMax5kgRedExpPerSUBJ, HipExtMax1kgRedGenPerSUBJ, HipExtMax2kgRedGenPerSUBJ, HipExtMax3kgRedGenPerSUBJ, HipExtMax4kgRedGenPerSUBJ, HipExtMax5kgRedGenPerSUBJ);
+HipExtRMSEPerPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipExtMax1kgRedExpPerSUBJ, HipExtMax2kgRedExpPerSUBJ, HipExtMax3kgRedExpPerSUBJ, HipExtMax4kgRedExpPerSUBJ, HipExtMax5kgRedExpPerSUBJ, HipExtMax1kgRedPerPerSUBJ, HipExtMax2kgRedPerPerSUBJ, HipExtMax3kgRedPerPerSUBJ, HipExtMax4kgRedPerPerSUBJ, HipExtMax5kgRedPerPerSUBJ);
+
 % ankle plantar flexion
 AnkleMaxRedExpPerSUBJ = [AnkleMax1kgRedExpPerSUBJ; AnkleMax2kgRedExpPerSUBJ; AnkleMax3kgRedExpPerSUBJ; AnkleMax4kgRedExpPerSUBJ; AnkleMax5kgRedExpPerSUBJ];
 AnkleMaxRedGenPerSUBJ = [AnkleMax1kgRedGenPerSUBJ; AnkleMax2kgRedGenPerSUBJ; AnkleMax3kgRedGenPerSUBJ; AnkleMax4kgRedGenPerSUBJ; AnkleMax5kgRedGenPerSUBJ];
@@ -427,6 +415,19 @@ AnkleMaxRedPerPerSUBJ = [AnkleMax1kgRedPerPerSUBJ; AnkleMax2kgRedPerPerSUBJ; Ank
 AnkleRMSEGen = rmse(AnkleMaxRedExpPerSUBJ, AnkleMaxRedGenPerSUBJ);
 AnkleRMSEPer = rmse(AnkleMaxRedExpPerSUBJ, AnkleMaxRedPerPerSUBJ);
 
+AnkleRMSEGenPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, AnkleMax1kgRedExpPerSUBJ, AnkleMax2kgRedExpPerSUBJ, AnkleMax3kgRedExpPerSUBJ, AnkleMax4kgRedExpPerSUBJ, AnkleMax5kgRedExpPerSUBJ, AnkleMax1kgRedGenPerSUBJ, AnkleMax2kgRedGenPerSUBJ, AnkleMax3kgRedGenPerSUBJ, AnkleMax4kgRedGenPerSUBJ, AnkleMax5kgRedGenPerSUBJ);
+AnkleRMSEPerPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, AnkleMax1kgRedExpPerSUBJ, AnkleMax2kgRedExpPerSUBJ, AnkleMax3kgRedExpPerSUBJ, AnkleMax4kgRedExpPerSUBJ, AnkleMax5kgRedExpPerSUBJ, AnkleMax1kgRedPerPerSUBJ, AnkleMax2kgRedPerPerSUBJ, AnkleMax3kgRedPerPerSUBJ, AnkleMax4kgRedPerPerSUBJ, AnkleMax5kgRedPerPerSUBJ);
+
+%% Print Results
+RMSEPerPerSUBJ = [mean(KneeRMSEPerPerSUBJ,2) mean(HipFlexRMSEPerPerSUBJ,2) mean(HipExtRMSEPerPerSUBJ,2) mean(AnkleRMSEPerPerSUBJ,2)];
+RMSEGenPerSUBJ = [mean(KneeRMSEGenPerSUBJ,2) mean(HipFlexRMSEGenPerSUBJ,2) mean(HipExtRMSEGenPerSUBJ,2) mean(AnkleRMSEGenPerSUBJ,2)];
+
+isBest = RMSEPerPerSUBJ < RMSEGenPerSUBJ;
+
+rowNames = ["knee flexion", "hip flexion", "hip extension", "ankle plantar flexion"];
+print_matrix_latex(RMSEPerPerSUBJ', [], ["S4", "S6", "S7", "S9", "S10", "S11"], rowNames, isBest', [])
+print_matrix_latex(RMSEGenPerSUBJ', [], ["S4", "S6", "S7", "S9", "S10", "S11"], rowNames, ~isBest', [])
+
 %% Plot Experimental vs. Simulation Changes
 
 markers = ["^", "square", "diamond", "o", "v", "pentagram"];
@@ -434,8 +435,8 @@ colorPer = makeGroupColors(24/360,Nweights+1,1,0.5,1)';
 colorGen = makeGroupColors(220/360,Nweights+1,1,0.5,1)';
 
 fig = figure;
-set(gcf,"Units","centimeters")                                          % cm units for position
-set(gcf,"Position",[0 0 fig_width*2 fig_height*1.5])                          % IEEE 1-column: 8.89cm
+set(gcf,"Units","centimeters")                                              % cm units for position
+set(gcf,"Position",[0 0 fig_width*2 fig_height*1.5])                        % IEEE 1-column: 8.89cm
 t = tiledlayout(2,4, "TileSpacing", "tight");
 t.InnerPosition = [0.05 0.07 0.93 0.78];
 
@@ -473,9 +474,6 @@ for i = 1:NSUBJ
 end
 xlim([-8 11])
 ylim([-8 11])
-% temp = colorbar(ax2, "northoutside");
-% temp.Position
-% temp.AxisLocation
 xlabel("")
 ylabel("")
 title("Peak Hip Flexion", "FontWeight", "bold")
@@ -569,8 +567,6 @@ for i = 1:NSUBJ
 end
 xlim([-25 35])
 ylim([-25 35])
-% legend(["" "S 4" repmat("",1,Nweights-1) "S 6" repmat("",1,Nweights-1) "S 7" repmat("",1,Nweights-1) "S 9" repmat("",1,Nweights-1) "S 10" repmat("",1,Nweights-1) "S 11" repmat("",1,Nweights-1)], ...
-%     "Location","northoutside","Box","off", "Orientation","horizontal")
 xlabel("Experimental Reduction [%]", "FontWeight", "bold")
 ylabel("")
 hold off
@@ -592,12 +588,10 @@ ylabel("")
 hold off
 
 % figure settings
-set(findall(fig,'-property','FontSize'),'FontSize',8)                   % font size
-set(0,"DefaultFigureColor","w")                                         % white background
-set(0,"defaulttextinterpreter","tex")                                   % tex style font
-set(0,"DefaultAxesFontName","SansSerif")                                % times new roman font
-% set(gca,"Units","centimeters")                                          % cm units for position
-% set(gca,"Position",[1 0.8 fig_width-1.5 fig_height-2.8])              % axes position (x, y, w, h)
+set(findall(fig,'-property','FontSize'),'FontSize',8)                       % font size
+set(0,"DefaultFigureColor","w")                                             % white background
+set(0,"defaulttextinterpreter","tex")                                       % tex style font
+set(0,"DefaultAxesFontName","SansSerif")                                    % times new roman font
 
 
 if(export)
@@ -640,27 +634,28 @@ function [normalWalkingExpAvgLim, normalWalkingExpStdLim, weightedWalkingExpAvgL
 end
 
 
-function WalkingKneeMaxAvg = compute_peak_knee_flex_exp(expData, SUBJID, isKneeFlexion, weight, Ntrials, sign)
+function WalkingKneeMaxAvg = compute_peak_exp(expData, SUBJID, isJoint, weight, Ntrials, sign, IdxRange)
 % returns peak knee flexion angle, averaged over left/right
+
+    if(isempty(IdxRange))
+        IdxRange = 1:size(expData.data.("SUBJ" + SUBJID).kinematics.IkdataNormal,1);
+    end
 
     WalkingKneeMaxAvg = NaN(1,Ntrials);
     if(weight == "Normal")
         % normal walking peak knee flexion
-        normalWalkingKin = expData.data.("SUBJ" + SUBJID).kinematics.IkdataNormal;
-        normalWalkingKneeKin = normalWalkingKin(:,isKneeFlexion,:)*sign;
-        WalkingKneeMaxLR = max(normalWalkingKneeKin);
-        NtrialsSUBJ = size(WalkingKneeMaxLR,3);
-        WalkingKneeMaxAvg(1:NtrialsSUBJ) = mean(WalkingKneeMaxLR,2);
+        WalkingKin = expData.data.("SUBJ" + SUBJID).kinematics.IkdataNormal;
     else
-        % normal walking peak knee flexion
-        weightedWalkingKin = expData.data.("SUBJ" + SUBJID).kinematics.("IkdataWeighted" + weight);
-        weightedWalkingKneeKin = weightedWalkingKin(:,isKneeFlexion,:)*sign;
-        WalkingKneeMaxLR = max(weightedWalkingKneeKin);
-        NtrialsSUBJ = size(WalkingKneeMaxLR,3);
-        WalkingKneeMaxAvg(1:NtrialsSUBJ) = mean(WalkingKneeMaxLR,2);
+        % weighted walking peak knee flexion
+        WalkingKin = expData.data.("SUBJ" + SUBJID).kinematics.("IkdataWeighted" + weight);
     end
 
+    WalkingKneeKin = WalkingKin(IdxRange,isJoint,:)*sign;
+    [WalkingKneeMaxLR, ~] = max(WalkingKneeKin);
+    NtrialsSUBJ = size(WalkingKneeMaxLR,3);
+    WalkingKneeMaxAvg(1:NtrialsSUBJ) = mean(WalkingKneeMaxLR,2);
     WalkingKneeMaxAvg = WalkingKneeMaxAvg(1:Ntrials);
+
 
 end
 
@@ -676,10 +671,12 @@ function WalkingKneeMax = compute_peak_sim(KinData, isKneeFlexion, subjID, sign,
 
     for i = 1:Nworkers
         if(~isnan(KinData(:,:,subjID,i)))
-            WalkingKneeKin = KinData(:,isKneeFlexion,subjID,i);
-            WalkingKneeMax(i) = mean(max(WalkingKneeKin*sign));
+            WalkingKneeKin = KinData(IdxRange,isKneeFlexion,subjID,i);
+            [WalkingKneeMaxLR,~] = max(WalkingKneeKin*sign);
+            WalkingKneeMax(i) = mean(WalkingKneeMaxLR);
         end
     end
+
 end
 
 function WalkingKneeRed = compute_red(normalData, weightedData)
@@ -718,12 +715,11 @@ function [KinData, GrfData, KitData, EmgData, IdxHeelL] = choose_lowest_cost(...
     end
 end
 
-function [GenericDataWeightedShifted, PersonalDataWeightedShifted, Falisse2022DataWeightedShifted] = shift_sim_data(conditionBool, GenericDataWeighted, PersonalDataWeighted, Falisse2022DataWeighted, GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted, Falisse2022IdxHeelLWeighted)
+function [GenericDataWeightedShifted, PersonalDataWeightedShifted] = shift_sim_data(conditionBool, GenericDataWeighted, PersonalDataWeighted, GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted)
 % experimental data starts at left heel strike for left side data
     
     GenericDataWeightedShifted = GenericDataWeighted;
     PersonalDataWeightedShifted = PersonalDataWeighted;
-    Falisse2022DataWeightedShifted = Falisse2022DataWeighted;
     
     NSUBJ = size(GenericDataWeightedShifted,3);
     Nweights = size(GenericDataWeightedShifted,4);
@@ -732,7 +728,20 @@ function [GenericDataWeightedShifted, PersonalDataWeightedShifted, Falisse2022Da
         for j = 1:Nweights
             GenericDataWeightedShifted(:,conditionBool,i,j) = circshift(GenericDataWeighted(:,conditionBool,i,j),-GenericIdxHeelLWeighted(i,j),1);
             PersonalDataWeightedShifted(:,conditionBool,i,j) = circshift(PersonalDataWeighted(:,conditionBool,i,j),-PersonalIdxHeelLWeighted(i,j),1);
-            Falisse2022DataWeightedShifted(:,conditionBool,i,j) = circshift(Falisse2022DataWeightedShifted(:,conditionBool,i,j),-Falisse2022IdxHeelLWeighted(i,j),1);
         end
     end
+end
+
+function RMSEPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, Max1kgRedExpPerSUBJ, Max2kgRedExpPerSUBJ, Max3kgRedExpPerSUBJ, Max4kgRedExpPerSUBJ, Max5kgRedExpPerSUBJ, Max1kgRedSimPerSUBJ, Max2kgRedSimPerSUBJ, Max3kgRedSimPerSUBJ, Max4kgRedSimPerSUBJ, Max5kgRedSimPerSUBJ)
+
+RMSEPerSUBJ = NaN(NSUBJ, Nweights);
+
+for i = 1:NSUBJ
+    RMSEPerSUBJ(i,1) = rmse(Max1kgRedExpPerSUBJ(i), Max1kgRedSimPerSUBJ(i));
+    RMSEPerSUBJ(i,2) = rmse(Max2kgRedExpPerSUBJ(i), Max2kgRedSimPerSUBJ(i));
+    RMSEPerSUBJ(i,3) = rmse(Max3kgRedExpPerSUBJ(i), Max3kgRedSimPerSUBJ(i));
+    RMSEPerSUBJ(i,4) = rmse(Max4kgRedExpPerSUBJ(i), Max4kgRedSimPerSUBJ(i));
+    RMSEPerSUBJ(i,5) = rmse(Max5kgRedExpPerSUBJ(i), Max5kgRedSimPerSUBJ(i));
+end
+
 end

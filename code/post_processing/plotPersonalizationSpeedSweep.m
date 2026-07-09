@@ -1,9 +1,20 @@
+% --------------------------------------------------------------------------
+% plotPersonalizationSpeedSweep
+%   Plot the results of the speed sweep simulations.
+%
+% Original author: Menthy Denayer
+% Original date: 08/July/2026
+%
+% Last edit by: Menthy Denayer
+% Last edit date: 08/July/2026
+% 
+% --------------------------------------------------------------------------
+
 clear all
 clc
 close all
 
 %% Load Libraries
-addpath("C:\Users\medenaye\Documents\programs\GitHub\OpenSim-Processing\data-processing\utilities")
 addpath(pwd + "\helperFunctions")
 
 %% Define Variables
@@ -22,7 +33,7 @@ resampTime = 0:0.01:1;
 %% Define Figure Settings
 fig_height = 8.89;  % cm
 fig_width = 8.89;   % cm
-export = true;
+export = false;
 figFileType = ".pdf";
 linewidth = 1.5;
 
@@ -106,7 +117,6 @@ kitLabels = repmat("Joint Moment [Nm]", Nkincol, 1); kitLabels(isTrans) = "Joint
 emgLabels = repmat("Muscle Activation [-]", Nemgcol, 1);
 
 jointNames = extractBefore(kinColHeaders,"_"); jointNames = strcat(upper(extractBefore(jointNames,2)), extractAfter(jointNames,1));
-% kinLabels = jointNames + " " + kinLabels;
 kitLabels = jointNames + " " + kitLabels;
 
 muscleNames = extractBefore(EMGColHeaders,"_"); muscleNames = strcat(upper(extractBefore(muscleNames,2)), extractAfter(muscleNames,1));
@@ -122,35 +132,28 @@ kinLabelsExt = strings(Nkincol,2); kinLabelsExt(:,1) = kinLabels;
 
 % ankle
 isAnkle = contains(kinColHeaders,"ankle_angle");
-kinLabelsExt(isAnkle,:) = [kinLabelsExt(isAnkle,1), repmat("\leftarrow plantarflexion dorsiflexion \rightarrow",2,1)]; 
+kinLabelsExt(isAnkle,:) = [kinLabelsExt(isAnkle,1), repmat("(-) plantarflexion / dorsiflexion (+)",2,1)]; 
 
 % knee
 isKnee = contains(kinColHeaders,"knee_angle");
-kinLabelsExt(isKnee,:) = [kinLabelsExt(isKnee,1), repmat("\leftarrow flexion extension \rightarrow",2,1)]; 
+kinLabelsExt(isKnee,:) = [kinLabelsExt(isKnee,1), repmat("(-) flexion / extension (+)",2,1)]; 
 
 % hip
 isHip = contains(kinColHeaders,"hip_flexion");
-kinLabelsExt(isHip,:) = [kinLabelsExt(isHip,1), repmat("\leftarrow extension flexion \rightarrow",2,1)]; 
+kinLabelsExt(isHip,:) = [kinLabelsExt(isHip,1), repmat("(-) extension / flexion (+)",2,1)]; 
 
 %% Plot Kinematics Results
 legendtxt = strings(Nspeeds*2,1);
 legendtxt(2:2:end) = string(desSpeeds) + " m/s";
-% color = [zeros(Nworkers,1),zeros(Nworkers,1),linspace(0,1,Nworkers)']';
-% color = makeGroupColors(0.05+0.9*rand(),Nworkers,0.75,0.3,0.95)';
 color = makeGroupColors(24/360,Nspeeds,1,0.3,0.95)';
 
 t = tiledlayout(1,3,"TileSpacing","tight","Padding","tight");
 t.InnerPosition = [0.08 0.15 0.75 0.75];
-set(gcf,"Units","centimeters")                                          % cm units for position
-set(gcf,"Position",[0 0 fig_width*2 fig_height/1.5])                          % IEEE 1-column: 8.89cm
+set(gcf,"Units","centimeters")                                              % cm units for position
+set(gcf,"Position",[0 0 fig_width*2 fig_height/1.5])                        % IEEE 1-column: 8.89cm
 
-% for i = 1:Nkincol
 for i = sagittalPlaneCols(1:3)
-    % fig = figure;
     nexttile
-    % set(gcf,"Units","centimeters")                                          % cm units for position
-    % set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
-    % grid on
     hold on
     XaxisLine = plot([0 1],[0 0],"Color","black","LineWidth",0.5);
     for j = 1:Nspeeds
@@ -179,20 +182,11 @@ for i = sagittalPlaneCols(1:3)
     title(jointNames(i) + " Joint Angle")
 
     % figure settings
-    % set(findall(t,'-property','FontSize'),'FontSize',8)                   % font size
     set(0,"DefaultFigureColor","w")                                         % white background
     set(0,"defaulttextinterpreter","tex")                                   % tex style font
     set(0,"DefaultAxesFontName","SansSerif")                                % times new roman font
-    % set(gca,"Units","centimeters")                                          % cm units for position
-    % set(gca,"Position",[1.2 0.8 fig_width-4.5 fig_height-1.5])              % axes position (x, y, w, h)
     hold off
     axis tight
-
-    % if(export)
-    %     figName = "personal_gait1422_kin_speedSweep_" + kinColHeaders(i) + figFileType;
-    %     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
-    % end
-
 end
 
 lg = legend([""; legendtxt],"Location","bestoutside");
@@ -210,10 +204,8 @@ kin_color = makeGroupColors(24/360,Nspeeds,1,0.3,0.95)';
 kin_legendtxt = string(desSpeeds) + " m/s";
 
 for j = 1:NSUBJ
+    fig = figure;
     t = tiledlayout(figure(j), 2, 3);  
-    % set(gcf,"Units","centimeters")                                          % cm units for position
-    % set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
-    % plot experimental data
     for i = sagittalPlaneCols
         nexttile
         grid on
@@ -232,8 +224,6 @@ for j = 1:NSUBJ
     set(0,"DefaultFigureColor","w")                                         % white background
     set(0,"defaulttextinterpreter","tex")                                   % tex style font
     set(0,"DefaultAxesFontName","Helvetica")                                % times new roman font
-    % set(gca,"Units","centimeters")                                          % cm units for position
-    % set(gca,"Position",[1.2 0.8 fig_width-1.5 fig_height-1.5])              % axes position (x, y, w, h)
 end
 
 %% Plot Ground Reaction Forces

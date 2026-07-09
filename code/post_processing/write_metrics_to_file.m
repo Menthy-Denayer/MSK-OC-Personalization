@@ -1,3 +1,15 @@
+% --------------------------------------------------------------------------
+% write_metrics_to_file
+%   Write metrics from data structure to tex file.
+%
+% Original author: Menthy Denayer
+% Original date: 08/July/2026
+%
+% Last edit by: Menthy Denayer
+% Last edit date: 08/July/2026
+% 
+% --------------------------------------------------------------------------
+
 clear all
 clc
 close all
@@ -6,7 +18,13 @@ close all
 addpath("helperFunctions")
 
 %% Load Metrics
-load("metrics.mat")
+[file_name, file_loc] = uigetfile(".mat", "Choose metrics structure file.");
+load(fullfile(file_loc, file_name));
+
+%% Check if Tables Folder Exists
+if(~exist("tables", "dir"))
+    mkdir("tables")
+end
 
 %% Define Variables
 NSUBJ = size(metrics.kinematics.normal.R.generic, 1);
@@ -25,9 +43,9 @@ R_list_kin_personal = NaN(NSUBJ, Ncases, Njoints);
 R_list_kin_personal(:,1,:) = metrics.kinematics.normal.R.personal;
 R_list_kin_personal(:,2:end,:) = metrics.kinematics.weighted.R.personal;
 
-R_list_kin_falisse2022 = NaN(NSUBJ, Ncases, Njoints);
-R_list_kin_falisse2022(:,1,:) = metrics.kinematics.normal.R.falisse2022;
-R_list_kin_falisse2022(:,2:end,:) = metrics.kinematics.weighted.R.falisse2022;
+R_list_kin_dhondt2024_3seg = NaN(NSUBJ, Ncases, Njoints);
+R_list_kin_dhondt2024_3seg(:,1,:) = metrics.kinematics.normal.R.dhondt2024_3seg;
+R_list_kin_dhondt2024_3seg(:,2:end,:) = metrics.kinematics.weighted.R.dhondt2024_3seg;
 
 %% Write Results to Tex File
 for i = 1:NSUBJ
@@ -35,7 +53,7 @@ for i = 1:NSUBJ
     outputFileName = "tables/SUBJ" + i + "_R_kin.tex";
 
     % print average R kinematics
-    R_list_kin_matrix = round([squeeze(R_list_kin_generic(i,:,:)); squeeze(R_list_kin_personal(i,:,:)); squeeze(R_list_kin_falisse2022(i,:,:))],2)';
+    R_list_kin_matrix = round([squeeze(R_list_kin_generic(i,:,:)); squeeze(R_list_kin_personal(i,:,:)); squeeze(R_list_kin_dhondt2024_3seg(i,:,:))],2)';
     write_tex_latex(R_list_kin_matrix, [], tableHeaders, strrep(kinColHeaders,"_"," "), [], outputFileName, [])
 end
 

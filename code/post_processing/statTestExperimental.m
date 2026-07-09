@@ -1,12 +1,30 @@
+% --------------------------------------------------------------------------
+% statTestExperimental
+%   Perform the statistical tests for the experimental data and plot the
+%   averaged kinematics.
+%
+%   Use the data structure from:
+%
+%   Denayer, M. (Creator), Turcksin, T. (Researcher), De Pauw, K. 
+%   (Supervisor), Verstraten, T. (Supervisor) (2026). 
+%   A Full-body Motion Capture Dataset for Bilateral Weighted Shank Walking. 
+%   figshare Academic Research System. 10.6084/m9.figshare.30316372
+%
+%   Requires the Statistical Parameter Mapping Toolbox: spm1dmatlab-master
+%
+% Original author: Menthy Denayer
+% Original date: 08/July/2026
+%
+% Last edit by: Menthy Denayer
+% Last edit date: 08/July/2026
+% 
+% --------------------------------------------------------------------------
+
 clear all
 clc
 close all
 
-%% Check because compute peak contains error when selecting range
-% I think is okay, since left/right are the same in timing
-
 %% Load Libraries
-addpath("C:\Users\medenaye\Documents\programs\GitHub\OpenSim-Processing\data-processing\utilities")
 addpath(pwd + "\helperFunctions")
 
 % SPM1D
@@ -16,14 +34,13 @@ addpath(genpath("spm1dmatlab-master"))
 fig_height = 8.89;  % cm
 fig_width = 8.89;   % cm
 linewidth = 1.5;
-export = true;
+export = false;
 figFileType = ".pdf";
 colors = [[0,0,0]; [0,51,153]/255; [255,102,0]/255; [51,155,155]/255];
 
 %% Define Variables
 resampTime = 0:0.01:1;
 Ndata = length(resampTime);
-% SUBJID = [4,6,7,9,10,11]; 
 SUBJID = [1,2, 4:14];
 NSUBJ = length(SUBJID);
 Ntrials = 10;
@@ -64,7 +81,7 @@ weightedWalkingExpEmgStd = std(weightedWalkingEmgExpAvgLim,0,3,"omitnan");
 %% Perform Tests for Sagittal Plane Peaks
 % ankle angle
 isJointAngleRajagopal = contains(expDataRajagopal.data.headers.kinematics,"ankle_angle");
-[hListAnklePlantar, pListAnklePlantar, ~, ~, dzListAnklePlantar, deltaListAvgAnklePlantar, deltaListStdAnklePlantar] = perform_ttest_kin(expDataRajagopal, isJointAngleRajagopal, -1, SUBJID, Ntrials, 50:Ndata, "Ikdata", "kinematics", true);
+[hListAnklePlantar, pListAnklePlantar, ~, ~, dzListAnklePlantar, deltaListAvgAnklePlantar, deltaListStdAnklePlantar] = perform_ttest_kin(expDataRajagopal, isJointAngleRajagopal, -1, SUBJID, Ntrials, 50:80, "Ikdata", "kinematics", true);
 [hListAnkleDorsi, pListAnkleDorsi, ~, ~, dzListAnkleDorsi, deltaListAvgAnkleDorsi, deltaListStdAnkleDorsi] = perform_ttest_kin(expDataRajagopal, isJointAngleRajagopal, 1, SUBJID, Ntrials, [], "Ikdata", "kinematics", true);
 
 includeAnklePlantar = hListAnklePlantar & dzListAnklePlantar>1;
@@ -171,15 +188,20 @@ statsSummaryVel = save_stats(statsSummaryVel, "Avg Forward Velocity", [pVel1kg p
 isRight = contains(kinColHeaders,"_r");
 isLeft = contains(kinColHeaders,"_l");
 
-test_assymetry(resampTime, normalWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isRight,:), normalWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isLeft,:))
-test_assymetry(resampTime, weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isRight,:,1), weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isLeft,:,1))
-test_assymetry(resampTime, weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isRight,:,1), weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isLeft,:,2))
-test_assymetry(resampTime, weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isRight,:,1), weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isLeft,:,3))
-test_assymetry(resampTime, weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isRight,:,1), weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isLeft,:,4))
-test_assymetry(resampTime, weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isRight,:,1), weightedWalkingKinExpAvgLim(:,isSagittalPlaneKinematics & isLeft,:,5))
+for i = 1:NSUBJ
+    % maxErr = test_assymetry(resampTime, expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataNormal(:,isSagittalPlaneKinematics & isRight,:), expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataNormal(:,isSagittalPlaneKinematics & isLeft,:));
+    % maxErr = test_assymetry(resampTime, expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted1kg(:,isSagittalPlaneKinematics & isRight,:), expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted1kg(:,isSagittalPlaneKinematics & isLeft,:));
+    % maxErr = test_assymetry(resampTime, expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted2kg(:,isSagittalPlaneKinematics & isRight,:), expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted2kg(:,isSagittalPlaneKinematics & isLeft,:));
+    % maxErr = test_assymetry(resampTime, expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted3kg(:,isSagittalPlaneKinematics & isRight,:), expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted3kg(:,isSagittalPlaneKinematics & isLeft,:));
+    % maxErr = test_assymetry(resampTime, expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted4kg(:,isSagittalPlaneKinematics & isRight,:), expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted4kg(:,isSagittalPlaneKinematics & isLeft,:));
+    maxErr = test_assymetry(resampTime, expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted5kg(:,isSagittalPlaneKinematics & isRight,:), expDataRajagopal.data.("SUBJ" + SUBJID(i)).kinematics.IkdataWeighted5kg(:,isSagittalPlaneKinematics & isLeft,:));
+
+    fprintf('Max errors for SUBJ %.0f are: hip: %.2f knee: %.2f ankle: %.2f\n', SUBJID(i), maxErr(1), maxErr(2), maxErr(3))
+
+end
 
 %% Print Statistics Results
-% print_struct_latex(statsSummaryKin, "version", "p", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 0.05, -1, '%.4f')
+print_struct_latex(statsSummaryKin, "version", "p", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 0.05, -1, '%.4f')
 % print_struct_latex(statsSummaryKin, "version", "dz", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 1, 1, '%.4f')
 % print_struct_latex(statsSummaryEMG, "version", "p", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 0.05, -1, '%.4f')
 % print_struct_latex(statsSummaryEMG, "version", "dz", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 1, 1, '%.4f')
@@ -214,11 +236,6 @@ isHip = contains(kinColHeaders,"hip_flexion");
 kinLabelsExt(isHip,:) = [kinLabelsExt(isHip,1), repmat("extension (-) / flexion (+)",2,1)]; 
 
 %% Plot Kinematics Results Experiments
-% define legend (w/ STD)
-% legendtxt = strings(2*(Nweights+1),1);
-% legendtxt(2) = "normal";
-% legendtxt(4:2:end) = string(1:Nweights) + " kg";
-
 % define legend (w/o STD)
 legendtxt = strings(Nweights+1,1);
 legendtxt(1) = "normal";
@@ -275,10 +292,8 @@ for i = sagittalPlaneCols(1:3)
     if(~isKnee(i))
         XaxisLine = plot([0 1],[0 0],"Color","black","LineWidth",0.5);
     end
-    % plot_mean_std(resampTime,normalWalkingExpKinAvg(:,i),normalWalkingExpKinStd(:,i),color(:,1)', linewidth, "-")
     plot(resampTime,normalWalkingExpKinAvg(:,i),"Color",color(:,1)', "LineWidth", linewidth, "LineStyle", "-")
     for j = 1:Nweights
-        % plot_mean_std(resampTime,weightedWalkingExpKinAvg(:,i,:,j),weightedWalkingExpKinStd(:,i,:,j),color(:,j+1)', linewidth,"-")
         plot(resampTime,weightedWalkingExpKinAvg(:,i,:,j),"Color",color(:,j+1)', "LineWidth", linewidth, "LineStyle", "-")
     end
     
@@ -308,7 +323,6 @@ for i = sagittalPlaneCols(1:3)
     set(0,"defaulttextinterpreter","tex")                                   % tex style font
     set(0,"DefaultAxesFontName","SansSerif")                                % times new roman font
     hold off
-    % axis tight
 end
 
 lg = legend([""; legendtxt],"Location","bestoutside");
@@ -442,8 +456,22 @@ function WalkingKneeMaxAvg = compute_peak_exp(data, sign, IdxRange)
     end
     
     % compute max over trials
-    WalkingKneeMaxLR = max(data(:,IdxRange,:,:)*sign,[],2);
+    WalkingKneeKin = data(:,IdxRange,:,:)*sign;
+    [WalkingKneeMaxLR,b] = max(WalkingKneeKin,[],2);
     WalkingKneeMaxAvg = squeeze(mean(WalkingKneeMaxLR,3));
+
+    % debug
+    % for j = 1:size(WalkingKneeKin, 1)
+    %     figure
+    %     tiledlayout(2,6)
+    %     for i = 1:size(WalkingKneeKin,4)
+    %         nexttile
+    %         hold on
+    %         plot(squeeze(WalkingKneeKin(j,:,:,i)))
+    %         plot(squeeze(b(j,:,:,i)), squeeze(WalkingKneeMaxLR(j,:, :, i)), "*")
+    %         hold off
+    %     end
+    % end
 
 end
 
@@ -550,9 +578,10 @@ function filteredData = lowpassFilterWrapper(data, Fs, settings)
     end
 end
 
-function test_assymetry(resampTime, dataRight, dataLeft)
+function maxErrList = test_assymetry(resampTime, dataRight, dataLeft)
     
     Njoints = size(dataRight,2);
+    maxErrList = NaN(Njoints,1);
     for i = 1:Njoints
         subjDataR = squeeze(dataRight(:,i,:))';
         subjDataL = squeeze(dataLeft(:,i,:))';
@@ -567,20 +596,23 @@ function test_assymetry(resampTime, dataRight, dataLeft)
         end
 
         % create plot
-        figure
-        hold on
-        plot(resampTime, subjDataR, "blue")
-        plot(resampTime, subjDataL, "red")
+        % figure
+        % hold on
+        % plot(resampTime, subjDataR, "blue")
+        % plot(resampTime, subjDataL, "red")
+        % 
+        % % plot significant difference rectangle
+        % ax = gca;
+        % 
+        % if (~isempty(timeIdx))
+        %     for j = 1:size(timeIdx,1)
+        %         plotRectangle(ax, resampTime(timeIdx(j,1)), resampTime(timeIdx(j,2)));
+        %     end
+        % end
+        % hold off
 
-        % plot significant difference rectangle
-        ax = gca;
-
-        if (~isempty(timeIdx))
-            for j = 1:size(timeIdx,1)
-                plotRectangle(ax, resampTime(timeIdx(j,1)), resampTime(timeIdx(j,2)));
-            end
-        end
-        hold off
+        % compute max difference
+        maxErrList(i) = max(abs(mean(subjDataR,2) - mean(subjDataL,2)));
     end
 
 
@@ -595,15 +627,13 @@ function idx = findTimeIdx(timeVector, timePoint)
 end
 
 function plotRectangle(ax, xstart, xend)
-    rectangle('Position', [xstart, ax.YLim(1), xend-xstart, ax.YLim(2)-ax.YLim(1)], 'FaceColor', [1,0,0,0.1], 'EdgeColor', 'none')
+    rectangle('Position', [xstart, ax.YLim(1), xend-xstart, ax.YLim(2)-ax.YLim(1)], 'FaceColor', [1,0,0,0.1], 'EdgeColor', 'none', 'FaceAlpha',0.1)
 end
 
 function draw_weight_arrow(includeBool, Nweights, peakVal, deltaList, sign, color, xstart, xstep, ycorr, alpha, beta)
     % draw arrows
-    % plot([0.1 resampTime(maxKneeFlexIdx(1))],[maxKneeFlex(1)*-1 maxKneeFlex(1)*-1],'k--','LineWidth',0.5)
     for j = 1:Nweights
         if(includeBool(j))
-        % plot([0.1+0.15*(j-2) resampTime(maxKneeFlexIdx(j+1))],[maxKneeFlex(j+1)*-1 maxKneeFlex(j+1)*-1],'k--','LineWidth',0.5)
         
         draw_arrow(xstart+xstep*(j-2), xstart+xstep*(j-2),peakVal(1)*sign, peakVal(j+1)*sign, alpha, beta, color(:,j+1)')
         text(xstart+xstep*(j-2),peakVal(j+1)*sign+ycorr,num2str(round(deltaList(j)))+"°",...

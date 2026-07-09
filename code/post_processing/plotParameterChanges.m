@@ -1,9 +1,20 @@
+% --------------------------------------------------------------------------
+% plotParameterChanges
+%   Plot the changes in parameters after personalization.
+%
+% Original author: Menthy Denayer
+% Original date: 09/July/2026
+%
+% Last edit by: Menthy Denayer
+% Last edit date: 09/July/2026
+% 
+% --------------------------------------------------------------------------
+
 clear all
 clc
 close all
 
 %% Load Libraries
-addpath("C:\Users\medenaye\Documents\programs\GitHub\OpenSim-Processing\data-processing\utilities")
 addpath(pwd + "\helperFunctions")
 
 %% Define Figure Settings
@@ -25,8 +36,6 @@ resampTime = 0:0.01:1;
 figFileType = ".pdf";
 
 muscleNames = ["ercspn", "intobl", "extobl", "abd", "add", "hamstring", "bifemsh", "glut_max", "iliopsoas", "rect_fem", "vasti", "gastroc", "soleus", "tib_ant"];
-% FiberLengthLabels = muscleNames + " lMopt";
-% TendonLengthLabels = muscleNames + " lTslack";
 
 colors = [[255,189,144]/255; [0,51,153]/255; [255,102,0]/255; [51,155,155]/255; [0.5, 0.5, 0.5]; [0,85,255]/255];
 
@@ -73,18 +82,10 @@ for subj = 1:Nfolders
     end
 end
 
-
-%% Load CMA-ES File
-% [cmaes_fileName, cmaes_fileDIR] = uigetfile(".mat", "Choose CMA-ES optimization results file");
-% cmaes_data = load(fullfile(cmaes_fileDIR,cmaes_fileName));
-
-%% Load Worker File
-% [worker_fileName, worker_fileDIR] = uigetfile(".mat", "Choose worker optimization results file");
-% worker_data = load(fullfile(worker_fileDIR,worker_fileName));
-
 %% Load Data
 % optimal fiber lengths
 lMinit = initialGuess(1:Nmuscles,:);
+lMinit_avg = mean(lMinit,2);
 lMopt = bestGuess(1:Nmuscles,:);
 
 % bounds
@@ -96,6 +97,7 @@ deltalM = (lMopt - lMinit)./lMinit*100;
 
 % tendon slack lengths
 lTinit = initialGuess(Nmuscles+1:2*Nmuscles,:);
+lTinit_avg = mean(lTinit,2);
 lTopt = bestGuess(Nmuscles+1:2*Nmuscles,:);
 
 % bounds
@@ -110,8 +112,6 @@ lMworst = worstGuess(1:Nmuscles,:);
 lTworst = worstGuess(Nmuscles+1:2*Nmuscles,:);
 
 %% Plot Settings
-% desiderd_muscles = ["hamstring", "bifemsh", "glut_max", "iliopsoas", "rect_fem", "vasti", "gastroc", "soleus", "tib_ant"];
-% desiderd_muscles = ["vasti","gastroc", "soleus"];
 desiderd_muscles = muscleNames;
 
 isDesiredMuscle = contains(muscleNames,desiderd_muscles);
@@ -144,13 +144,15 @@ for i = 1:Nmuscles
     plot([i-rangeWidth, i+rangeWidth],[lMupp(i), lMupp(i)],"k--")
 end
 
+for i = 1:Nmuscles
+    plot([i-rangeWidth, i+rangeWidth],[lMinit_avg(i), lMinit_avg(i)],"k")
+end
+
 ylabel("Optimal Fibre Length [m]", "FontWeight", "bold")
 ylim([0, 0.22])
 xticks(1:NdesiredMuscles)
-% xticklabels(strrep(desiderd_muscles,"_"," "))
 xticklabels(repmat("", NdesiredMuscles, 1))
 ytickformat('%.2f')
-% set(gca, "xticklabels", "FontSize", 8)
 
 legend([repmat("", 1, Nmuscles) "S" + SUBJID],"Location","northoutside", "Orientation", "horizontal", "Box", "off")
 
@@ -160,7 +162,7 @@ set(0,"DefaultFigureColor","w")                                         % white 
 set(0,"defaulttextinterpreter","tex")                                   % tex style font
 set(0,"DefaultAxesFontName","Helvetica")                                % times new roman font
 set(gca,"Units","centimeters")                                          % cm units for position
-set(gca,"Position",[1 0.2 fig_width*2-1.2 fig_height/2-1.2])              % axes position (x, y, w, h)
+set(gca,"Position",[1 0.2 fig_width*2-1.2 fig_height/2-1.3])              % axes position (x, y, w, h)
 hold off
 
 if(export)
@@ -190,12 +192,15 @@ for i = 1:Nmuscles
     plot([i-rangeWidth, i+rangeWidth],[lTupp(i), lTupp(i)],"k--")
 end
 
+for i = 1:Nmuscles
+    plot([i-rangeWidth, i+rangeWidth],[lTinit_avg(i), lTinit_avg(i)],"k")
+end
+
 ylabel("Tendon Slack Length [m]", "FontWeight", "bold")
 ylim([0, 0.45])
 xticks(1:NdesiredMuscles)
 xticklabels(strrep(desiderd_muscles,"_"," "))
 ytickformat('%.2f')
-% legend([repmat("", 1, Nmuscles) "S" + SUBJID],"Location","northoutside", "Orientation", "horizontal", "Box", "off")
 
 % figure settings
 set(findall(fig,'-property','FontSize'),'FontSize',8)                   % font size
@@ -210,102 +215,3 @@ if(export)
     figName = "personal_gait1422_LTopt" + figFileType;
     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
 end
-
-%% Plot Optimal Fiber Length (Change)
-fig = figure;
-set(gcf,"Units","centimeters")                                          % cm units for position
-set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
-hold on
-grid on
-
-for i = 1:NdesiredMuscles
-    fill([i-rangeWidth i-rangeWidth i+rangeWidth  i+rangeWidth],[-25 25 25 -25],[0.9, 0.9, 0.9],"FaceAlpha",0.5,'EdgeColor','none')
-end
-
-b = bar(1:NdesiredMuscles,deltalM(isDesiredMuscle,:),"grouped");
-
-Y = deltalM(isDesiredMuscle,:);
-for i = 1:NSUBJ
-    cdata = repmat([0 1 0], NdesiredMuscles, 1);
-    cdata(Y(:,i) < 0, :) = repmat([1 0 0], sum(Y(:,i)<0), 1);
-
-    b(i).FaceColor = 'flat';
-    b(i).CData = cdata;
-end
-
-% for i = 1:Nmuscles
-%     plot([i-0.3, i+0.3],[lMlow(i), lMlow(i)],"k--")
-%     plot([i-0.3, i+0.3],[lMupp(i), lMupp(i)],"k--")
-% end
-
-ylabel("Change [%]")
-ylim([-20, 20])
-xticks(1:NdesiredMuscles)
-xticklabels(strrep(desiderd_muscles,"_"," "))
-legend(legendtxt,"Location","bestoutside")
-title("Optimal Fiber Lengths")
-
-% figure settings
-set(findall(fig,'-property','FontSize'),'FontSize',8)                   % font size
-set(0,"DefaultFigureColor","w")                                         % white background
-set(0,"defaulttextinterpreter","tex")                                   % tex style font
-set(0,"DefaultAxesFontName","Helvetica")                                % times new roman font
-set(gca,"Units","centimeters")                                          % cm units for position
-set(gca,"Position",[0.8 1 fig_width-3.5 fig_height-1.3])              % axes position (x, y, w, h)
-hold off
-
-if(export)
-    figName = "personal_gait1422_deltaMoptL" + figFileType;
-    exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
-end
-
-%% Tendon Slack Length Figure (Change)
-fig = figure;
-set(gcf,"Units","centimeters")                                          % cm units for position
-set(gcf,"Position",[0 0 fig_width fig_height])                          % IEEE 1-column: 8.89cm
-hold on
-grid on
-% for i = 1:Nmuscles
-%     fill([i-rangeWidth, i+rangeWidth, i+rangeWidth, i-rangeWidth],[lTlow(i), lTlow(i), lTupp(i), lTupp(i)],"green","FaceAlpha",0.3,"EdgeColor","none")
-% end
-
-for i = 1:NdesiredMuscles
-    fill([i-rangeWidth i-rangeWidth i+rangeWidth  i+rangeWidth],[-25 25 25 -25],[0.9, 0.9, 0.9],"FaceAlpha",0.5,'EdgeColor','none')
-end
-
-b = bar(1:NdesiredMuscles,deltalT(isDesiredMuscle,:),"grouped");
-
-Y = deltalT(isDesiredMuscle,:);
-for i = 1:NSUBJ
-    cdata = repmat([0 1 0], NdesiredMuscles, 1);
-    cdata(Y(:,i) < 0, :) = repmat([1 0 0], sum(Y(:,i)<0), 1);
-
-    b(i).FaceColor = 'flat';
-    b(i).CData = cdata;
-end
-
-% for i = 1:Nmuscles
-%     plot([i-0.3, i+0.3],[lTlow(i), lTlow(i)],"k--")
-%     plot([i-0.3, i+0.3],[lTupp(i), lTupp(i)],"k--")
-% end
-
-ylabel("Change [%]")
-ylim([-20, 20])
-xticks(1:NdesiredMuscles)
-xticklabels(strrep(desiderd_muscles,"_"," "))
-legend(legendtxt,"Location","bestoutside")
-title("Tendon Slack Lengths")
-
-% figure settings
-set(findall(fig,'-property','FontSize'),'FontSize',8)                   % font size
-set(0,"DefaultFigureColor","w")                                         % white background
-set(0,"defaulttextinterpreter","tex")                                   % tex style font
-set(0,"DefaultAxesFontName","Helvetica")                                % times new roman font
-set(gca,"Units","centimeters")                                          % cm units for position
-set(gca,"Position",[0.8 1 fig_width-3.5 fig_height-1.3])              % axes position (x, y, w, h)
-
-if(export)
-    figName = "personal_gait1422_deltaTslackL" + figFileType;
-    exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
-end
-hold off

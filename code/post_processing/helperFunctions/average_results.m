@@ -29,14 +29,22 @@ function [kinDataAvg, grfDataAvg, kitDataAvg, emgDataAvg, velData, massData, cos
 
                 % disp(dataFiles(fileIdx))
                 if(~strcmp(data.stats.return_status,"Solve_Succeeded"))
-                    disp("error")
+                    disp("error, return status is incorrect")
+                end
+
+                if(~strcmp(data.stats.unified_return_status,"SOLVER_RET_SUCCESS"))
+                    disp("error, the unified return status is incorrect")
+                end
+
+                if(~data.stats.success)
+                    disp("error, no success")
                 end
                 
                 if(data.stats.iter_count > 2e3)
                     disp("iteration count > 2e3")
                 end
 
-                % remove MTP joint from data (temporary!)
+                % remove MTP joint from data (passive joint)
                 isMTP = contains(data.R.colheaders.coordinates,"mtp");
 
                 kinData = data.R.kinematics.Qs(:,~isMTP);

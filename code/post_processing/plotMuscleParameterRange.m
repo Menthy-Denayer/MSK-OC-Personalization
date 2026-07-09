@@ -1,9 +1,20 @@
+% --------------------------------------------------------------------------
+% plotMetrics
+%   Plot the metrics inside the metrics.mat file
+%
+% Original author: Menthy Denayer
+% Original date: 09/July/2026
+%
+% Last edit by: Menthy Denayer
+% Last edit date: 09/July/2026
+% 
+% --------------------------------------------------------------------------
+
 clear all
 clc
 close all
 
 %% Load Libraries
-addpath("C:\Users\medenaye\Documents\programs\GitHub\OpenSim-Processing\data-processing\utilities")
 addpath(pwd + "\helperFunctions")
 
 %% Define Variables
@@ -21,7 +32,7 @@ resampTime = 0:0.01:1;
 %% Define Figure Settings
 fig_height = 8.89;  % cm
 fig_width = 8.89;   % cm
-export = true;
+export = false;
 figFileType = ".pdf";
 linewidth = 1.5;
 
@@ -71,8 +82,8 @@ muscleLabels = strrep(muscleLabels, "_", " ");
 fig = figure;
 t = tiledlayout(1,2);
 t.InnerPosition = [0.09 0.11 0.9 0.75];
-set(gcf,"Units","centimeters")                                          % cm units for position
-set(gcf,"Position",[0 0 fig_width*2 fig_height/1.2])                          % IEEE 1-column: 8.89cm
+set(gcf,"Units","centimeters")                                              % cm units for position
+set(gcf,"Position",[0 0 fig_width*2 fig_height/1.2])                        % IEEE 1-column: 8.89cm
 
 nexttile
 plot_mtu_range_minmax(gca, lMtilde_personal(:,1:Nemgcol/2,:), "", "Optimal Fibre Length [-]", muscleLabels, "", color_personal, 4, 0.3)
@@ -92,50 +103,13 @@ l = legend([repmat("", 1, Nemgcol/2-1), "personal", repmat("", 1, Nemgcol/2-1), 
 l.Layout.Tile = "north";
 
 % figure settings
-set(findall(fig,'-property','FontSize'),'FontSize',8)                   % font size
-set(0,"DefaultFigureColor","w")                                         % white background
-set(0,"defaulttextinterpreter","tex")                                   % tex style font
-set(0,"DefaultAxesFontName","Helvetica")                                % times new roman font
-set(gca,"Units","centimeters")                                          % cm units for position
-% set(gca,"Position",[1.5 0.8 fig_width*2-2 fig_height-1.5])              % axes position (x, y, w, h)
+set(findall(fig,'-property','FontSize'),'FontSize',8)                       % font size
+set(0,"DefaultFigureColor","w")                                             % white background
+set(0,"defaulttextinterpreter","tex")                                       % tex style font
+set(0,"DefaultAxesFontName","Helvetica")                                    % times new roman font
+set(gca,"Units","centimeters")                                              % cm units for position
 
 if(export)
     figName = "personal_generic_lMopt_lTslack_range" + figFileType;
     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
 end
-
-%% Create Figure (Passive Muscle Force)
-fig = figure;
-set(gcf,"Units","centimeters")                                          % cm units for position
-set(gcf,"Position",[0 0 fig_width*2 fig_height])                          % IEEE 1-column: 8.89cm
-plot_mtu_range(gca, FMtildeSyncpass_generic(:,1:Nemgcol/2,:), "", "Passive Muscle Force [-]", muscleLabels, "", colors_generic)
-plot_mtu_range(gca, FMtildeSyncpass_personal(:,1:Nemgcol/2,:), "", "Passive Muscle Force [-]", muscleLabels, "", colors_personal)
-% plot_mtu_range(gca, lMtilde_tracking(:,1:Nemgcol/2,:), "test", "test", muscleLabels, "", colors_tracking)
-
-legend([repmat("", 1, Nemgcol/2*6-1), "generic", repmat("", 1, Nemgcol/2*6-1), "personal"], "Box", "off", "Location", "northoutside", "Orientation", "horizontal")
-
-% figure settings
-set(findall(fig,'-property','FontSize'),'FontSize',8)                   % font size
-set(0,"DefaultFigureColor","w")                                         % white background
-set(0,"defaulttextinterpreter","tex")                                   % tex style font
-set(0,"DefaultAxesFontName","Helvetica")                                % times new roman font
-set(gca,"Units","centimeters")                                          % cm units for position
-set(gca,"Position",[1.5 1 fig_width*2-2.2 fig_height-2])              % axes position (x, y, w, h)
-
-%% Create Figure (Passive Muscle Force)
-fig = figure;
-set(gcf,"Units","centimeters")                                          % cm units for position
-set(gcf,"Position",[0 0 fig_width*2 fig_height])                          % IEEE 1-column: 8.89cm
-plot_mtu_range_minmax(gca, FMtildeSyncpass_generic(:,1:Nemgcol/2,:), "", "Passive Muscle Force [-]", muscleLabels, "", color_generic, 4, 0.3)
-plot_mtu_range_minmax(gca, FMtildeSyncpass_personal(:,1:Nemgcol/2,:), "", "Passive Muscle Force [-]", muscleLabels, "", color_personal, 4, -0.3)
-% plot_mtu_range(gca, lMtilde_tracking(:,1:Nemgcol/2,:), "test", "test", muscleLabels, "", colors_tracking)
-
-legend([repmat("", 1, Nemgcol/2-1), "generic", repmat("", 1, Nemgcol/2-1), "personal"], "Box", "off", "Location", "northoutside", "Orientation", "horizontal")
-
-% figure settings
-set(findall(fig,'-property','FontSize'),'FontSize',8)                   % font size
-set(0,"DefaultFigureColor","w")                                         % white background
-set(0,"defaulttextinterpreter","tex")                                   % tex style font
-set(0,"DefaultAxesFontName","Helvetica")                                % times new roman font
-set(gca,"Units","centimeters")                                          % cm units for position
-set(gca,"Position",[1.5 1 fig_width*2-2.2 fig_height-2])              % axes position (x, y, w, h)

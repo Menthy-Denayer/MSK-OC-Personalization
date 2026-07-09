@@ -35,6 +35,21 @@ function [lMtildeSync, lTtildeSync, FMtildeSync, FMpasstildeSync, muscleColHeade
                 lTtildeSync(:,:,subj, fileIdx) = synchronizeData(resampTime, timeData, lTtilde);
                 FMtildeSync(:,:,subj, fileIdx) = synchronizeData(resampTime, timeData, FMtilde);
                 FMpasstildeSync(:,:,subj, fileIdx) = synchronizeData(resampTime, timeData, FMpasstilde);
+
+                % pennAngle1 = acos((data.R.muscles.lMT-data.R.muscles.lT)./data.R.muscles.lM)*180/pi;
+                % 
+                % arg = real( data.R.muscles.FT./(data.R.muscles.Fpass+data.R.muscles.Fce) );
+                % arg(arg>1) = 1;                                                             % acos(>1) = complex
+                % pennAngle2 = acos(arg)*180/pi;
+                % 
+                % for i = 1:length(Tslk)/2
+                %     figure
+                %     hold on
+                %     plot(timeData, pennAngle1(:,i),"k")
+                %     plot(timeData, pennAngle2(:,i),"r--")
+                %     hold off
+                % end
+
             end
         end
     end
