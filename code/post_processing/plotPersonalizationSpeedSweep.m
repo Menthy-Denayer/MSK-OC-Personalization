@@ -176,7 +176,6 @@ for i = sagittalPlaneCols(1:3)
         draw_arrow(0.5, 0.5, -5, -8, 0.7, 0.02, "black")
     end
 
-    % legend(legendtxt,"Location","bestoutside")
     xlabel("Gait Cycle [-]","FontWeight","bold")
     ylabel(kinLabelsExt(i,:),"FontWeight","bold")
     title(jointNames(i) + " Joint Angle")
@@ -234,7 +233,7 @@ for i = 1:Ngrfcol
     grid on
     hold on
     for j = 1:Nspeeds
-        plot_mean_std(resampTime,PersonalGRFDataAvg(:,i,:,j),PersonalGRFDataSTD(:,i,:,j),color(:,j)', 1)
+        plot_mean_std(resampTime,PersonalGRFDataAvg(:,i,:,j),PersonalGRFDataSTD(:,i,:,j),color(:,j)', 1, "-")
     end
     legend(legendtxt,"Location","bestoutside")
     xlabel("Gait Cycle [-]")
@@ -269,7 +268,7 @@ for i = sagittalPlaneCols
     grid on
     hold on
     for j = 1:Nspeeds
-        plot_mean_std(resampTime,PersonalKitDataAvg(:,i,:,j)*fixSign(i),PersonalKitDataSTD(:,i,:,j),color(:,j)', 1)
+        plot_mean_std(resampTime,PersonalKitDataAvg(:,i,:,j)*fixSign(i),PersonalKitDataSTD(:,i,:,j),color(:,j)', 1, "-")
     end
     legend(legendtxt,"Location","bestoutside")
     xlabel("Gait Cycle [-]")
@@ -301,7 +300,7 @@ for i = 1:NemgcolLim/2
     grid on
     hold on
     for j = 1:Nspeeds
-        plot_mean_std(resampTime,PersonalEmgDataAvg(:,i,:,j),PersonalEmgDataSTD(:,i,:,j),color(:,j)', 1)
+        plot_mean_std(resampTime,PersonalEmgDataAvg(:,i,:,j),PersonalEmgDataSTD(:,i,:,j),color(:,j)', 1, "-")
     end
     legend(legendtxt,"Location","bestoutside")
     xlabel("Gait Cycle [-]")
