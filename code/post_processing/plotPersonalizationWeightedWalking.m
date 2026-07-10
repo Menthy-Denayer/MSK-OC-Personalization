@@ -543,6 +543,34 @@ isLeftEmg = NemgcolLim/2+1:NemgcolLim;
 Dhondt2024_3segEmgDataWeightedLim = Dhondt2024_3segEmgDataWeighted(:,Dhondt2024_3seg_isLimEmg>0,:,:);
 [GenericEmgDataWeightedShifted, PersonalEmgDataWeightedShifted, Dhondt2024_3segEmgDataWeightedShifted] = shift_sim_data(isLeftEmg, GenericEmgDataWeighted(:,isLimEMG>0,:,:), PersonalEmgDataWeighted(:,isLimEMG>0,:,:), Dhondt2024_3segEmgDataWeightedLim, GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted, Dhondt2024_3segIdxHeelLWeighted);
 
+%% Shift Pelvis Tz To Start at Zero
+isPelvisTz = contains(kinColHeaders, "pelvis_tz");
+for i = 1:NSUBJ
+    GenericKinDataShifted(:,isPelvisTz,i) = GenericKinDataShifted(:,isPelvisTz,i) - GenericKinDataShifted(1,isPelvisTz,i);
+    PersonalKinDataShifted(:,isPelvisTz,i) = PersonalKinDataShifted(:,isPelvisTz,i) - PersonalKinDataShifted(1,isPelvisTz,i);
+    Dhondt2024_3segKinDataShifted(:,isPelvisTz,i) = Dhondt2024_3segKinDataShifted(:,isPelvisTz,i) - Dhondt2024_3segKinDataShifted(1,isPelvisTz,i);
+end
+
+for i = 1:NSUBJ
+    GenericKinDataWeightedShifted(:,isPelvisTz,i,:) = GenericKinDataWeightedShifted(:,isPelvisTz,i,:) - GenericKinDataWeightedShifted(1,isPelvisTz,i,:);
+    PersonalKinDataWeightedShifted(:,isPelvisTz,i,:) = PersonalKinDataWeightedShifted(:,isPelvisTz,i,:) - PersonalKinDataWeightedShifted(1,isPelvisTz,i,:);
+    Dhondt2024_3segKinDataWeightedShifted(:,isPelvisTz,i,:) = Dhondt2024_3segKinDataWeightedShifted(:,isPelvisTz,i,:) - Dhondt2024_3segKinDataWeightedShifted(1,isPelvisTz,i,:);
+end
+
+%% Shift Pelvis Ty To Have Mean at Zero
+isPelvisTy = contains(kinColHeaders, "pelvis_ty");
+for i = 1:NSUBJ
+    GenericKinDataShifted(:,isPelvisTy,i) = GenericKinDataShifted(:,isPelvisTy,i) - mean(GenericKinDataShifted(:,isPelvisTy,i));
+    PersonalKinDataShifted(:,isPelvisTy,i) = PersonalKinDataShifted(:,isPelvisTy,i) - mean(PersonalKinDataShifted(:,isPelvisTy,i));
+    Dhondt2024_3segKinDataShifted(:,isPelvisTy,i) = Dhondt2024_3segKinDataShifted(:,isPelvisTy,i) - mean(Dhondt2024_3segKinDataShifted(:,isPelvisTy,i));
+
+    GenericKinDataWeightedShifted(:,isPelvisTy,i,:) = GenericKinDataWeightedShifted(:,isPelvisTy,i,:) - mean(GenericKinDataWeightedShifted(:,isPelvisTy,i,:));
+    PersonalKinDataWeightedShifted(:,isPelvisTy,i,:) = PersonalKinDataWeightedShifted(:,isPelvisTy,i,:) - mean(PersonalKinDataWeightedShifted(:,isPelvisTy,i,:));
+    Dhondt2024_3segKinDataWeightedShifted(:,isPelvisTy,i,:) = Dhondt2024_3segKinDataWeightedShifted(:,isPelvisTy,i,:) - mean(Dhondt2024_3segKinDataWeightedShifted(:,isPelvisTy,i,:));
+
+    weightedWalkingKinExpAvgLim(:,isPelvisTy,i,:) = weightedWalkingKinExpAvgLim(:,isPelvisTy,i,:) - mean(weightedWalkingKinExpAvgLim(:,isPelvisTy,i,:));
+end
+
 %% Compute Metrics
 % Generic
 R_list_kin_generic = NaN(NSUBJ, Nweights, Nkincol);

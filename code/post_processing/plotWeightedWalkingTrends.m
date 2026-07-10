@@ -25,7 +25,7 @@ NSUBJ = length(SUBJID);
 personalKeyWords = "optTrack";
 genericKeyWords = "generic";
 weightedKeyWords = "worker";
-falisseKeyWords = "Falisse2022";
+dhondt2024_3segKeyWords = "Dhondt2024_3seg";
 resultsSubFolder = repmat("trackKIN-compliantTendon-3D",1,NSUBJ);
 resultsSubFolder = resultsSubFolder + "/" + ["SUBJ04mtu3D_02421031", "SUBJ06mtu3D_02452315", "SUBJ07mtu3D_02462103", "SUBJ09mtu3D_02472054", "SUBJ10mtu3D_02491301", "SUBJ11mtu3D_02501441"];
 trackIGsubFolderPersonal = resultsSubFolder + "/weightedWalking/weighted-trackIG";
@@ -69,6 +69,13 @@ Ntrials = size(expData.data.SUBJ4.kinematics.IkdataNormal,3);
 
 % Load personalized model results
 [PersonalKinData, PersonalGrfData, PersonalKitData, PersonalEmgData, ~, ~, ~, PersonalIdxHeelL, kinColHeaders, GRFColHeaders, EMGColHeaders] = average_results(resampTime, Nkincol, Ngrfcol, Nemgcol, resultsDIR, ResultsFolders, resultsSubFolder, personalKeyWords, 1);
+
+% Dhondt2024 3seg 2022 scaled
+dhondt2024_3segSubFolders = repmat("Dhondt2024_3seg",1,NSUBJ) + "/" + ["SUBJ04_Dhondt2024_3seg_17062026", "SUBJ06_Dhondt2024_3seg_17062026", "SUBJ07_Dhondt2024_3seg_17062026", "SUBJ09_Dhondt2024_3seg_17062026", "SUBJ10_Dhondt2024_3seg_17062026", "SUBJ11_Dhondt2024_3seg_17062026"];
+[Dhondt2024_3segKinData, ~, ~, Dhondt2024_3segEmgData, ~, ~, ~, Dhondt2024_3segIdxHeelL,Dhondt2024_3segkinColHeaders,~,Dhondt2024_3segemgColHeaders] = average_results(resampTime, 29, Ngrfcol, 92, resultsDIR, ResultsFolders, dhondt2024_3segSubFolders, dhondt2024_3segKeyWords, 1);
+Dhondt2024_3seg_isLimKin = ismember(Dhondt2024_3segkinColHeaders, kinColHeaders);
+
+Dhondt2024_3segKinDataLim = Dhondt2024_3segKinData(:,Dhondt2024_3seg_isLimKin>0,:);
 
 %% Save Experimental Weighted Results
 isKneeFlexion = contains(expData.data.headers.kinematics,"knee_angle") & ~contains(expData.data.headers.kinematics,"beta");
@@ -186,12 +193,18 @@ WeightedWalking5kgAnkleMaxExpPerSUBJ = mean(WeightedWalking5kgAnkleMaxExp,2,"omi
     PersonalKinDataWeightedTrackIG, PersonalGrfDataWeightedTrackIG, PersonalKitDataWeightedTrackIG, PersonalEmgDataWeightedTrackIG, PersonalIdxHeelLTrackIG, PersonalCostDataTrackIG,...
     PersonalKinDataWeightedExpIG, PersonalGrfDataWeightedExpIG, PersonalKitDataWeightedExpIG, PersonalEmgDataWeightedExpIG, PersonalIdxHeelLExpIG, PersonalCostDataExpIG);
 
+%% Save D'Hondt2024 3 Segment Weighted Results
+dhondt2024_3segSubFolders = repmat("Dhondt2024_3seg",1,NSUBJ) + "/" + ["SUBJ04_Dhondt2024_3seg_17062026", "SUBJ06_Dhondt2024_3seg_17062026", "SUBJ07_Dhondt2024_3seg_17062026", "SUBJ09_Dhondt2024_3seg_17062026", "SUBJ10_Dhondt2024_3seg_17062026", "SUBJ11_Dhondt2024_3seg_17062026"];
+dhondt2024_3segSubFolders = dhondt2024_3segSubFolders + "/weightedWalking";
+[Dhondt2024_3segKinDataWeighted, ~, ~, ~, ~, ~, ~, Dhondt2024_3segIdxHeelLWeighted, ~, ~, ~] = average_results(resampTime, 29, Ngrfcol, 92, resultsDIR, ResultsFolders, dhondt2024_3segSubFolders, weightedKeyWords, Nweights);
+
+Dhondt2024_3segKinDataWeightedLim = Dhondt2024_3segKinDataWeighted(:,Dhondt2024_3seg_isLimKin>0,:,:);
 
 %% Shift Left Simulation Data
 % shift kinematics
 isLeftKin = contains(kinColHeaders,"_l") & ~contains(kinColHeaders,"pelvis");
-[GenericKinDataShifted, PersonalKinDataShifted] = shift_sim_data(isLeftKin, GenericKinData, PersonalKinData, GenericIdxHeelL, PersonalIdxHeelL);
-[GenericKinDataWeightedShifted, PersonalKinDataWeightedShifted] = shift_sim_data(isLeftKin, GenericKinDataWeighted, PersonalKinDataWeighted, GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted);
+[GenericKinDataShifted, PersonalKinDataShifted, Dhondt2024_3segKinDataShifted] = shift_sim_data(isLeftKin, GenericKinData, PersonalKinData, Dhondt2024_3segKinDataLim, GenericIdxHeelL, PersonalIdxHeelL, Dhondt2024_3segIdxHeelL);
+[GenericKinDataWeightedShifted, PersonalKinDataWeightedShifted, Dhondt2024_3segKinDataWeightedShifted] = shift_sim_data(isLeftKin, GenericKinDataWeighted, PersonalKinDataWeighted, Dhondt2024_3segKinDataWeightedLim, GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted, Dhondt2024_3segIdxHeelLWeighted);
 
 %% Save Generic Weighted Results
 isKneeFlexion = contains(kinColHeaders,"knee_angle") & ~contains(kinColHeaders,"beta");
@@ -260,6 +273,38 @@ for subjID = 1:NSUBJ
     WeightedWalkingAnkleMaxPersonal(subjID,:) = compute_peak_sim(PersonalKinDataWeightedShifted, isAnklePlantar, subjID, -1, 50:100);
 end
 
+%% Save D'Hondt 2024 3seg Weighted Results
+
+% knee flexion
+normalWalkingKneeMaxDhondt2024_3seg = NaN(NSUBJ, 1);
+WeightedWalkingKneeMaxDhondt2024_3seg = NaN(NSUBJ, Nweights);
+
+% hip flexion
+normalWalkingHipFlexMaxDhondt2024_3seg = NaN(NSUBJ, 1);
+WeightedWalkingHipFlexMaxDhondt2024_3seg = NaN(NSUBJ, Nweights);
+
+% hip extension
+normalWalkingHipExtMaxDhondt2024_3seg = NaN(NSUBJ, 1);
+WeightedWalkingHipExtMaxDhondt2024_3seg = NaN(NSUBJ, Nweights);
+
+% ankle plantarflexion
+normalWalkingAnkleMaxDhondt2024_3seg = NaN(NSUBJ, 1);
+WeightedWalkingAnkleMaxDhondt2024_3seg = NaN(NSUBJ, Nweights);
+
+for subjID = 1:NSUBJ
+    normalWalkingKneeMaxDhondt2024_3seg(subjID) = compute_peak_sim(Dhondt2024_3segKinDataShifted, isKneeFlexion, subjID, -1, []);
+    WeightedWalkingKneeMaxDhondt2024_3seg(subjID,:) = compute_peak_sim(Dhondt2024_3segKinDataWeightedShifted, isKneeFlexion, subjID, -1, []);
+
+    normalWalkingHipFlexMaxDhondt2024_3seg(subjID) = compute_peak_sim(Dhondt2024_3segKinDataShifted, isHipFlexion, subjID, 1, []);
+    WeightedWalkingHipFlexMaxDhondt2024_3seg(subjID,:) = compute_peak_sim(Dhondt2024_3segKinDataWeightedShifted, isHipFlexion, subjID, 1, []);
+
+    normalWalkingHipExtMaxDhondt2024_3seg(subjID) = compute_peak_sim(Dhondt2024_3segKinDataShifted, isHipFlexion, subjID, -1, []);
+    WeightedWalkingHipExtMaxDhondt2024_3seg(subjID,:) = compute_peak_sim(Dhondt2024_3segKinDataWeightedShifted, isHipFlexion, subjID, -1, []);
+
+    normalWalkingAnkleMaxDhondt2024_3seg(subjID) = compute_peak_sim(Dhondt2024_3segKinDataShifted, isAnklePlantar, subjID, -1, 50:100);
+    WeightedWalkingAnkleMaxDhondt2024_3seg(subjID,:) = compute_peak_sim(Dhondt2024_3segKinDataWeightedShifted, isAnklePlantar, subjID, -1, 50:100);
+end
+
 %% Extract Experimental Data
 % find kinematics corresponding columns
 kin_col_exp = expData.data.headers.kinematics;
@@ -316,6 +361,12 @@ KneeMax3kgRedPerPerSUBJ = compute_red(normalWalkingKneeMaxPersonal, WeightedWalk
 KneeMax4kgRedPerPerSUBJ = compute_red(normalWalkingKneeMaxPersonal, WeightedWalkingKneeMaxPersonal(:,4));
 KneeMax5kgRedPerPerSUBJ = compute_red(normalWalkingKneeMaxPersonal, WeightedWalkingKneeMaxPersonal(:,5));
 
+KneeMax1kgRedDhondtPerSUBJ = compute_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,1));
+KneeMax2kgRedDhondtPerSUBJ = compute_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,2));
+KneeMax3kgRedDhondtPerSUBJ = compute_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,3));
+KneeMax4kgRedDhondtPerSUBJ = compute_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,4));
+KneeMax5kgRedDhondtPerSUBJ = compute_red(normalWalkingKneeMaxDhondt2024_3seg, WeightedWalkingKneeMaxDhondt2024_3seg(:,5));
+
 %% Compute Hip Flexion Reduction
 HipFlexMax1kgRedExpPerSUBJ = compute_red(normalWalkingHipFlexMaxExpPerSUBJ, WeightedWalking1kgHipFlexMaxExpPerSUBJ);
 HipFlexMax2kgRedExpPerSUBJ = compute_red(normalWalkingHipFlexMaxExpPerSUBJ, WeightedWalking2kgHipFlexMaxExpPerSUBJ);
@@ -334,6 +385,12 @@ HipFlexMax2kgRedPerPerSUBJ = compute_red(normalWalkingHipFlexMaxPersonal, Weight
 HipFlexMax3kgRedPerPerSUBJ = compute_red(normalWalkingHipFlexMaxPersonal, WeightedWalkingHipFlexMaxPersonal(:,3));
 HipFlexMax4kgRedPerPerSUBJ = compute_red(normalWalkingHipFlexMaxPersonal, WeightedWalkingHipFlexMaxPersonal(:,4));
 HipFlexMax5kgRedPerPerSUBJ = compute_red(normalWalkingHipFlexMaxPersonal, WeightedWalkingHipFlexMaxPersonal(:,5));
+
+HipFlexMax1kgRedDhondtPerSUBJ = compute_red(normalWalkingHipFlexMaxDhondt2024_3seg, WeightedWalkingHipFlexMaxDhondt2024_3seg(:,1));
+HipFlexMax2kgRedDhondtPerSUBJ = compute_red(normalWalkingHipFlexMaxDhondt2024_3seg, WeightedWalkingHipFlexMaxDhondt2024_3seg(:,2));
+HipFlexMax3kgRedDhondtPerSUBJ = compute_red(normalWalkingHipFlexMaxDhondt2024_3seg, WeightedWalkingHipFlexMaxDhondt2024_3seg(:,3));
+HipFlexMax4kgRedDhondtPerSUBJ = compute_red(normalWalkingHipFlexMaxDhondt2024_3seg, WeightedWalkingHipFlexMaxDhondt2024_3seg(:,4));
+HipFlexMax5kgRedDhondtPerSUBJ = compute_red(normalWalkingHipFlexMaxDhondt2024_3seg, WeightedWalkingHipFlexMaxDhondt2024_3seg(:,5));
 
 %% Compute Hip Extension Reduction
 HipExtMax1kgRedExpPerSUBJ = compute_red(normalWalkingHipExtMaxExpPerSUBJ, WeightedWalking1kgHipExtMaxExpPerSUBJ);
@@ -354,6 +411,12 @@ HipExtMax3kgRedPerPerSUBJ = compute_red(normalWalkingHipExtMaxPersonal, Weighted
 HipExtMax4kgRedPerPerSUBJ = compute_red(normalWalkingHipExtMaxPersonal, WeightedWalkingHipExtMaxPersonal(:,4));
 HipExtMax5kgRedPerPerSUBJ = compute_red(normalWalkingHipExtMaxPersonal, WeightedWalkingHipExtMaxPersonal(:,5));
 
+HipExtMax1kgRedDhondtPerSUBJ = compute_red(normalWalkingHipExtMaxDhondt2024_3seg, WeightedWalkingHipExtMaxDhondt2024_3seg(:,1));
+HipExtMax2kgRedDhondtPerSUBJ = compute_red(normalWalkingHipExtMaxDhondt2024_3seg, WeightedWalkingHipExtMaxDhondt2024_3seg(:,2));
+HipExtMax3kgRedDhondtPerSUBJ = compute_red(normalWalkingHipExtMaxDhondt2024_3seg, WeightedWalkingHipExtMaxDhondt2024_3seg(:,3));
+HipExtMax4kgRedDhondtPerSUBJ = compute_red(normalWalkingHipExtMaxDhondt2024_3seg, WeightedWalkingHipExtMaxDhondt2024_3seg(:,4));
+HipExtMax5kgRedDhondtPerSUBJ = compute_red(normalWalkingHipExtMaxDhondt2024_3seg, WeightedWalkingHipExtMaxDhondt2024_3seg(:,5));
+
 %% Compute Ankle Plantarflexion Reduction
 AnkleMax1kgRedExpPerSUBJ = compute_red(normalWalkingAnkleMaxExpPerSUBJ, WeightedWalking1kgAnkleMaxExpPerSUBJ);
 AnkleMax2kgRedExpPerSUBJ = compute_red(normalWalkingAnkleMaxExpPerSUBJ, WeightedWalking2kgAnkleMaxExpPerSUBJ);
@@ -373,60 +436,45 @@ AnkleMax3kgRedPerPerSUBJ = compute_red(normalWalkingAnkleMaxPersonal, WeightedWa
 AnkleMax4kgRedPerPerSUBJ = compute_red(normalWalkingAnkleMaxPersonal, WeightedWalkingAnkleMaxPersonal(:,4));
 AnkleMax5kgRedPerPerSUBJ = compute_red(normalWalkingAnkleMaxPersonal, WeightedWalkingAnkleMaxPersonal(:,5));
 
+AnkleMax1kgRedDhondtPerSUBJ = compute_red(normalWalkingAnkleMaxDhondt2024_3seg, WeightedWalkingAnkleMaxDhondt2024_3seg(:,1));
+AnkleMax2kgRedDhondtPerSUBJ = compute_red(normalWalkingAnkleMaxDhondt2024_3seg, WeightedWalkingAnkleMaxDhondt2024_3seg(:,2));
+AnkleMax3kgRedDhondtPerSUBJ = compute_red(normalWalkingAnkleMaxDhondt2024_3seg, WeightedWalkingAnkleMaxDhondt2024_3seg(:,3));
+AnkleMax4kgRedDhondtPerSUBJ = compute_red(normalWalkingAnkleMaxDhondt2024_3seg, WeightedWalkingAnkleMaxDhondt2024_3seg(:,4));
+AnkleMax5kgRedDhondtPerSUBJ = compute_red(normalWalkingAnkleMaxDhondt2024_3seg, WeightedWalkingAnkleMaxDhondt2024_3seg(:,5));
+
 %% Compute RMSE
 % knee flexion
-KneeMaxRedExpPerSUBJ = [KneeMax1kgRedExpPerSUBJ; KneeMax2kgRedExpPerSUBJ; KneeMax3kgRedExpPerSUBJ; KneeMax4kgRedExpPerSUBJ; KneeMax5kgRedExpPerSUBJ];
-KneeMaxRedGenPerSUBJ = [KneeMax1kgRedGenPerSUBJ; KneeMax2kgRedGenPerSUBJ; KneeMax3kgRedGenPerSUBJ; KneeMax4kgRedGenPerSUBJ; KneeMax5kgRedGenPerSUBJ];
-KneeMaxRedPerPerSUBJ = [KneeMax1kgRedPerPerSUBJ; KneeMax2kgRedPerPerSUBJ; KneeMax3kgRedPerPerSUBJ; KneeMax4kgRedPerPerSUBJ; KneeMax5kgRedPerPerSUBJ];
-
-KneeRMSEGen = rmse(KneeMaxRedExpPerSUBJ, KneeMaxRedGenPerSUBJ);
-KneeRMSEPer = rmse(KneeMaxRedExpPerSUBJ, KneeMaxRedPerPerSUBJ);
-
 KneeRMSEGenPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, KneeMax1kgRedExpPerSUBJ, KneeMax2kgRedExpPerSUBJ, KneeMax3kgRedExpPerSUBJ, KneeMax4kgRedExpPerSUBJ, KneeMax5kgRedExpPerSUBJ, KneeMax1kgRedGenPerSUBJ, KneeMax2kgRedGenPerSUBJ, KneeMax3kgRedGenPerSUBJ, KneeMax4kgRedGenPerSUBJ, KneeMax5kgRedGenPerSUBJ);
 KneeRMSEPerPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, KneeMax1kgRedExpPerSUBJ, KneeMax2kgRedExpPerSUBJ, KneeMax3kgRedExpPerSUBJ, KneeMax4kgRedExpPerSUBJ, KneeMax5kgRedExpPerSUBJ, KneeMax1kgRedPerPerSUBJ, KneeMax2kgRedPerPerSUBJ, KneeMax3kgRedPerPerSUBJ, KneeMax4kgRedPerPerSUBJ, KneeMax5kgRedPerPerSUBJ);
+KneeRMSEDhondtPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, KneeMax1kgRedExpPerSUBJ, KneeMax2kgRedExpPerSUBJ, KneeMax3kgRedExpPerSUBJ, KneeMax4kgRedExpPerSUBJ, KneeMax5kgRedExpPerSUBJ, KneeMax1kgRedDhondtPerSUBJ, KneeMax2kgRedDhondtPerSUBJ, KneeMax3kgRedDhondtPerSUBJ, KneeMax4kgRedDhondtPerSUBJ, KneeMax5kgRedDhondtPerSUBJ);
 
 % hip flexion
-HipFlexMaxRedExpPerSUBJ = [HipFlexMax1kgRedExpPerSUBJ; HipFlexMax2kgRedExpPerSUBJ; HipFlexMax3kgRedExpPerSUBJ; HipFlexMax4kgRedExpPerSUBJ; HipFlexMax5kgRedExpPerSUBJ];
-HipFlexMaxRedGenPerSUBJ = [HipFlexMax1kgRedGenPerSUBJ; HipFlexMax2kgRedGenPerSUBJ; HipFlexMax3kgRedGenPerSUBJ; HipFlexMax4kgRedGenPerSUBJ; HipFlexMax5kgRedGenPerSUBJ];
-HipFlexMaxRedPerPerSUBJ = [HipFlexMax1kgRedPerPerSUBJ; HipFlexMax2kgRedPerPerSUBJ; HipFlexMax3kgRedPerPerSUBJ; HipFlexMax4kgRedPerPerSUBJ; HipFlexMax5kgRedPerPerSUBJ];
-
-HipFlexRMSEGen = rmse(HipFlexMaxRedExpPerSUBJ, HipFlexMaxRedGenPerSUBJ);
-HipFlexRMSEPer = rmse(HipFlexMaxRedExpPerSUBJ, HipFlexMaxRedPerPerSUBJ);
-
 HipFlexRMSEGenPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipFlexMax1kgRedExpPerSUBJ, HipFlexMax2kgRedExpPerSUBJ, HipFlexMax3kgRedExpPerSUBJ, HipFlexMax4kgRedExpPerSUBJ, HipFlexMax5kgRedExpPerSUBJ, HipFlexMax1kgRedGenPerSUBJ, HipFlexMax2kgRedGenPerSUBJ, HipFlexMax3kgRedGenPerSUBJ, HipFlexMax4kgRedGenPerSUBJ, HipFlexMax5kgRedGenPerSUBJ);
 HipFlexRMSEPerPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipFlexMax1kgRedExpPerSUBJ, HipFlexMax2kgRedExpPerSUBJ, HipFlexMax3kgRedExpPerSUBJ, HipFlexMax4kgRedExpPerSUBJ, HipFlexMax5kgRedExpPerSUBJ, HipFlexMax1kgRedPerPerSUBJ, HipFlexMax2kgRedPerPerSUBJ, HipFlexMax3kgRedPerPerSUBJ, HipFlexMax4kgRedPerPerSUBJ, HipFlexMax5kgRedPerPerSUBJ);
+HipFlexRMSEDhondtPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipFlexMax1kgRedExpPerSUBJ, HipFlexMax2kgRedExpPerSUBJ, HipFlexMax3kgRedExpPerSUBJ, HipFlexMax4kgRedExpPerSUBJ, HipFlexMax5kgRedExpPerSUBJ, HipFlexMax1kgRedDhondtPerSUBJ, HipFlexMax2kgRedDhondtPerSUBJ, HipFlexMax3kgRedDhondtPerSUBJ, HipFlexMax4kgRedDhondtPerSUBJ, HipFlexMax5kgRedDhondtPerSUBJ);
 
 % hip extension
-HipExtMaxRedExpPerSUBJ = [HipExtMax1kgRedExpPerSUBJ; HipExtMax2kgRedExpPerSUBJ; HipExtMax3kgRedExpPerSUBJ; HipExtMax4kgRedExpPerSUBJ; HipExtMax5kgRedExpPerSUBJ];
-HipExtMaxRedGenPerSUBJ = [HipExtMax1kgRedGenPerSUBJ; HipExtMax2kgRedGenPerSUBJ; HipExtMax3kgRedGenPerSUBJ; HipExtMax4kgRedGenPerSUBJ; HipExtMax5kgRedGenPerSUBJ];
-HipExtMaxRedPerPerSUBJ = [HipExtMax1kgRedPerPerSUBJ; HipExtMax2kgRedPerPerSUBJ; HipExtMax3kgRedPerPerSUBJ; HipExtMax4kgRedPerPerSUBJ; HipExtMax5kgRedPerPerSUBJ];
-
-HipExtRMSEGen = rmse(HipExtMaxRedExpPerSUBJ, HipExtMaxRedGenPerSUBJ);
-HipExtRMSEPer = rmse(HipExtMaxRedExpPerSUBJ, HipExtMaxRedPerPerSUBJ);
-
 HipExtRMSEGenPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipExtMax1kgRedExpPerSUBJ, HipExtMax2kgRedExpPerSUBJ, HipExtMax3kgRedExpPerSUBJ, HipExtMax4kgRedExpPerSUBJ, HipExtMax5kgRedExpPerSUBJ, HipExtMax1kgRedGenPerSUBJ, HipExtMax2kgRedGenPerSUBJ, HipExtMax3kgRedGenPerSUBJ, HipExtMax4kgRedGenPerSUBJ, HipExtMax5kgRedGenPerSUBJ);
 HipExtRMSEPerPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipExtMax1kgRedExpPerSUBJ, HipExtMax2kgRedExpPerSUBJ, HipExtMax3kgRedExpPerSUBJ, HipExtMax4kgRedExpPerSUBJ, HipExtMax5kgRedExpPerSUBJ, HipExtMax1kgRedPerPerSUBJ, HipExtMax2kgRedPerPerSUBJ, HipExtMax3kgRedPerPerSUBJ, HipExtMax4kgRedPerPerSUBJ, HipExtMax5kgRedPerPerSUBJ);
+HipExtRMSEDhondtPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, HipExtMax1kgRedExpPerSUBJ, HipExtMax2kgRedExpPerSUBJ, HipExtMax3kgRedExpPerSUBJ, HipExtMax4kgRedExpPerSUBJ, HipExtMax5kgRedExpPerSUBJ, HipExtMax1kgRedDhondtPerSUBJ, HipExtMax2kgRedDhondtPerSUBJ, HipExtMax3kgRedDhondtPerSUBJ, HipExtMax4kgRedDhondtPerSUBJ, HipExtMax5kgRedDhondtPerSUBJ);
 
 % ankle plantar flexion
-AnkleMaxRedExpPerSUBJ = [AnkleMax1kgRedExpPerSUBJ; AnkleMax2kgRedExpPerSUBJ; AnkleMax3kgRedExpPerSUBJ; AnkleMax4kgRedExpPerSUBJ; AnkleMax5kgRedExpPerSUBJ];
-AnkleMaxRedGenPerSUBJ = [AnkleMax1kgRedGenPerSUBJ; AnkleMax2kgRedGenPerSUBJ; AnkleMax3kgRedGenPerSUBJ; AnkleMax4kgRedGenPerSUBJ; AnkleMax5kgRedGenPerSUBJ];
-AnkleMaxRedPerPerSUBJ = [AnkleMax1kgRedPerPerSUBJ; AnkleMax2kgRedPerPerSUBJ; AnkleMax3kgRedPerPerSUBJ; AnkleMax4kgRedPerPerSUBJ; AnkleMax5kgRedPerPerSUBJ];
-
-AnkleRMSEGen = rmse(AnkleMaxRedExpPerSUBJ, AnkleMaxRedGenPerSUBJ);
-AnkleRMSEPer = rmse(AnkleMaxRedExpPerSUBJ, AnkleMaxRedPerPerSUBJ);
-
 AnkleRMSEGenPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, AnkleMax1kgRedExpPerSUBJ, AnkleMax2kgRedExpPerSUBJ, AnkleMax3kgRedExpPerSUBJ, AnkleMax4kgRedExpPerSUBJ, AnkleMax5kgRedExpPerSUBJ, AnkleMax1kgRedGenPerSUBJ, AnkleMax2kgRedGenPerSUBJ, AnkleMax3kgRedGenPerSUBJ, AnkleMax4kgRedGenPerSUBJ, AnkleMax5kgRedGenPerSUBJ);
 AnkleRMSEPerPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, AnkleMax1kgRedExpPerSUBJ, AnkleMax2kgRedExpPerSUBJ, AnkleMax3kgRedExpPerSUBJ, AnkleMax4kgRedExpPerSUBJ, AnkleMax5kgRedExpPerSUBJ, AnkleMax1kgRedPerPerSUBJ, AnkleMax2kgRedPerPerSUBJ, AnkleMax3kgRedPerPerSUBJ, AnkleMax4kgRedPerPerSUBJ, AnkleMax5kgRedPerPerSUBJ);
+AnkleRMSEDhondtPerSUBJ = compute_RMSE_per_subj(NSUBJ, Nweights, AnkleMax1kgRedExpPerSUBJ, AnkleMax2kgRedExpPerSUBJ, AnkleMax3kgRedExpPerSUBJ, AnkleMax4kgRedExpPerSUBJ, AnkleMax5kgRedExpPerSUBJ, AnkleMax1kgRedDhondtPerSUBJ, AnkleMax2kgRedDhondtPerSUBJ, AnkleMax3kgRedDhondtPerSUBJ, AnkleMax4kgRedDhondtPerSUBJ, AnkleMax5kgRedDhondtPerSUBJ);
 
 %% Print Results
 RMSEPerPerSUBJ = [mean(KneeRMSEPerPerSUBJ,2) mean(HipFlexRMSEPerPerSUBJ,2) mean(HipExtRMSEPerPerSUBJ,2) mean(AnkleRMSEPerPerSUBJ,2)];
 RMSEGenPerSUBJ = [mean(KneeRMSEGenPerSUBJ,2) mean(HipFlexRMSEGenPerSUBJ,2) mean(HipExtRMSEGenPerSUBJ,2) mean(AnkleRMSEGenPerSUBJ,2)];
+RMSEDhondtPerSUBJ = [mean(KneeRMSEDhondtPerSUBJ,2) mean(HipFlexRMSEDhondtPerSUBJ,2) mean(HipExtRMSEDhondtPerSUBJ,2) mean(AnkleRMSEDhondtPerSUBJ,2)];
 
-isBest = RMSEPerPerSUBJ < RMSEGenPerSUBJ;
+isBestPer = RMSEPerPerSUBJ < RMSEGenPerSUBJ;
+isBestDhondt = RMSEDhondtPerSUBJ < RMSEPerPerSUBJ;
 
 rowNames = ["knee flexion", "hip flexion", "hip extension", "ankle plantar flexion"];
-print_matrix_latex(RMSEPerPerSUBJ', [], ["S4", "S6", "S7", "S9", "S10", "S11"], rowNames, isBest', [])
-print_matrix_latex(RMSEGenPerSUBJ', [], ["S4", "S6", "S7", "S9", "S10", "S11"], rowNames, ~isBest', [])
+print_matrix_latex(RMSEPerPerSUBJ', [], ["S4", "S6", "S7", "S9", "S10", "S11"], rowNames, isBestPer', [])
+print_matrix_latex(RMSEGenPerSUBJ', [], ["S4", "S6", "S7", "S9", "S10", "S11"], rowNames, ~isBestPer', [])
+print_matrix_latex(RMSEDhondtPerSUBJ', [], ["S4", "S6", "S7", "S9", "S10", "S11"], rowNames, isBestDhondt', [])
 
 %% Plot Experimental vs. Simulation Changes
 
@@ -598,6 +646,174 @@ if(export)
     figName = "figures/WeightedPeakReduction_perSUBJ" + ".pdf";
     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
 end
+ 
+%% Plot Experimental vs. Simulation Changes (D'Hondt 2024 3 seg)
+colorDhondt2024 = makeGroupColors(180/360,Nweights+1,1,0.5,1)';
+
+fig = figure;
+set(gcf,"Units","centimeters")                                              % cm units for position
+set(gcf,"Position",[0 0 fig_width*2 fig_height*1.5])                        % IEEE 1-column: 8.89cm
+t = tiledlayout(2,4, "TileSpacing", "tight");
+t.InnerPosition = [0.05 0.07 0.93 0.78];
+
+ax1 = nexttile;
+hold on
+plot(-5:25,-5:25,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+for i = 1:NSUBJ
+    scatter(KneeMax1kgRedExpPerSUBJ(i), KneeMax1kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,1), "MarkerEdgeColor", "none")
+    scatter(KneeMax2kgRedExpPerSUBJ(i), KneeMax2kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,2), "MarkerEdgeColor", "none")
+    scatter(KneeMax3kgRedExpPerSUBJ(i), KneeMax3kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,3), "MarkerEdgeColor", "none")
+    scatter(KneeMax4kgRedExpPerSUBJ(i), KneeMax4kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,4), "MarkerEdgeColor", "none")
+    scatter(KneeMax5kgRedExpPerSUBJ(i), KneeMax5kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,5), "MarkerEdgeColor", "none")
+end
+xlim([-5 25])
+ylim([-5 25])
+cmap = colormap(ax1, colorGen');
+c1 = colorbar(ax1, "northoutside");
+c1.TickLabels = ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"];
+c1.Ticks = 1:5;
+clim([1 5]);
+xlabel("")
+ylabel("Predicted Reduction [%]", "FontWeight", "bold")
+title("Peak Knee Flexion", "FontWeight", "bold")
+hold off
+
+ax2 = nexttile;
+hold on
+plot(-8:11,-8:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+for i = 1:NSUBJ
+    scatter(HipFlexMax1kgRedExpPerSUBJ(i), HipFlexMax1kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,1), "MarkerEdgeColor", "none")
+    scatter(HipFlexMax2kgRedExpPerSUBJ(i), HipFlexMax2kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,2), "MarkerEdgeColor", "none")
+    scatter(HipFlexMax3kgRedExpPerSUBJ(i), HipFlexMax3kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,3), "MarkerEdgeColor", "none")
+    scatter(HipFlexMax4kgRedExpPerSUBJ(i), HipFlexMax4kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,4), "MarkerEdgeColor", "none")
+    scatter(HipFlexMax5kgRedExpPerSUBJ(i), HipFlexMax5kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,5), "MarkerEdgeColor", "none")
+end
+xlim([-8 11])
+ylim([-8 11])
+xlabel("")
+ylabel("")
+title("Peak Hip Flexion", "FontWeight", "bold")
+hold off
+
+nexttile
+hold on
+plot(-25:35,-25:35,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+for i = 1:NSUBJ
+    scatter(HipExtMax1kgRedExpPerSUBJ(i), HipExtMax1kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,1), "MarkerEdgeColor", "none")
+    scatter(HipExtMax2kgRedExpPerSUBJ(i), HipExtMax2kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,2), "MarkerEdgeColor", "none")
+    scatter(HipExtMax3kgRedExpPerSUBJ(i), HipExtMax3kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,3), "MarkerEdgeColor", "none")
+    scatter(HipExtMax4kgRedExpPerSUBJ(i), HipExtMax4kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,4), "MarkerEdgeColor", "none")
+    scatter(HipExtMax5kgRedExpPerSUBJ(i), HipExtMax5kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,5), "MarkerEdgeColor", "none")
+end
+xlim([-25 35])
+ylim([-25 35])
+xlabel("")
+ylabel("")
+title("Peak Hip Extension", "FontWeight", "bold")
+hold off
+
+nexttile
+hold on
+plot(-260:100,-260:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+for i = 1:NSUBJ
+    scatter(AnkleMax1kgRedExpPerSUBJ(i), AnkleMax1kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,1), "MarkerEdgeColor", "none")
+    scatter(AnkleMax2kgRedExpPerSUBJ(i), AnkleMax2kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,2), "MarkerEdgeColor", "none")
+    scatter(AnkleMax3kgRedExpPerSUBJ(i), AnkleMax3kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,3), "MarkerEdgeColor", "none")
+    scatter(AnkleMax4kgRedExpPerSUBJ(i), AnkleMax4kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,4), "MarkerEdgeColor", "none")
+    scatter(AnkleMax5kgRedExpPerSUBJ(i), AnkleMax5kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,5), "MarkerEdgeColor", "none")
+end
+xlim([-260 100])
+ylim([-260 100])
+xlabel("")
+ylabel("")
+title("Peak Ankle Plantar Flexion", "FontWeight", "bold")
+lg = legend(["" "S 4" repmat("",1,Nweights-1) "S 6" repmat("",1,Nweights-1) "S 7" repmat("",1,Nweights-1) "S 9" repmat("",1,Nweights-1) "S 10" repmat("",1,Nweights-1) "S 11" repmat("",1,Nweights-1)], ...
+    "Location","northoutside","Box","off", "Orientation","horizontal");
+lg.NumColumns = 2;
+hold off
+
+ax3 = nexttile;
+hold on
+plot(-5:25,-5:25,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+for i = 1:NSUBJ
+    scatter(KneeMax1kgRedExpPerSUBJ(i), KneeMax1kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,1), "MarkerEdgeColor", "none")
+    scatter(KneeMax2kgRedExpPerSUBJ(i), KneeMax2kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,2), "MarkerEdgeColor", "none")
+    scatter(KneeMax3kgRedExpPerSUBJ(i), KneeMax3kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,3), "MarkerEdgeColor", "none")
+    scatter(KneeMax4kgRedExpPerSUBJ(i), KneeMax4kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,4), "MarkerEdgeColor", "none")
+    scatter(KneeMax5kgRedExpPerSUBJ(i), KneeMax5kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,5), "MarkerEdgeColor", "none")
+end
+xlim([-5 25])
+ylim([-5 25])
+c2 = colorbar(ax3, "northoutside");
+c2.TickLabels = ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"];
+c2.Ticks = 1:5;
+colormap(ax3, colorDhondt2024')
+clim([1 5]);
+c2.Position = [0.3354, 0.9008, 0.1587, 0.0302] - ([0.3678 0.8912 0.1323 0.0288] - [0.3354, 0.9008, 0.1587, 0.0302]);
+c2.Ruler.TickLabelRotation = 0;
+xlabel("Experimental Reduction [%]", "FontWeight", "bold")
+ylabel("Predicted Reduction [%]", "FontWeight", "bold")
+hold off
+
+nexttile
+hold on
+plot(-8:11,-8:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+for i = 1:NSUBJ
+    scatter(HipFlexMax1kgRedExpPerSUBJ(i), HipFlexMax1kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,1), "MarkerEdgeColor", "none")
+    scatter(HipFlexMax2kgRedExpPerSUBJ(i), HipFlexMax2kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,2), "MarkerEdgeColor", "none")
+    scatter(HipFlexMax3kgRedExpPerSUBJ(i), HipFlexMax3kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,3), "MarkerEdgeColor", "none")
+    scatter(HipFlexMax4kgRedExpPerSUBJ(i), HipFlexMax4kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,4), "MarkerEdgeColor", "none")
+    scatter(HipFlexMax5kgRedExpPerSUBJ(i), HipFlexMax5kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,5), "MarkerEdgeColor", "none")
+end
+xlim([-8 11])
+ylim([-8 11])
+xlabel("Experimental Reduction [%]", "FontWeight", "bold")
+ylabel("")
+hold off
+
+nexttile
+hold on
+plot(-25:35,-25:35,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+for i = 1:NSUBJ
+    scatter(HipExtMax1kgRedExpPerSUBJ(i), HipExtMax1kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,1), "MarkerEdgeColor", "none")
+    scatter(HipExtMax2kgRedExpPerSUBJ(i), HipExtMax2kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,2), "MarkerEdgeColor", "none")
+    scatter(HipExtMax3kgRedExpPerSUBJ(i), HipExtMax3kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,3), "MarkerEdgeColor", "none")
+    scatter(HipExtMax4kgRedExpPerSUBJ(i), HipExtMax4kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,4), "MarkerEdgeColor", "none")
+    scatter(HipExtMax5kgRedExpPerSUBJ(i), HipExtMax5kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,5), "MarkerEdgeColor", "none")
+end
+xlim([-25 35])
+ylim([-25 35])
+xlabel("Experimental Reduction [%]", "FontWeight", "bold")
+ylabel("")
+hold off
+
+nexttile
+hold on
+plot(-260:100,-260:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+for i = 1:NSUBJ
+    scatter(AnkleMax1kgRedExpPerSUBJ(i), AnkleMax1kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,1), "MarkerEdgeColor", "none")
+    scatter(AnkleMax2kgRedExpPerSUBJ(i), AnkleMax2kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,2), "MarkerEdgeColor", "none")
+    scatter(AnkleMax3kgRedExpPerSUBJ(i), AnkleMax3kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,3), "MarkerEdgeColor", "none")
+    scatter(AnkleMax4kgRedExpPerSUBJ(i), AnkleMax4kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,4), "MarkerEdgeColor", "none")
+    scatter(AnkleMax5kgRedExpPerSUBJ(i), AnkleMax5kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,5), "MarkerEdgeColor", "none")
+end
+xlim([-260 100])
+ylim([-260 100])
+xlabel("Experimental Reduction [%]", "FontWeight", "bold")
+ylabel("")
+hold off
+
+% figure settings
+set(findall(fig,'-property','FontSize'),'FontSize',8)                       % font size
+set(0,"DefaultFigureColor","w")                                             % white background
+set(0,"defaulttextinterpreter","tex")                                       % tex style font
+set(0,"DefaultAxesFontName","SansSerif")                                    % times new roman font
+
+
+if(export)
+    figName = "figures/WeightedPeakReduction_perSUBJ_dhondt2024_3seg" + ".pdf";
+    exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
+end
 
 %% Functions
 function [normalWalkingExpAvgLim, normalWalkingExpStdLim, weightedWalkingExpAvgLim, weightedWalkingExpStdLim] = extract_experimental_data(expData, dataDelim, dataPrefix, SUBJID, Ndata, Nweights, dataBool)
@@ -715,11 +931,12 @@ function [KinData, GrfData, KitData, EmgData, IdxHeelL] = choose_lowest_cost(...
     end
 end
 
-function [GenericDataWeightedShifted, PersonalDataWeightedShifted] = shift_sim_data(conditionBool, GenericDataWeighted, PersonalDataWeighted, GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted)
+function [GenericDataWeightedShifted, PersonalDataWeightedShifted, Dhondt2024_3segDataWeightedShifted] = shift_sim_data(conditionBool, GenericDataWeighted, PersonalDataWeighted, Dhondt2024_3segDataWeighted, GenericIdxHeelLWeighted, PersonalIdxHeelLWeighted, Dhondt2024_3segIdxHeelLWeighted)
 % experimental data starts at left heel strike for left side data
     
     GenericDataWeightedShifted = GenericDataWeighted;
     PersonalDataWeightedShifted = PersonalDataWeighted;
+    Dhondt2024_3segDataWeightedShifted = Dhondt2024_3segDataWeighted;
     
     NSUBJ = size(GenericDataWeightedShifted,3);
     Nweights = size(GenericDataWeightedShifted,4);
@@ -728,6 +945,7 @@ function [GenericDataWeightedShifted, PersonalDataWeightedShifted] = shift_sim_d
         for j = 1:Nweights
             GenericDataWeightedShifted(:,conditionBool,i,j) = circshift(GenericDataWeighted(:,conditionBool,i,j),-GenericIdxHeelLWeighted(i,j),1);
             PersonalDataWeightedShifted(:,conditionBool,i,j) = circshift(PersonalDataWeighted(:,conditionBool,i,j),-PersonalIdxHeelLWeighted(i,j),1);
+            Dhondt2024_3segDataWeightedShifted(:,conditionBool,i,j) = circshift(Dhondt2024_3segDataWeighted(:,conditionBool,i,j),-Dhondt2024_3segIdxHeelLWeighted(i,j),1);
         end
     end
 end

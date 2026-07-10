@@ -200,6 +200,35 @@ for i = 1:NSUBJ
     Dhondt2024_3segKinDataShifted(:,isLeftKin,i) = circshift(Dhondt2024_3segKinDataLim(:,isLeftKin,i),-Dhondt2024_3segIdxHeelL(i),1);
 end
 
+%% Shift Pelvis Tz To Start at Zero
+isPelvisTz = contains(kinColHeaders, "pelvis_tz");
+for i = 1:NSUBJ
+    GenericKinData(:,isPelvisTz,i) = GenericKinData(:,isPelvisTz,i) - GenericKinData(1,isPelvisTz,i);
+    PersonalKinData(:,isPelvisTz,i) = PersonalKinData(:,isPelvisTz,i) - PersonalKinData(1,isPelvisTz,i);
+    Dhondt2024_3segKinData(:,isPelvisTz,i) = Dhondt2024_3segKinData(:,isPelvisTz,i) - Dhondt2024_3segKinData(1,isPelvisTz,i);
+
+    GenericKinDataShifted(:,isPelvisTz,i) = GenericKinDataShifted(:,isPelvisTz,i) - GenericKinDataShifted(1,isPelvisTz,i);
+    PersonalKinDataShifted(:,isPelvisTz,i) = PersonalKinDataShifted(:,isPelvisTz,i) - PersonalKinDataShifted(1,isPelvisTz,i);
+    Dhondt2024_3segKinDataShifted(:,isPelvisTz,i) = Dhondt2024_3segKinDataShifted(:,isPelvisTz,i) - Dhondt2024_3segKinDataShifted(1,isPelvisTz,i);
+
+    TrackKinData(:,isPelvisTz,i) = TrackKinData(:,isPelvisTz,i)-TrackKinData(1,isPelvisTz,i);
+end
+
+%% Shift Pelvis Ty To Have Mean at Zero
+isPelvisTy = contains(kinColHeaders, "pelvis_ty");
+for i = 1:NSUBJ
+    GenericKinData(:,isPelvisTy,i) = GenericKinData(:,isPelvisTy,i) - mean(GenericKinData(:,isPelvisTy,i));
+    PersonalKinData(:,isPelvisTy,i) = PersonalKinData(:,isPelvisTy,i) - mean(PersonalKinData(:,isPelvisTy,i));
+    Dhondt2024_3segKinDataLim(:,isPelvisTy,i) = Dhondt2024_3segKinDataLim(:,isPelvisTy,i) - mean(Dhondt2024_3segKinDataLim(:,isPelvisTy,i));
+
+    GenericKinDataShifted(:,isPelvisTy,i) = GenericKinDataShifted(:,isPelvisTy,i) - mean(GenericKinDataShifted(:,isPelvisTy,i));
+    PersonalKinDataShifted(:,isPelvisTy,i) = PersonalKinDataShifted(:,isPelvisTy,i) - mean(PersonalKinDataShifted(:,isPelvisTy,i));
+    Dhondt2024_3segKinDataShifted(:,isPelvisTy,i) = Dhondt2024_3segKinDataShifted(:,isPelvisTy,i) - mean(Dhondt2024_3segKinDataShifted(:,isPelvisTy,i));
+
+    TrackKinData(:,isPelvisTy,i) = TrackKinData(:,isPelvisTy,i)-mean(TrackKinData(:,isPelvisTy,i));
+    normalWalkingKinExpAvgLim(:,isPelvisTy,i) = normalWalkingKinExpAvgLim(:,isPelvisTy,i) - mean(normalWalkingKinExpAvgLim(:,isPelvisTy,i));
+end
+
 %% Shift Left GRF Simulation Data
 % experimental data starts at left heel strike
 isLeftGrf = contains(GRFColHeaders,"Left");
