@@ -52,7 +52,7 @@ emg_col_exp = ["bifemsh_r","hamstrings_r","rect_fem_r","vasti_r","","gastroc_r",
 emg_threshold = 0.1;
 
 %% Load Results
-ResultsOneDriveDIR = "C:\Users\medenaye\OneDrive - Vrije Universiteit Brussel\PhD-Main\[01] main\WP1\T1.3\[01] results\PredSim";
+ResultsOneDriveDIR = "C:\Users\medenaye\Documents\programs\GitHub\MSK-OC-Personalization\results";
 resultsDIR = uigetdir(ResultsOneDriveDIR,"Choose solution directory");
 
 %% Find Desired Folders
@@ -1204,7 +1204,6 @@ end
 color = makeGroupColors(24/360,Nweights+1,1,0.3,0.95)';
 
 % labels
-% muscleNamesPlot = ["", "", "", "Vasti", "Gastrocnemius", "Soleus"];
 muscleNamesPlot = ["Hamstrings", "Biceps Femoris", "Rectus Femoris", "", "", ""];
 
 t = tiledlayout(1,3,"TileSpacing","tight","Padding","tight");
