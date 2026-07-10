@@ -63,5 +63,5 @@ paramsOpt.initialCoefficients = [lMoptGen; lTslackGen];
 paramsGen = paramsOpt;
 
 %% Compute Fitness
-[fOpt, cotOpt, statsOpt] = compute_fitness(sol, results.R, results.model_info, paramsOpt);
-[fGen, cotGen, statsGen] = compute_fitness(gen, generic.R, generic.model_info, paramsGen);
+[fOpt, cotOpt] = compute_fitness(sol, results.R, results.model_info, paramsOpt);
+[fGen, cotGen] = compute_fitness(gen, generic.R, generic.model_info, paramsGen);
