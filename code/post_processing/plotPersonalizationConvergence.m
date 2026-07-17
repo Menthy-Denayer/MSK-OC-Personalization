@@ -36,7 +36,7 @@ Niter = 202;
 Nworkers = 10;
 
 %% Load Generic Results
-ResultsOneDriveDIR = "C:\Users\medenaye\OneDrive - Vrije Universiteit Brussel\PhD-Main\[01] main\WP1\T1.3\[01] results\PredSim";
+ResultsOneDriveDIR = "C:\Users\medenaye\Documents\programs\GitHub\MSK-OC-Personalization\results";
 resultsDIR = uigetdir(ResultsOneDriveDIR,"Choose generic solution directory");
 
 %% Choose Desired Tracking Folders

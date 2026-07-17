@@ -23,8 +23,8 @@ addpath(pwd + "\helperFunctions")
 SUBJID = [4,6,7,9,10,11];   
 NSUBJ = length(SUBJID);
 trackKeyWords = "gait1422";
-genericKeyWords = "generic";
-personalKeyWords = "optTrack";
+genericKeyWords = "generic_rerun";
+personalKeyWords = "optTrack_rerun";
 dhondt2024_3segKeyWords = "Dhondt2024_3seg";
 resultsSubFolder = repmat("trackKIN-compliantTendon-3D",1,NSUBJ);
 resultsSubFolder = resultsSubFolder + "/" + ["SUBJ04mtu3D_02421031", "SUBJ06mtu3D_02452315", "SUBJ07mtu3D_02462103", "SUBJ09mtu3D_02472054", "SUBJ10mtu3D_02491301", "SUBJ11mtu3D_02501441"];
@@ -47,11 +47,11 @@ emg_col_exp = ["bifemsh_r","hamstrings_r","rect_fem_r","vasti_r","","gastroc_r",
 emg_threshold = 0.15;
 
 %% Load Tracking Results
-TrackOneDriveDIR = "C:\Users\medenaye\OneDrive - Vrije Universiteit Brussel\PhD-Main\[01] main\WP1\T1.3\[03] data";
+TrackOneDriveDIR = "C:\Users\medenaye\Documents\programs\GitHub\MSK-OC-Personalization\results";
 trackDIR = uigetdir(TrackOneDriveDIR,"Choose tracking directory");
 
 %% Load Generic Results
-ResultsOneDriveDIR = "C:\Users\medenaye\OneDrive - Vrije Universiteit Brussel\PhD-Main\[01] main\WP1\T1.3\[01] results\PredSim";
+ResultsOneDriveDIR = "C:\Users\medenaye\Documents\programs\GitHub\MSK-OC-Personalization\results";
 resultsDIR = uigetdir(ResultsOneDriveDIR,"Choose generic solution directory");
 
 %% Choose Desired Tracking Folders

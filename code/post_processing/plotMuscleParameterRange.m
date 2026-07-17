@@ -22,9 +22,8 @@ addpath(pwd + "\helperFunctions")
 SUBJID = [4,6,7,9,10,11];   
 NSUBJ = length(SUBJID);
 trackKeyWords = "gait1422";
-genericKeyWords = "generic";
-personalKeyWords = "optTrack";
-falisseKeyWords = "Falisse2022";
+genericKeyWords = "generic_rerun";
+personalKeyWords = "optTrack_rerun";
 resultsSubFolder = repmat("trackKIN-compliantTendon-3D",1,NSUBJ);
 resultsSubFolder = resultsSubFolder + "/" + ["SUBJ04mtu3D_02421031", "SUBJ06mtu3D_02452315", "SUBJ07mtu3D_02462103", "SUBJ09mtu3D_02472054", "SUBJ10mtu3D_02491301", "SUBJ11mtu3D_02501441"];
 resampTime = 0:0.01:1;

@@ -22,8 +22,8 @@ addpath(pwd + "\helperFunctions")
 % Choose subjects to plot, if empty, plot all
 SUBJID = [4,6,7,9,10,11];
 NSUBJ = length(SUBJID);
-personalKeyWords = "optTrack";
-genericKeyWords = "generic";
+personalKeyWords = "optTrack_rerun";
+genericKeyWords = "generic_rerun";
 weightedKeyWords = "worker";
 dhondt2024_3segKeyWords = "Dhondt2024_3seg";
 resultsSubFolder = repmat("trackKIN-compliantTendon-3D",1,NSUBJ);
