@@ -58,7 +58,7 @@ S.solver.IG_selection_gaitCyclePercent = 100;
 
 % solver settings
 S.solver.run_as_batch_job = false;                                          % default false
-S.solver.tol_ipopt = 1;                                                     % default 4
+S.solver.tol_ipopt = 2;                                                     % default 4
 S.solver.ipopt_options.print_level = 0;                                     % limit printing info
 % S.solver.ipopt_options.warm_start_init_point = 'yes';
 % S.solver.ipopt_options.warm_start_bound_push = 1e-6;
