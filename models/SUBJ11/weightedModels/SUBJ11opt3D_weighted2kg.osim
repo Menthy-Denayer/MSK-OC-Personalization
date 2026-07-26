@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <OpenSimDocument Version="40500">
-	<Model name="test_AdaptedForPredSim_weighted2kg">
+	<Model name="SUBJ11opt3D_weighted2kg">
 		<!--The model's ground reference frame.-->
 		<Ground name="ground">
 			<!--The geometry used to display the axes of this Frame.-->
