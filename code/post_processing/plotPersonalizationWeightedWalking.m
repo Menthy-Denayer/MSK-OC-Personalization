@@ -740,23 +740,11 @@ for i = 1:Nweights
 end
 
 %% Print Matrix Average Improvements
-% print average R sagittal kinematics
-avg_percent_R_kin_sagg_matrix = round([avg_percent_R_kin_sagg, avg_percent_R_kin_sagg_dhondt2024_3seg],2);
-max_percent_R_kin_sagg_matrix = max(avg_percent_R_kin_sagg_matrix,[],2);
-isBestRkin = avg_percent_R_kin_sagg_matrix == max_percent_R_kin_sagg_matrix;
-print_matrix_latex(avg_percent_R_kin_sagg_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRkin,[])
-
 % print average R kinematics
 avg_percent_R_kin_matrix = round([avg_percent_R_kin, avg_percent_R_kin_dhondt2024_3seg],2);
 max_percent_R_kin_matrix = max(avg_percent_R_kin_matrix,[],2);
 isBestRkin = avg_percent_R_kin_matrix == max_percent_R_kin_matrix;
 print_matrix_latex(avg_percent_R_kin_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRkin,[])
-
-% print average RMSE sagittal kinematics
-avg_percent_rmse_kin_sagg_matrix = round([avg_percent_rmse_kin_sagg, avg_percent_rmse_kin_sagg_dhondt2024_3seg],2);
-max_percent_rmse_kin_sagg_matrix = min(avg_percent_rmse_kin_sagg_matrix,[],2);
-isBestRMSEkin = avg_percent_rmse_kin_sagg_matrix == max_percent_rmse_kin_sagg_matrix;
-print_matrix_latex(avg_percent_rmse_kin_sagg_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRMSEkin,[])
 
 % print average RMSE kinematics
 avg_percent_rmse_kin_matrix = round([avg_percent_rmse_kin, avg_percent_rmse_kin_dhondt2024_3seg],2);
@@ -965,17 +953,17 @@ for i = sagittalPlaneCols(1:3)
 
     if(isHip(i))
         % draw arrows
-        draw_weight_arrow(includeHipExt, Nweights, maxHipExt, deltaListAvgHipExt, -1, color, 0.28, 0.15, 0, 3, 1, 0.02)
-        draw_weight_arrow(includeHipFlex, Nweights, maxHipFlex, deltaListAvgHipFlex, 1, color, 0.3, 0.15, -0.1, 1, 1, 0.02)
+        draw_weight_arrow(includeHipExt, Nweights, maxHipExt, deltaListAvgHipExt, -1, color, 0.70, 0.22, 0, 3, 1, 0.02, zeros(Nweights,1))
+        draw_weight_arrow(includeHipFlex, Nweights, maxHipFlex, deltaListAvgHipFlex, 1, color, 0.72, 0.15, -0.12, 1, 1, 0.02, zeros(Nweights,1))
         
     elseif(isKnee(i))
         % draw arrows
-        draw_weight_arrow(includeKneeFlex, Nweights, maxKneeFlex, deltaListAvgKneeFlex, -1, color, 0.1, 0.15, 0, 4, 1.2, 0.02)
+        draw_weight_arrow(includeKneeFlex, Nweights, maxKneeFlex, deltaListAvgKneeFlex, -1, color, 0.32, 0.2, 0, 4, 1.2, 0.02, zeros(Nweights,1))
 
     elseif(isAnkle(i))
         % draw arrows
-        draw_weight_arrow(includeAnkleDorsi, Nweights, maxAnkleDorsi, deltaListAvgAnkleDorsi, 1, color, 0.4, 0.2, 0, 1, 0.5, 0.02)
-        draw_weight_arrow(includeAnklePlantar, Nweights, maxAnklePlantar, deltaListAvgAnklePlantar, -1, color, -0.2, 0.22, 0, -1, 0.5, 0.02)
+        draw_weight_arrow(includeAnkleDorsi, Nweights, maxAnkleDorsi, deltaListAvgAnkleDorsi, 1, color, 0.15, 0.20, 0, 1, 0.5, 0.02, [0 0 1 0 0;0 0 1 0 0]')
+        draw_weight_arrow(includeAnklePlantar, Nweights, maxAnklePlantar, deltaListAvgAnklePlantar, -1, color, 0.15, 0.20, 0, -1, 0.5, 0.02, [0 0 1 0 0;0 0 1 0 0]')
     end
 
     xlabel("Gait Cycle [-]","FontWeight","bold")
@@ -1053,17 +1041,17 @@ for i = sagittalPlaneCols(1:3)
 
     if(isHip(i))
         % draw arrows
-        draw_weight_arrow(includeHipExt_generic, Nweights, maxHipExt, deltaListAvgHipExt_generic, -1, color, 0.28, 0.15, 0, 3, 1, 0.02)
-        draw_weight_arrow(includeHipFlex_generic, Nweights, maxHipFlex, deltaListAvgHipFlex_generic, 1, color, 0.3, 0.15, -0.1, 1, 1, 0.02)
+        draw_weight_arrow(includeHipExt_generic, Nweights, maxHipExt, deltaListAvgHipExt_generic, -1, color, 0.70, 0.20, 0, 3, 1, 0.02, zeros(Nweights,1))
+        draw_weight_arrow(includeHipFlex_generic, Nweights, maxHipFlex, deltaListAvgHipFlex_generic, 1, color, 0.3, 0.15, -0.1, 1, 1, 0.02, zeros(Nweights,1))
         
     elseif(isKnee(i))
         % draw arrows
-        draw_weight_arrow(includeKneeFlex_generic, Nweights, maxKneeFlex, deltaListAvgKneeFlex_generic, -1, color, -0.08, 0.20, 0, 4, 1.2, 0.02)
+        draw_weight_arrow(includeKneeFlex_generic, Nweights, maxKneeFlex, deltaListAvgKneeFlex_generic, -1, color, 0.11, 0.21, 0, 4, 1.2, 0.02, zeros(Nweights,1))
 
     elseif(isAnkle(i))
         % draw arrows
-        draw_weight_arrow(includeAnkleDorsi_generic, Nweights, maxAnkleDorsi, deltaListAvgAnkleDorsi_generic, 1, color, 0.4, 0.2, 0, 1, 0.5, 0.02)
-        draw_weight_arrow(includeAnklePlantar_generic, Nweights, maxAnklePlantar, deltaListAvgAnklePlantar_generic, -1, color, 0.3, 0.08, 0, -1, 0.5, 0.02)
+        draw_weight_arrow(includeAnkleDorsi_generic, Nweights, maxAnkleDorsi, deltaListAvgAnkleDorsi_generic, 1, color, 0.4, 0.2, 0, 1, 0.5, 0.02,zeros(Nweights,1))
+        draw_weight_arrow(includeAnklePlantar_generic, Nweights, maxAnklePlantar, deltaListAvgAnklePlantar_generic, -1, color, 0.3, 0.08, 0, -1, 0.5, 0.02, zeros(Nweights,1))
     end
 
     xlabel("Gait Cycle [-]","FontWeight","bold")
@@ -1458,16 +1446,25 @@ function [h, p, ci, stats, dz, deltaAvg, deltaStd] = perform_ttest(data1, data2,
     dz = stats.tstat/sqrt(NSUBJ);
 end
 
-function draw_weight_arrow(includeBool, Nweights, peakVal, deltaList, sign, color, xstart, xstep, xcorr, ycorr, alpha, beta)
+function draw_weight_arrow(includeBool, Nweights, peakVal, deltaList, sign, color, xstart, xstep, xcorr, ycorr, alpha, beta, spaceVec)
     % draw arrows
     % plot([0.1 resampTime(maxKneeFlexIdx(1))],[maxKneeFlex(1)*-1 maxKneeFlex(1)*-1],'k--','LineWidth',0.5)
+
+    inclCnt = 0;
+
     for j = 1:Nweights
         if(includeBool(j))
         % plot([0.1+0.15*(j-2) resampTime(maxKneeFlexIdx(j+1))],[maxKneeFlex(j+1)*-1 maxKneeFlex(j+1)*-1],'k--','LineWidth',0.5)
         
-        draw_arrow(xstart+xstep*(j-2), xstart+xstep*(j-2),peakVal(1)*sign, peakVal(j+1)*sign, alpha, beta, color(:,j+1)')
-        text(xstart+xstep*(j-2)+xcorr,peakVal(j+1)*sign+ycorr,num2str(round(deltaList(j),2))+"°",...
+        draw_arrow(xstart+xstep*inclCnt, xstart+xstep*inclCnt,peakVal(1)*sign, peakVal(j+1)*sign, alpha, beta, color(:,j+1)')
+        text(xstart+xstep*inclCnt+xcorr,peakVal(j+1)*sign+ycorr,num2str(round(deltaList(j),2))+"°",...
             "HorizontalAlignment","center","Color",color(:,j+1)')
+
+        inclCnt = inclCnt + 1;
+        end
+
+        if(spaceVec(j,1))
+           inclCnt = inclCnt + spaceVec(j,2);
         end
     end
 

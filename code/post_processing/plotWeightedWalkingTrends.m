@@ -512,7 +512,7 @@ hold off
 
 ax2 = nexttile;
 hold on
-plot(-8:11,-8:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-10:11,-10:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(HipFlexMax1kgRedExpPerSUBJ(i), HipFlexMax1kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,1), "MarkerEdgeColor", "none")
     scatter(HipFlexMax2kgRedExpPerSUBJ(i), HipFlexMax2kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,2), "MarkerEdgeColor", "none")
@@ -520,8 +520,8 @@ for i = 1:NSUBJ
     scatter(HipFlexMax4kgRedExpPerSUBJ(i), HipFlexMax4kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,4), "MarkerEdgeColor", "none")
     scatter(HipFlexMax5kgRedExpPerSUBJ(i), HipFlexMax5kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-8 11])
-ylim([-8 11])
+xlim([-10 11])
+ylim([-10 11])
 xlabel("")
 ylabel("")
 title("Peak Hip Flexion", "FontWeight", "bold")
@@ -546,7 +546,7 @@ hold off
 
 nexttile
 hold on
-plot(-260:100,-260:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-200:100,-200:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(AnkleMax1kgRedExpPerSUBJ(i), AnkleMax1kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,1), "MarkerEdgeColor", "none")
     scatter(AnkleMax2kgRedExpPerSUBJ(i), AnkleMax2kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,2), "MarkerEdgeColor", "none")
@@ -554,8 +554,8 @@ for i = 1:NSUBJ
     scatter(AnkleMax4kgRedExpPerSUBJ(i), AnkleMax4kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,4), "MarkerEdgeColor", "none")
     scatter(AnkleMax5kgRedExpPerSUBJ(i), AnkleMax5kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-260 100])
-ylim([-260 100])
+xlim([-200 100])
+ylim([-200 100])
 xlabel("")
 ylabel("")
 title("Peak Ankle Plantar Flexion", "FontWeight", "bold")
@@ -589,7 +589,7 @@ hold off
 
 nexttile
 hold on
-plot(-8:11,-8:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-10:11,-10:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(HipFlexMax1kgRedExpPerSUBJ(i), HipFlexMax1kgRedPerPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorPer(:,1), "MarkerEdgeColor", "none")
     scatter(HipFlexMax2kgRedExpPerSUBJ(i), HipFlexMax2kgRedPerPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorPer(:,2), "MarkerEdgeColor", "none")
@@ -597,8 +597,8 @@ for i = 1:NSUBJ
     scatter(HipFlexMax4kgRedExpPerSUBJ(i), HipFlexMax4kgRedPerPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorPer(:,4), "MarkerEdgeColor", "none")
     scatter(HipFlexMax5kgRedExpPerSUBJ(i), HipFlexMax5kgRedPerPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorPer(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-8 11])
-ylim([-8 11])
+xlim([-10 11])
+ylim([-10 11])
 xlabel("Experimental Reduction [%]", "FontWeight", "bold")
 ylabel("")
 hold off
@@ -621,7 +621,7 @@ hold off
 
 nexttile
 hold on
-plot(-260:100,-260:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-200:100,-200:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(AnkleMax1kgRedExpPerSUBJ(i), AnkleMax1kgRedPerPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorPer(:,1), "MarkerEdgeColor", "none")
     scatter(AnkleMax2kgRedExpPerSUBJ(i), AnkleMax2kgRedPerPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorPer(:,2), "MarkerEdgeColor", "none")
@@ -629,8 +629,8 @@ for i = 1:NSUBJ
     scatter(AnkleMax4kgRedExpPerSUBJ(i), AnkleMax4kgRedPerPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorPer(:,4), "MarkerEdgeColor", "none")
     scatter(AnkleMax5kgRedExpPerSUBJ(i), AnkleMax5kgRedPerPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorPer(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-260 100])
-ylim([-260 100])
+xlim([-200 100])
+ylim([-200 100])
 xlabel("Experimental Reduction [%]", "FontWeight", "bold")
 ylabel("")
 hold off
@@ -658,7 +658,7 @@ t.InnerPosition = [0.05 0.07 0.93 0.78];
 
 ax1 = nexttile;
 hold on
-plot(-5:25,-5:25,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-7:25,-7:25,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(KneeMax1kgRedExpPerSUBJ(i), KneeMax1kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,1), "MarkerEdgeColor", "none")
     scatter(KneeMax2kgRedExpPerSUBJ(i), KneeMax2kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,2), "MarkerEdgeColor", "none")
@@ -666,8 +666,8 @@ for i = 1:NSUBJ
     scatter(KneeMax4kgRedExpPerSUBJ(i), KneeMax4kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,4), "MarkerEdgeColor", "none")
     scatter(KneeMax5kgRedExpPerSUBJ(i), KneeMax5kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-5 25])
-ylim([-5 25])
+xlim([-7 25])
+ylim([-7 25])
 cmap = colormap(ax1, colorGen');
 c1 = colorbar(ax1, "northoutside");
 c1.TickLabels = ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"];
@@ -680,7 +680,7 @@ hold off
 
 ax2 = nexttile;
 hold on
-plot(-8:11,-8:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-10:11,-10:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(HipFlexMax1kgRedExpPerSUBJ(i), HipFlexMax1kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,1), "MarkerEdgeColor", "none")
     scatter(HipFlexMax2kgRedExpPerSUBJ(i), HipFlexMax2kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,2), "MarkerEdgeColor", "none")
@@ -688,8 +688,8 @@ for i = 1:NSUBJ
     scatter(HipFlexMax4kgRedExpPerSUBJ(i), HipFlexMax4kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,4), "MarkerEdgeColor", "none")
     scatter(HipFlexMax5kgRedExpPerSUBJ(i), HipFlexMax5kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-8 11])
-ylim([-8 11])
+xlim([-10 11])
+ylim([-10 11])
 xlabel("")
 ylabel("")
 title("Peak Hip Flexion", "FontWeight", "bold")
@@ -714,7 +714,7 @@ hold off
 
 nexttile
 hold on
-plot(-260:100,-260:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-200:100,-200:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(AnkleMax1kgRedExpPerSUBJ(i), AnkleMax1kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,1), "MarkerEdgeColor", "none")
     scatter(AnkleMax2kgRedExpPerSUBJ(i), AnkleMax2kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,2), "MarkerEdgeColor", "none")
@@ -722,8 +722,8 @@ for i = 1:NSUBJ
     scatter(AnkleMax4kgRedExpPerSUBJ(i), AnkleMax4kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,4), "MarkerEdgeColor", "none")
     scatter(AnkleMax5kgRedExpPerSUBJ(i), AnkleMax5kgRedGenPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorGen(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-260 100])
-ylim([-260 100])
+xlim([-200 100])
+ylim([-200 100])
 xlabel("")
 ylabel("")
 title("Peak Ankle Plantar Flexion", "FontWeight", "bold")
@@ -734,7 +734,7 @@ hold off
 
 ax3 = nexttile;
 hold on
-plot(-5:25,-5:25,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-7:25,-7:25,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(KneeMax1kgRedExpPerSUBJ(i), KneeMax1kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,1), "MarkerEdgeColor", "none")
     scatter(KneeMax2kgRedExpPerSUBJ(i), KneeMax2kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,2), "MarkerEdgeColor", "none")
@@ -742,8 +742,8 @@ for i = 1:NSUBJ
     scatter(KneeMax4kgRedExpPerSUBJ(i), KneeMax4kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,4), "MarkerEdgeColor", "none")
     scatter(KneeMax5kgRedExpPerSUBJ(i), KneeMax5kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-5 25])
-ylim([-5 25])
+xlim([-7 25])
+ylim([-7 25])
 c2 = colorbar(ax3, "northoutside");
 c2.TickLabels = ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"];
 c2.Ticks = 1:5;
@@ -757,7 +757,7 @@ hold off
 
 nexttile
 hold on
-plot(-8:11,-8:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-10:11,-10:11,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(HipFlexMax1kgRedExpPerSUBJ(i), HipFlexMax1kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,1), "MarkerEdgeColor", "none")
     scatter(HipFlexMax2kgRedExpPerSUBJ(i), HipFlexMax2kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,2), "MarkerEdgeColor", "none")
@@ -765,8 +765,8 @@ for i = 1:NSUBJ
     scatter(HipFlexMax4kgRedExpPerSUBJ(i), HipFlexMax4kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,4), "MarkerEdgeColor", "none")
     scatter(HipFlexMax5kgRedExpPerSUBJ(i), HipFlexMax5kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-8 11])
-ylim([-8 11])
+xlim([-10 11])
+ylim([-10 11])
 xlabel("Experimental Reduction [%]", "FontWeight", "bold")
 ylabel("")
 hold off
@@ -789,7 +789,7 @@ hold off
 
 nexttile
 hold on
-plot(-260:100,-260:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
+plot(-200:100,-200:100,"LineWidth",0.5,"Color",[0.9 0.9 0.9])
 for i = 1:NSUBJ
     scatter(AnkleMax1kgRedExpPerSUBJ(i), AnkleMax1kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,1), "MarkerEdgeColor", "none")
     scatter(AnkleMax2kgRedExpPerSUBJ(i), AnkleMax2kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,2), "MarkerEdgeColor", "none")
@@ -797,8 +797,8 @@ for i = 1:NSUBJ
     scatter(AnkleMax4kgRedExpPerSUBJ(i), AnkleMax4kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,4), "MarkerEdgeColor", "none")
     scatter(AnkleMax5kgRedExpPerSUBJ(i), AnkleMax5kgRedDhondtPerSUBJ(i), "Marker", markers(i), "MarkerFaceColor", colorDhondt2024(:,5), "MarkerEdgeColor", "none")
 end
-xlim([-260 100])
-ylim([-260 100])
+xlim([-200 100])
+ylim([-200 100])
 xlabel("Experimental Reduction [%]", "FontWeight", "bold")
 ylabel("")
 hold off

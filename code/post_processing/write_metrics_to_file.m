@@ -123,7 +123,7 @@ outputFileName = "tables/SUBJavg_R_kin.tex";
 dataMask = R_list_kin_generic_avg < R_list_kin_personal_avg;
 dataMask = [~dataMask dataMask];
 
-R_list_kin_matrix = round([squeeze(R_list_kin_generic_avg); squeeze(R_list_kin_personal_avg)],2)';
+R_list_kin_matrix = round([squeeze(R_list_kin_generic_avg), squeeze(R_list_kin_personal_avg)],2);
 write_tex_latex(R_list_kin_matrix, [], tableHeaders, subjectHeaders, dataMask, outputFileName, '%.1f')
 
 %% Write Average GRF Correlation Results to Tex File
@@ -135,7 +135,7 @@ outputFileName = "tables/SUBJavg_R_grf.tex";
 % print average R kinematics
 dataMask = R_list_grf_generic_avg < R_list_grf_personal_avg;
 dataMask = [~dataMask dataMask];
-R_list_grf_matrix = round([squeeze(R_list_grf_generic_avg); squeeze(R_list_grf_personal_avg)],2)';
+R_list_grf_matrix = round([squeeze(R_list_grf_generic_avg), squeeze(R_list_grf_personal_avg)],2);
 write_tex_latex(R_list_grf_matrix, [], tableHeaders, subjectHeaders, dataMask, outputFileName, '%.1f')
 
 %% Write Average Muscle Activations Correlation Results to Tex File
@@ -147,7 +147,7 @@ outputFileName = "tables/SUBJavg_R_emg.tex";
 % print average R kinematics
 dataMask = R_list_emg_generic_avg < R_list_emg_personal_avg;
 dataMask = [~dataMask dataMask];
-R_list_emg_matrix = round([squeeze(R_list_emg_generic_avg); squeeze(R_list_emg_personal_avg)],2)';
+R_list_emg_matrix = round([squeeze(R_list_emg_generic_avg), squeeze(R_list_emg_personal_avg)],2);
 write_tex_latex(R_list_emg_matrix, [], tableHeaders, subjectHeaders, dataMask, outputFileName, '%.1f')
 
 %% Write Average Kinematics RMSE Results to Tex File
@@ -159,7 +159,7 @@ outputFileName = "tables/SUBJavg_rmse_kin.tex";
 % print average R kinematics
 dataMask = rmse_rot_list_kin_personal_avg < rmse_rot_list_kin_generic_avg;
 dataMask = [~dataMask dataMask];
-rmse_list_kin_matrix = round([squeeze(rmse_rot_list_kin_generic_avg); squeeze(rmse_rot_list_kin_personal_avg)],2)';
+rmse_list_kin_matrix = round([squeeze(rmse_rot_list_kin_generic_avg), squeeze(rmse_rot_list_kin_personal_avg)],2);
 write_tex_latex(rmse_list_kin_matrix, [], tableHeaders, subjectHeaders, dataMask, outputFileName, '%.1f')
 
 %% Write Average GRF RMSE Results to Tex File
@@ -171,5 +171,5 @@ outputFileName = "tables/SUBJavg_rmse_grf.tex";
 % print average R kinematics
 dataMask = rmse_list_grf_personal_avg < rmse_list_grf_generic_avg;
 dataMask = [~dataMask dataMask];
-rmse_list_grf_matrix = round([squeeze(rmse_list_grf_generic_avg); squeeze(rmse_list_grf_personal_avg)],2)';
+rmse_list_grf_matrix = round([squeeze(rmse_list_grf_generic_avg), squeeze(rmse_list_grf_personal_avg)],2);
 write_tex_latex(rmse_list_grf_matrix, [], tableHeaders, subjectHeaders, dataMask, outputFileName, '%.1f')
