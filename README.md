@@ -30,4 +30,4 @@ A paper describing the personalization framework is currenlty submitted in the J
 
 The dataset can be found at:
 
-> Denayer, M. (Creator), Turcksin, T. (Researcher), De Pauw, K. (Supervisor), Verstraten, T. (Supervisor) (2026). A Full-body Motion Capture Dataset for > Bilateral Weighted Shank Walking. figshare Academic Research System. 10.6084/m9.figshare.30316372
+> Denayer, M. (Creator), Turcksin, T. (Researcher), De Pauw, K. (Supervisor), Verstraten, T. (Supervisor) (2026). A Full-body Motion Capture Dataset for Bilateral Weighted Shank Walking. figshare Academic Research System. 10.6084/m9.figshare.30316372
