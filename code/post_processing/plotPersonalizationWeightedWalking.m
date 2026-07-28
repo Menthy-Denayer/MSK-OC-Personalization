@@ -868,7 +868,7 @@ end
 % print_struct_latex(statsSummaryEMG, "version", "dz", [], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 1, 1, '%.4f')
 
 % print_struct_latex(statsSummaryKin, "version", "delta", "std", ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 100, 1, [])
-% print_struct_latex(statsSummaryEMG, "version", "delta", "std", ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 100, 1, [])
+print_struct_latex(statsSummaryEMG, "version", "delta", "std", ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], 100, 1, [])
 
 %% Split Labels
 isTrans = contains(kinColHeaders,"pelvis_tx") | contains(kinColHeaders,"pelvis_ty") | contains(kinColHeaders,"pelvis_tz");

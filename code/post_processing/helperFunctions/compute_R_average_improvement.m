@@ -8,7 +8,7 @@ function [avg_percent_R_kin, avg_percent_R_grf] = compute_R_average_improvement(
 % avg_R_list_kin_generic        | Ndof x 1 Double Array         | Average correlation coefficients for kinematics of the generic model
 % avg_R_list_grf_personal       | Ngrf x 1 Double Array         | Average correlation coefficients for GRFs of the personal model
 % avg_R_list_grf_generic        | Ngrf x 1 Double Array         | Average correlation coefficients for GRFs of the generic model
-% avg_R_list_emg_personal       | Nemg x 1 Double Array         | Average correlation coefficients for EMGs of the generic model
+% avg_R_list_emg_personal       | Nemg x 1 Double Array         | Average correlation coefficients for EMGs of the personal model
 % avg_R_list_emg_generic        | Nemg x 1 Double Array         | Average correlation coefficients for EMGs of the generic model
 % identifier                    | String                        | String to customize results message
 %

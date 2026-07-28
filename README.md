@@ -26,7 +26,7 @@ The "results" folder contains all of the simulation results. For each subject, w
 - the results for personalization (trackKIN-compliantTendon-3D). The simulations denoted "rerun" represent the final simulations and are the ones reported inside the manuscript. You can also find the results of the weighted and speed simulations here.
 
 # Citation
-A paper describing the personalization framework is currenlty submitted in the Journal of the Royal Society Interface.
+A paper describing the personalization framework is currenlty under submission.
 
 The dataset can be found at:
 

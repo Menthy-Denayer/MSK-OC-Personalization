@@ -80,7 +80,7 @@ muscleLabels = strrep(muscleLabels, "_", " ");
 
 fig = figure;
 t = tiledlayout(1,2);
-t.InnerPosition = [0.09 0.11 0.9 0.75];
+t.InnerPosition = [0.09 0.11 0.9 0.70];
 set(gcf,"Units","centimeters")                                              % cm units for position
 set(gcf,"Position",[0 0 fig_width*2 fig_height/1.2])                        % IEEE 1-column: 8.89cm
 

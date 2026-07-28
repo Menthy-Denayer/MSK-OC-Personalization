@@ -270,24 +270,24 @@ R_list_emg_track = NaN(NSUBJ,NemgcolLim);
 
 for i = 1:NSUBJ
     % kinematics (compared to tracking)
-    [R_list_kin_personal(i,:), rmse_list_kin_personal(i,:), ~] = compute_metrics(PersonalKinData(:,:,i), TrackKinData(:,:,i), NaN);
-    [R_list_kin_generic(i,:), rmse_list_kin_generic(i,:), ~] = compute_metrics(GenericKinData(:,:,i), TrackKinData(:,:,i), NaN);
-    [R_list_kin_dhondt2024_3seg(i,:), rmse_list_kin_dhondt2024_3seg(i,:), ~] = compute_metrics(Dhondt2024_3segKinDataLim(:,:,i), TrackKinData(:,:,i), NaN);
+    % [R_list_kin_personal(i,:), rmse_list_kin_personal(i,:), ~] = compute_metrics(PersonalKinData(:,:,i), TrackKinData(:,:,i), NaN);
+    % [R_list_kin_generic(i,:), rmse_list_kin_generic(i,:), ~] = compute_metrics(GenericKinData(:,:,i), TrackKinData(:,:,i), NaN);
+    % [R_list_kin_dhondt2024_3seg(i,:), rmse_list_kin_dhondt2024_3seg(i,:), ~] = compute_metrics(Dhondt2024_3segKinDataLim(:,:,i), TrackKinData(:,:,i), NaN);
 
     % kinematics (compared to experimental average)
-    % [R_list_kin_personal(i,:), rmse_list_kin_personal(i,:), ~] = compute_metrics(PersonalKinDataShifted(:,:,i), normalWalkingKinExpAvgLim(:,:,i), normalWalkingKinExpStdLim(:,:,i));
-    % [R_list_kin_generic(i,:), rmse_list_kin_generic(i,:), ~] = compute_metrics(GenericKinDataShifted(:,:,i), normalWalkingKinExpAvgLim(:,:,i), normalWalkingKinExpStdLim(:,:,i));
-    % [R_list_kin_dhondt2024_3seg(i,:), rmse_list_kin_dhondt2024_3seg(i,:), ~] = compute_metrics(Dhondt2024_3segKinDataShifted(:,:,i), normalWalkingKinExpAvgLim(:,:,i), normalWalkingKinExpStdLim(:,:,i));
+    [R_list_kin_personal(i,:), rmse_list_kin_personal(i,:), ~] = compute_metrics(PersonalKinDataShifted(:,:,i), normalWalkingKinExpAvgLim(:,:,i), normalWalkingKinExpStdLim(:,:,i));
+    [R_list_kin_generic(i,:), rmse_list_kin_generic(i,:), ~] = compute_metrics(GenericKinDataShifted(:,:,i), normalWalkingKinExpAvgLim(:,:,i), normalWalkingKinExpStdLim(:,:,i));
+    [R_list_kin_dhondt2024_3seg(i,:), rmse_list_kin_dhondt2024_3seg(i,:), ~] = compute_metrics(Dhondt2024_3segKinDataShifted(:,:,i), normalWalkingKinExpAvgLim(:,:,i), normalWalkingKinExpStdLim(:,:,i));
 
     % GRF (compared to tracking)
-    [R_list_grf_personal(i,:), rmse_list_grf_personal(i,:), ~] = compute_metrics(PersonalGrfData(:,:,i)/SUBJmass(i), TrackGrfData(:,:,i)/SUBJmass(i), NaN);
-    [R_list_grf_generic(i,:), rmse_list_grf_generic(i,:), ~] = compute_metrics(GenericGrfData(:,:,i)/SUBJmass(i), TrackGrfData(:,:,i)/SUBJmass(i), NaN);
-    [R_list_grf_dhondt2024_3seg(i,:), rmse_list_grf_dhondt2024_3seg(i,:), ~] = compute_metrics(Dhondt2024_3segGrfDataLim(:,:,i)/SUBJmass(i), TrackGrfData(:,:,i)/SUBJmass(i), NaN);
+    % [R_list_grf_personal(i,:), rmse_list_grf_personal(i,:), ~] = compute_metrics(PersonalGrfData(:,:,i)/SUBJmass(i), TrackGrfData(:,:,i)/SUBJmass(i), NaN);
+    % [R_list_grf_generic(i,:), rmse_list_grf_generic(i,:), ~] = compute_metrics(GenericGrfData(:,:,i)/SUBJmass(i), TrackGrfData(:,:,i)/SUBJmass(i), NaN);
+    % [R_list_grf_dhondt2024_3seg(i,:), rmse_list_grf_dhondt2024_3seg(i,:), ~] = compute_metrics(Dhondt2024_3segGrfDataLim(:,:,i)/SUBJmass(i), TrackGrfData(:,:,i)/SUBJmass(i), NaN);
 
     % GRF (compared to experimental average)
-    % [R_list_grf_personal(i,:), rmse_list_grf_personal(i,:), ~] = compute_metrics(PersonalGrfDataShifted(:,:,i)/SUBJmass(i), normalWalkingGrfExpAvg(:,:,i)/SUBJmass(i), normalWalkingGrfExpStd(:,:,i)/SUBJmass(i));
-    % [R_list_grf_generic(i,:), rmse_list_grf_generic(i,:), ~] = compute_metrics(GenericGrfDataShifted(:,:,i)/SUBJmass(i), normalWalkingGrfExpAvg(:,:,i)/SUBJmass(i), normalWalkingGrfExpStd(:,:,i)/SUBJmass(i));
-    % [R_list_grf_dhondt2024_3seg(i,:), rmse_list_grf_dhondt2024_3seg(i,:), ~] = compute_metrics(Dhondt2024_3segGrfDataShifted(:,:,i)/SUBJmass(i), normalWalkingGrfExpAvg(:,:,i)/SUBJmass(i), normalWalkingGrfExpStd(:,:,i)/SUBJmass(i));
+    [R_list_grf_personal(i,:), rmse_list_grf_personal(i,:), ~] = compute_metrics(PersonalGrfDataShifted(:,:,i)/SUBJmass(i), normalWalkingGrfExpAvg(:,:,i)/SUBJmass(i), normalWalkingGrfExpStd(:,:,i)/SUBJmass(i));
+    [R_list_grf_generic(i,:), rmse_list_grf_generic(i,:), ~] = compute_metrics(GenericGrfDataShifted(:,:,i)/SUBJmass(i), normalWalkingGrfExpAvg(:,:,i)/SUBJmass(i), normalWalkingGrfExpStd(:,:,i)/SUBJmass(i));
+    [R_list_grf_dhondt2024_3seg(i,:), rmse_list_grf_dhondt2024_3seg(i,:), ~] = compute_metrics(Dhondt2024_3segGrfDataShifted(:,:,i)/SUBJmass(i), normalWalkingGrfExpAvg(:,:,i)/SUBJmass(i), normalWalkingGrfExpStd(:,:,i)/SUBJmass(i));
 
     % EMG (compared to experimental average)
     subjectEMGdata = expData.data.("SUBJ" + SUBJID(i)).EMG.EMGdataNormal;
