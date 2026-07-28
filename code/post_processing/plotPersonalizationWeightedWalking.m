@@ -1361,7 +1361,7 @@ function [GenericDataWeightedShifted, PersonalDataWeightedShifted, Dhondt2024_3s
         for j = 1:Nweights
             GenericDataWeightedShifted(:,conditionBool,i,j) = circshift(GenericDataWeighted(:,conditionBool,i,j),-GenericIdxHeelLWeighted(i,j),1);
             PersonalDataWeightedShifted(:,conditionBool,i,j) = circshift(PersonalDataWeighted(:,conditionBool,i,j),-PersonalIdxHeelLWeighted(i,j),1);
-            Dhondt2024_3segDataWeightedShifted(:,conditionBool,i,j) = circshift(Dhondt2024_3segDataWeightedShifted(:,conditionBool,i,j),-Dhondt2024_3segIdxHeelLWeighted(i,j),1);
+            Dhondt2024_3segDataWeightedShifted(:,conditionBool,i,j) = circshift(Dhondt2024_3segDataWeighted(:,conditionBool,i,j),-Dhondt2024_3segIdxHeelLWeighted(i,j),1);
         end
     end
 end
