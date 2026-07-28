@@ -643,7 +643,7 @@ set(0,"DefaultAxesFontName","SansSerif")                                    % ti
 
 
 if(export)
-    figName = "figures/WeightedPeakReduction_perSUBJ" + ".pdf";
+    figName = "WeightedPeakReduction_perSUBJ" + figFileType;
     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
 end
  

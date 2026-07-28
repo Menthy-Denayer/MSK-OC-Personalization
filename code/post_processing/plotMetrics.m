@@ -131,7 +131,7 @@ hold off
 
  
 if(export)
-    figName = "R_personal_generic_kin.pdf";
+    figName = "R_personal_generic_kin" + figFileType;
     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
 end
 
@@ -229,7 +229,7 @@ hold off
 
  
 if(export)
-    figName = "R_personal_generic_grf.pdf";
+    figName = "R_personal_generic_grf" + figFileType;
     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
 end
 
@@ -290,6 +290,6 @@ set(gca,"Units","centimeters")                                              % cm
 hold off
  
 if(export)
-    figName = "R_personal_generic_emg.pdf";
+    figName = "R_personal_generic_emg" + figFileType;
     exportgraphics(fig,figName,"ContentType","vector","Resolution",300,"BackgroundColor","none")
 end

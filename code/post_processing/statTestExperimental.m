@@ -35,7 +35,7 @@ fig_height = 8.89;  % cm
 fig_width = 8.89;   % cm
 linewidth = 1.5;
 export = false;
-figFileType = ".pdf";
+figFileType = ".jpg";
 colors = [[0,0,0]; [0,51,153]/255; [255,102,0]/255; [51,155,155]/255];
 
 %% Define Variables
