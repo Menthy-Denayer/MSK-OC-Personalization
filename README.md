@@ -2,7 +2,7 @@
 This repository contains the processing code used for the paper on predictive MSK model personalization (see below). The repository is divided into different folders, containing the code, MSK models, experimental data etc. 
 
 # Code
-The "code" folder contains the code used for post-processing and personalization, built on top of the PredSim framework. The version of PredSim used for this work can be found at [https://github.com/Menthy-Denayer/PredSim/tree/hpc-edits](https://github.com/Menthy-Denayer/PredSim/releases/tag/personalization-v1.0.0). The version of PredSim used is v1.1.0, specifically the commit: 841f1e711f45d990efa2fd4e49dcf07090f9b690, with a final commit included from 12/11/2025 (Update muscleAnalysisAPI.m).
+The "code" folder contains the code used for post-processing and personalization, built on top of the PredSim framework. The version of PredSim used for this work can be found at [https://github.com/Menthy-Denayer/PredSim/tree/hpc-edits](https://github.com/Menthy-Denayer/PredSim/releases/tag/personalization-v1.0.0). This original (unmodified) version of PredSim was based on the v1.1.0 release (24/09/2024), with subsequent master branch commits included up to November 12, 2025, ending at commit: 841f1e711f45d990efa2fd4e49dcf07090f9b690 (Update muscleAnalysisAPI.m).
 
 The post-processing code should be ready to run on your own device, to recreate the figures inside the manuscript, and the reported metrics. The code will ask you to select the results directory ("results" folder) and the experimental data (inside the "data" folder).
 
