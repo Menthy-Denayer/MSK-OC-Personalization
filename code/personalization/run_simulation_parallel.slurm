@@ -3,8 +3,8 @@
 #SBATCH --cluster=hydra
 #SBATCH --partition=zen5_mpi
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=16
-#SBATCH --time=24:00:00
+#SBATCH --cpus-per-task=20
+#SBATCH --time=1:00:00
 
 # Instead of installing dependencies yourself, you can simply load modules on
 # the cluster. The versions are just examples, you can check for available
@@ -23,7 +23,12 @@ export LD_PRELOAD="${EBROOTGCCCORE}/lib64/libstdc++.so.6"
 # export _JAVA_OPTIONS="${_JAVA_OPTIONS} -Djava.library.path=$EBROOTOPENSIM/sdk/lib"
 
 # Ensure MATLAB uses correct Java library path
-PREFDIR=$(matlab -batch "disp(prefdir)" | tail -n 1)
+# PREFDIR=$(matlab -batch "disp(prefdir)" | tail -n 1)
+
+# Change MATLAB PREFDIR to allow for multiple parallel jobs
+export MATLAB_PREFDIR=$VSC_SCRATCH/matlab_jobs/$SLURM_JOB_ID
+mkdir -p "$MATLAB_PREFDIR"
+PREFDIR=$MATLAB_PREFDIR
 
 echo "Using MATLAB prefdir: $PREFDIR"
 
