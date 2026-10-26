@@ -1,0 +1,2 @@
+# Experimental Data
+This is the same data as the dataset (https://doi.org/10.6084/m9.figshare.30316372), except for the fact that the data was rotated about the y-axis, such that the heading of the OpenSim model would be in the positive X-direction.
