@@ -6,11 +6,11 @@ close all
 import org.opensim.modeling.*
 
 %% Select Result File
-[res_file_name, res_DIR] = uigetfile(".mat", "Choose results file");
+[res_file_name, res_DIR] = uigetfile(".mat", "Choose personal results file");
 results = load(fullfile(res_DIR, res_file_name));
 
 %% Select Generic File
-[gen_file_name, gen_DIR] = uigetfile(".mat", "Choose results file");
+[gen_file_name, gen_DIR] = uigetfile(".mat", "Choose generic results file");
 generic = load(fullfile(gen_DIR, gen_file_name));
 
 %% Select Desired Kinematics

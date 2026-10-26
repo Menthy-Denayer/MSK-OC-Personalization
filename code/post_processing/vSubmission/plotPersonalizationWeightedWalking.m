@@ -741,25 +741,25 @@ end
 
 %% Print Matrix Average Improvements
 % print average R kinematics
-avg_percent_R_kin_matrix = round([avg_percent_R_kin, avg_percent_R_kin_dhondt2024_3seg],2);
+avg_percent_R_kin_matrix = [avg_percent_R_kin, avg_percent_R_kin_dhondt2024_3seg];
 max_percent_R_kin_matrix = max(avg_percent_R_kin_matrix,[],2);
 isBestRkin = avg_percent_R_kin_matrix == max_percent_R_kin_matrix;
 print_matrix_latex(avg_percent_R_kin_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRkin,[])
 
 % print average RMSE kinematics
-avg_percent_rmse_kin_matrix = round([avg_percent_rmse_kin, avg_percent_rmse_kin_dhondt2024_3seg],2);
+avg_percent_rmse_kin_matrix = [avg_percent_rmse_kin, avg_percent_rmse_kin_dhondt2024_3seg];
 max_percent_rmse_kin_matrix = min(avg_percent_rmse_kin_matrix,[],2);
 isBestRMSEkin = avg_percent_rmse_kin_matrix == max_percent_rmse_kin_matrix;
 print_matrix_latex(avg_percent_rmse_kin_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRMSEkin,[])
 
 % print average R GRF
-avg_percent_R_grf_matrix = round([avg_percent_R_grf, avg_percent_R_grf_dhondt2024_3seg],2);
+avg_percent_R_grf_matrix = [avg_percent_R_grf, avg_percent_R_grf_dhondt2024_3seg];
 max_percent_R_grf_matrix = max(avg_percent_R_grf_matrix,[],2);
 isBestRgrf = avg_percent_R_grf_matrix == max_percent_R_grf_matrix;
 print_matrix_latex(avg_percent_R_grf_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRgrf,[])
 
 % print average RMSE GRF
-avg_percent_rmse_grf_matrix = round([avg_percent_rmse_grf, avg_percent_rmse_grf_dhondt2024_3seg],2);
+avg_percent_rmse_grf_matrix = [avg_percent_rmse_grf, avg_percent_rmse_grf_dhondt2024_3seg];
 max_percent_rmse_grf_matrix = min(avg_percent_rmse_grf_matrix,[],2);
 isBestRMSEgrf = avg_percent_rmse_grf_matrix == max_percent_rmse_grf_matrix;
 print_matrix_latex(avg_percent_rmse_grf_matrix,[],["Personal", "Dhondt2024_3seg"], ["1 kg", "2 kg", "3 kg", "4 kg", "5 kg"], isBestRMSEgrf,[])

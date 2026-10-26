@@ -411,31 +411,31 @@ avg_rmse_list_grf_dhondt2024_3seg = mean(rmse_list_grf_dhondt2024_3seg,1,"omitna
 
 %% Print Matrix
 % print average R kinematics
-avg_R_list_kin_matrix = round([avg_R_list_kin_generic; avg_R_list_kin_personal; avg_R_list_kin_dhondt2024_3seg],2)';
+avg_R_list_kin_matrix = [avg_R_list_kin_generic; avg_R_list_kin_personal; avg_R_list_kin_dhondt2024_3seg]';
 max_R_list_kin_matrix = max(avg_R_list_kin_matrix,[],2);
 isBestRkin = avg_R_list_kin_matrix == max_R_list_kin_matrix;
 print_matrix_latex(avg_R_list_kin_matrix,[],["Generic", "Personal", "Dhondt2024 3seg"], strrep(kinColHeaders,"_"," "), isBestRkin,[])
 
 % print average RMSE kinematics
-avg_RMSE_list_kin_matrix = round([avg_rmse_list_kin_generic; avg_rmse_list_kin_personal; avg_rmse_list_kin_dhondt2024_3seg],2)';
+avg_RMSE_list_kin_matrix = [avg_rmse_list_kin_generic; avg_rmse_list_kin_personal; avg_rmse_list_kin_dhondt2024_3seg]';
 max_RMSE_list_kin_matrix = min(avg_RMSE_list_kin_matrix,[],2);
 isBestRMSEkin = avg_RMSE_list_kin_matrix == max_RMSE_list_kin_matrix;
 print_matrix_latex(avg_RMSE_list_kin_matrix,[],["Generic", "Personal", "D'Hondt2024 3 seg"], strrep(kinColHeaders,"_"," "), isBestRMSEkin,[])
 
 % print average R GRF
-avg_R_list_grf_matrix = round([avg_R_list_grf_generic; avg_R_list_grf_personal; avg_R_list_grf_dhondt2024_3seg],2)';
+avg_R_list_grf_matrix = [avg_R_list_grf_generic; avg_R_list_grf_personal; avg_R_list_grf_dhondt2024_3seg]';
 max_R_list_grf_matrix = max(avg_R_list_grf_matrix,[],2);
 isBestRgrf = avg_R_list_grf_matrix == max_R_list_grf_matrix;
 print_matrix_latex(avg_R_list_grf_matrix,[],["Generic", "Personal", "D'Hondt2024 3 seg"], strrep(GRFColHeaders,"_"," "), isBestRgrf,[])
 
 % print average RMSE GRF
-avg_RMSE_list_grf_matrix = round([avg_rmse_list_grf_generic; avg_rmse_list_grf_personal; avg_rmse_list_grf_dhondt2024_3seg],2)';
+avg_RMSE_list_grf_matrix = [avg_rmse_list_grf_generic; avg_rmse_list_grf_personal; avg_rmse_list_grf_dhondt2024_3seg]';
 max_RMSE_list_grf_matrix = min(avg_RMSE_list_grf_matrix,[],2);
 isBestRMSEgrf = avg_RMSE_list_grf_matrix == max_RMSE_list_grf_matrix;
 print_matrix_latex(avg_RMSE_list_grf_matrix,[],["Generic", "Personal", "D'Hondt2024 3 seg"], strrep(GRFColHeaders,"_"," "), isBestRMSEgrf,[])
 
 % print average R EMG
-avg_R_list_emg_matrix = round([avg_R_list_emg_generic; avg_R_list_emg_personal; avg_R_list_emg_dhondt2024_3seg; avg_R_list_emg_track],2)';
+avg_R_list_emg_matrix = [avg_R_list_emg_generic; avg_R_list_emg_personal; avg_R_list_emg_dhondt2024_3seg; avg_R_list_emg_track]';
 max_R_list_emg_matrix = max(avg_R_list_emg_matrix,[],2);
 isBestRemg = avg_R_list_emg_matrix == max_R_list_emg_matrix;
 print_matrix_latex(avg_R_list_emg_matrix,[],["Generic", "Personal", "D'Hondt2024 3 seg", "Tracking"], strrep(EMGColHeadersLim,"_"," "), isBestRemg,[])

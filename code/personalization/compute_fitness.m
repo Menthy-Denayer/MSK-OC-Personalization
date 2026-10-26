@@ -7,8 +7,8 @@ function [f,cot] = compute_fitness(X, R, model_info, params)
 % R                             | struct                        | PredSim results structure
 % model_info                    | struct                        | PredSim model info structure
 % params                        | struct                        | Structure with settings
-%   IKtime                      | 100x1 Double Array            | Normalized reference time
-%   IKdesired                   | 100xNjoints Double Array      | Desired kinematics reference
+%   IKtime                      | Nx1 Double Array            | Normalized reference time
+%   IKdesired                   | NxNjoints Double Array      | Desired kinematics reference
 %   IKweight                    | Double                        | Weight of the IK tracking term
 %   PennAnglePenalty            | Boolean                       | Whether to penalize the pennation angle range
 %   PennAngleweight             | Double                        | Weight of the pennation angle range penalty term
@@ -65,6 +65,17 @@ IKsync = interp1(norm_time,IKpred(:,desir_joint_idx(desir_joint_idx>0)),params.I
 IKerr = sum(rmse(IKsync,params.IKdesired));
 f = f + IKerr * params.IKweight;
 fprintf('Kinematics error is: %.2f\n', IKerr)
+
+%% Debug
+% temp = kinColheaders(desir_joint_idx);
+% for i = 1:size(IKsync,2)
+%     figure
+%     hold on
+%     plot(params.IKtime, params.IKdesired(:,i),"r")
+%     plot(params.IKtime, IKsync(:,i),"k")
+%     title(desir_coo_names(i) + " " + temp(i))
+%     hold off
+% end
 
 %% Pennation Angle Penalty
 if(params.PennAnglePenalty)

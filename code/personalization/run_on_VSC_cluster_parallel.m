@@ -1,5 +1,5 @@
 % --------------------------------------------------------------------------
-% run_on_VSC_cluster_parallel
+% run_on_VSC_cluster
 %   Run personalization on the VSC cluster. VUB provides compute resources to 
 %   researchers in the High Performance Computing service. The HPC clusters 
 %   of VUB are part of the Vlaams Supercomputer Centrum  (VSC).
@@ -28,7 +28,8 @@ clc
 %% Add PredSim Path
 [pathPerDir,~,~] = fileparts(mfilename('fullpath'));
 [pathVSC_DATADir,~,~] = fileparts(pathPerDir);
-pathPredSimDir = fullfile(pathVSC_DATADir,'PredSim');
+% pathPredSimDir = fullfile(pathVSC_DATADir,'PredSim');
+pathPredSimDir = fullfile(pathVSC_DATADir,'PredSim-versions','PredSim-v1.2.0','PredSim');
 addpath(pathPredSimDir);
 addpath(pathPerDir);
 
@@ -66,10 +67,10 @@ import org.opensim.modeling.*
 init_option = 'Scaled Model';
 
 %% Choose Output Directory
-pathOutputFolder = fullfile(pathVSC_DATADir, 'PredSimResults');
+pathOutputFolder = fullfile(pathVSC_DATADir, 'PredSimResults-Personalization');
 
 %% Load Generic Model
-subj_name = 'SUBJ09mtu3D';
+subj_name = 'SUBJ07mtu3D';
 osim_file_name = [subj_name, '.osim'];
 osim_file_loc = fullfile(pathPredSimDir,'Subjects',subj_name);
 genericModel = Model(fullfile(osim_file_loc,osim_file_name));
@@ -79,7 +80,7 @@ modelSettings_file_name = ['settings_', subj_name, '.m'];
 modelSettings_file_loc = osim_file_loc;
 
 %% Load Kinematics Initial Guess
-mot_file_name = 'SUBJ09_gait1422_MTPjoint_11453296_zeroMTP.mot';
+mot_file_name = 'SUBJ07_normalWalking_average_zeroMTP_pelvisOffset02.mot';
 % mot_file_name = 'SUBJ06_gait1422-1GC.mot';
 mot_file_loc = osim_file_loc;
 % KINdata = importdata(fullfile(mot_file_loc,mot_file_name));
@@ -172,8 +173,9 @@ params.initialCoefficients = genericMuscleValues;
 
 %% Choose PredSim Settings
 S = initializePredSimSettings(params);
-S.subject.TrackKin = false;
-S.subject.TrackGRF = false;
+% S.subject.TrackJointStiffness = false;
+% S.subject.TrackKin = false;
+% S.subject.TrackGRF = false;
 S.solver.max_iter = 2e3;                                                    % after 2000 iterations the optimization stops
 % S.solver.IG_selection_gaitCyclePercent = 100;                             % IG represents 1 gait cycle
 
@@ -205,10 +207,29 @@ opts.Resume = 0;                                                            % re
 opts.SaveVariables = 'on';
 opts.SaveFilename = fullfile(cmaesResultsDir, 'variablescmaes.mat');
 opts.LogFilenamePrefix = fullfile(cmaesResultsDir,'outcmaes');
+opts.Seed = [362436069;212734]
 
 %% Start Parallel Pool
 % parpool('Processes', 8);
+% c = parcluster;
+% delete(c.Jobs);
+
+% Create job storage location
+jobID = getenv('SLURM_JOB_ID');
+jobDir = fullfile(getenv('VSC_SCRATCH'), 'matlab_jobs', jobID, 'cluster_jobs');
+if ~exist(jobDir, 'dir')
+    mkdir(jobDir);
+end
+
+% Create parallel cluster
 c = parcluster;
+c.JobStorageLocation = jobDir;
+c.NumWorkers = 10;                                                              % optional, see earlier
+
+% Save profile
+profName = ['local_' jobID];
+saveAsProfile(c, profName);
+params.S.solver.par_cluster_name = profName;                                    % PredSim now loads this profile
 delete(c.Jobs);
 
 %% Run CMA-ES
