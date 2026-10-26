@@ -1,0 +1,2989 @@
+Using MATLAB prefdir: /scratch/brussel/112/vsc11236/matlab_jobs/13334983
+Created /scratch/brussel/112/vsc11236/matlab_jobs/13334983/javalibrarypath.txt containing:
+/apps/brussel/RL9/zen5-ib/software/OpenSim/4.5.2-foss-2024a-MATLAB-2024a-r6/sdk/lib
+Picked up JAVA_TOOL_OPTIONS: -Xmx100159979520
+Opening log file:  /user/brussel/112/vsc11236/java.log.5675
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2024 The MathWorks, Inc.
+             R2024a Update 6 (24.1.0.2689473) 64-bit (glnxa64)
+                               July 29, 2024
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+BLAS: trying environment BLAS_VERSION...
+BLAS: loading /apps/brussel/RL9/zen5-ib/software/OpenBLAS/0.3.27-GCC-13.3.0/lib64/libopenblas.so
+BLAS: loaded /apps/brussel/RL9/zen5-ib/software/OpenBLAS/0.3.27-GCC-13.3.0/lib64/libopenblas.so@0x15428242c670
+LAPACK: trying environment LAPACK_VERSION...
+LAPACK: loading /apps/brussel/RL9/zen5-ib/software/OpenBLAS/0.3.27-GCC-13.3.0/lib64/libopenblas.so
+LAPACK: loaded /apps/brussel/RL9/zen5-ib/software/OpenBLAS/0.3.27-GCC-13.3.0/lib64/libopenblas.so@0x15428242c670
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+[Warning: Unable to get git hash. It is advised to get PredSim through GitHub to
+have version control and to receive future updates.] 
+[> In get_git_hash (line 58)
+In initializeSettings (line 67)
+In initializePredSimSettings (line 14)
+In run_on_VSC_cluster_parallel (line 175)] 
+Initialising settings from "/vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/settings_SUBJ10mtu3D.m".
+[Warning: Directory already exists.] 
+[> In run_on_VSC_cluster_parallel (line 191)] 
+[Warning: Directory already exists.] 
+[> In run_on_VSC_cluster_parallel (line 192)] 
+[Warning: Directory already exists.] 
+[> In run_on_VSC_cluster_parallel (line 193)] 
+
+stopIter =
+
+   Inf
+
+  resumed from results/SUBJ10mtu3D_102881300/variablescmaes.mat
+----------------------------------------------------------------
+There are 10 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:02:12
+Started predictive simulation at 13:02:12
+Worker starting candidate 2
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c2.osim at 13:02:16
+Started predictive simulation at 13:02:16
+Worker starting candidate 3
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c3.osim at 13:02:17
+Started predictive simulation at 13:02:17
+Worker starting candidate 4
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c4.osim at 13:02:18
+Started predictive simulation at 13:02:18
+Worker starting candidate 5
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c5.osim at 13:02:19
+Started predictive simulation at 13:02:19
+Worker starting candidate 6
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c6.osim at 13:02:20
+Started predictive simulation at 13:02:20
+Worker starting candidate 7
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c7.osim at 13:02:21
+Started predictive simulation at 13:02:21
+Worker starting candidate 8
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c8.osim at 13:02:22
+Started predictive simulation at 13:02:22
+Worker starting candidate 9
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c9.osim at 13:02:23
+Started predictive simulation at 13:02:23
+Worker starting candidate 10
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c10.osim at 13:02:24
+Started predictive simulation at 13:02:24
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwfl.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwi18n.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwmcicore.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwfoundation_conc_common.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwfoundation_log.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwcpp11compat.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwboost_log.so.1.85.0)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwboost_thread.so.1.85.0)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwfoundation_filesystem.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libicui18n.so.76)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwcppmicroservices.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwfoundation_feature.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libCppMicroServices.so.3.8.11)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwboost_serialization.so.1.85.0)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwflcertificates.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwfoundation_threadpool.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwfoundation_usm.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwinstall_cpputil.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwopcmodel.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwflstoragevfs.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwinstall_cppinstrset_processor.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwinstall_cppinstrset.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwflstorageprovider.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwflnetwork.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwfoundation_eventmgr_client.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwinstall_ddux.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwflhttpclient_core.so)
+/user/brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/InstallMathWorksServiceHost: /apps/brussel/RL9/zen5-ib/software/GCCcore/13.3.0/lib64/libstdc++.so.6: version `CXXABI_1.3.15' not found (required by /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/.MathWorks/ServiceHost/node710/temp/cc73-c49e-d386-d908/v2026.10.1.1/_tempinstaller_glnxa64/bin/glnxa64/libmwddux_loggingapi.so)
+Kinematics error is: 65.43
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker1 finished job 1 with function evaluation of 70.36
+Kinematics error is: 66.38
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker2 finished job 2 with function evaluation of 70.77
+Kinematics error is: 65.91
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker3 finished job 3 with function evaluation of 70.61
+Kinematics error is: 68.99
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.31
+worker4 finished job 4 with function evaluation of 73.71
+Kinematics error is: 68.86
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker5 finished job 5 with function evaluation of 73.49
+Kinematics error is: 65.55
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker6 finished job 6 with function evaluation of 70.45
+Kinematics error is: 65.85
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker7 finished job 7 with function evaluation of 70.26
+Kinematics error is: 68.77
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker8 finished job 8 with function evaluation of 73.50
+Kinematics error is: 65.62
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker9 finished job 9 with function evaluation of 70.18
+Kinematics error is: 69.95
+Pennation angle penalty is: 0.01
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker10 finished job 10 with function evaluation of 74.00
+----------------------------------------------------------------
+All workers finished, best value is 70.18 for candidate 9
+----------------------------------------------------------------
+----------------------------------------------------------------
+There are 10 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:08:20
+Started predictive simulation at 13:08:20
+Worker starting candidate 2
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c2.osim at 13:08:21
+Started predictive simulation at 13:08:21
+Worker starting candidate 3
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c3.osim at 13:08:22
+Started predictive simulation at 13:08:22
+Worker starting candidate 4
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c4.osim at 13:08:23
+Started predictive simulation at 13:08:23
+Worker starting candidate 5
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c5.osim at 13:08:24
+Started predictive simulation at 13:08:24
+Worker starting candidate 6
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c6.osim at 13:08:25
+Started predictive simulation at 13:08:25
+Worker starting candidate 7
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c7.osim at 13:08:26
+Started predictive simulation at 13:08:26
+Worker starting candidate 8
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c8.osim at 13:08:26
+Started predictive simulation at 13:08:26
+Worker starting candidate 9
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c9.osim at 13:08:27
+Started predictive simulation at 13:08:27
+Worker starting candidate 10
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c10.osim at 13:08:28
+Started predictive simulation at 13:08:28
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+Kinematics error is: 65.90
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker1 finished job 1 with function evaluation of 70.30
+Kinematics error is: 67.04
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker2 finished job 2 with function evaluation of 71.91
+Kinematics error is: 65.80
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker3 finished job 3 with function evaluation of 70.67
+Kinematics error is: 65.42
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker4 finished job 4 with function evaluation of 70.21
+Kinematics error is: 68.69
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker5 finished job 5 with function evaluation of 73.30
+Kinematics error is: 65.85
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker6 finished job 6 with function evaluation of 70.63
+Kinematics error is: 65.69
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker7 finished job 7 with function evaluation of 70.35
+Kinematics error is: 69.02
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker8 finished job 8 with function evaluation of 73.49
+Kinematics error is: 65.68
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker9 finished job 9 with function evaluation of 70.18
+Kinematics error is: 66.08
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker10 finished job 10 with function evaluation of 70.94
+----------------------------------------------------------------
+All workers finished, best value is 70.18 for candidate 9
+----------------------------------------------------------------
+----------------------------------------------------------------
+There are 10 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:15:18
+Started predictive simulation at 13:15:18
+Worker starting candidate 2
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c2.osim at 13:15:19
+Started predictive simulation at 13:15:19
+Worker starting candidate 3
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c3.osim at 13:15:20
+Started predictive simulation at 13:15:20
+Worker starting candidate 4
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c4.osim at 13:15:21
+Started predictive simulation at 13:15:21
+Worker starting candidate 5
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c5.osim at 13:15:22
+Started predictive simulation at 13:15:22
+Worker starting candidate 6
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c6.osim at 13:15:23
+Started predictive simulation at 13:15:23
+Worker starting candidate 7
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c7.osim at 13:15:23
+Started predictive simulation at 13:15:23
+Worker starting candidate 8
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c8.osim at 13:15:24
+Started predictive simulation at 13:15:24
+Worker starting candidate 9
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c9.osim at 13:15:25
+Started predictive simulation at 13:15:25
+Worker starting candidate 10
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c10.osim at 13:15:26
+Started predictive simulation at 13:15:26
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+Kinematics error is: 65.34
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker1 finished job 1 with function evaluation of 70.17
+Kinematics error is: 66.14
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker2 finished job 2 with function evaluation of 70.54
+Kinematics error is: 66.14
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker3 finished job 3 with function evaluation of 70.49
+Kinematics error is: 65.86
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker4 finished job 4 with function evaluation of 70.65
+Kinematics error is: 65.92
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker5 finished job 5 with function evaluation of 70.61
+Kinematics error is: 68.97
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker6 finished job 6 with function evaluation of 73.67
+Kinematics error is: 68.92
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker7 finished job 7 with function evaluation of 73.09
+Kinematics error is: 69.92
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker8 finished job 8 with function evaluation of 74.29
+Kinematics error is: 65.92
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker9 finished job 9 with function evaluation of 70.50
+Kinematics error is: 70.07
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker10 finished job 10 with function evaluation of 74.50
+----------------------------------------------------------------
+All workers finished, best value is 70.17 for candidate 1
+----------------------------------------------------------------
+----------------------------------------------------------------
+There are 10 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:21:07
+Started predictive simulation at 13:21:07
+Worker starting candidate 2
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c2.osim at 13:21:08
+Started predictive simulation at 13:21:08
+Worker starting candidate 3
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c3.osim at 13:21:09
+Started predictive simulation at 13:21:09
+Worker starting candidate 4
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c4.osim at 13:21:10
+Started predictive simulation at 13:21:10
+Worker starting candidate 5
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c5.osim at 13:21:11
+Started predictive simulation at 13:21:11
+Worker starting candidate 6
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c6.osim at 13:21:12
+Started predictive simulation at 13:21:12
+Worker starting candidate 7
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c7.osim at 13:21:13
+Started predictive simulation at 13:21:13
+Worker starting candidate 8
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c8.osim at 13:21:14
+Started predictive simulation at 13:21:14
+Worker starting candidate 9
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c9.osim at 13:21:14
+Started predictive simulation at 13:21:14
+Worker starting candidate 10
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c10.osim at 13:21:15
+Started predictive simulation at 13:21:15
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+Kinematics error is: 65.66
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker1 finished job 1 with function evaluation of 70.60
+Kinematics error is: 66.00
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker2 finished job 2 with function evaluation of 70.46
+Kinematics error is: 67.48
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker3 finished job 3 with function evaluation of 71.84
+Kinematics error is: 65.65
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker4 finished job 4 with function evaluation of 70.53
+Kinematics error is: 67.76
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker5 finished job 5 with function evaluation of 72.15
+Kinematics error is: 68.75
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker6 finished job 6 with function evaluation of 73.20
+Kinematics error is: 66.57
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker7 finished job 7 with function evaluation of 71.43
+Kinematics error is: 65.71
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker8 finished job 8 with function evaluation of 70.06
+Kinematics error is: 69.96
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker9 finished job 9 with function evaluation of 74.60
+Kinematics error is: 68.80
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker10 finished job 10 with function evaluation of 73.55
+----------------------------------------------------------------
+All workers finished, best value is 70.06 for candidate 8
+----------------------------------------------------------------
+----------------------------------------------------------------
+There are 10 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:27:10
+Started predictive simulation at 13:27:10
+Worker starting candidate 2
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c2.osim at 13:27:11
+Started predictive simulation at 13:27:11
+Worker starting candidate 3
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c3.osim at 13:27:12
+Started predictive simulation at 13:27:12
+Worker starting candidate 4
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c4.osim at 13:27:13
+Started predictive simulation at 13:27:13
+Worker starting candidate 5
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c5.osim at 13:27:13
+Started predictive simulation at 13:27:13
+Worker starting candidate 6
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c6.osim at 13:27:14
+Started predictive simulation at 13:27:14
+Worker starting candidate 7
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c7.osim at 13:27:15
+Started predictive simulation at 13:27:15
+Worker starting candidate 8
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c8.osim at 13:27:16
+Started predictive simulation at 13:27:16
+Worker starting candidate 9
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c9.osim at 13:27:17
+Started predictive simulation at 13:27:17
+Worker starting candidate 10
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c10.osim at 13:27:18
+Started predictive simulation at 13:27:18
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+Kinematics error is: 65.52
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker1 finished job 1 with function evaluation of 70.14
+Kinematics error is: 66.78
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker2 finished job 2 with function evaluation of 71.20
+Kinematics error is: 66.38
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.28
+worker3 finished job 3 with function evaluation of 70.57
+Kinematics error is: 65.83
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker4 finished job 4 with function evaluation of 70.24
+Kinematics error is: 65.63
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker5 finished job 5 with function evaluation of 70.42
+Kinematics error is: 65.49
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker6 finished job 6 with function evaluation of 70.38
+Kinematics error is: 65.61
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker7 finished job 7 with function evaluation of 70.22
+Kinematics error is: 65.99
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker8 finished job 8 with function evaluation of 70.70
+Kinematics error is: 65.90
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker9 finished job 9 with function evaluation of 70.60
+Kinematics error is: 69.34
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker10 finished job 10 with function evaluation of 74.13
+----------------------------------------------------------------
+All workers finished, best value is 70.14 for candidate 1
+----------------------------------------------------------------
+----------------------------------------------------------------
+There are 10 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:33:59
+Started predictive simulation at 13:33:59
+Worker starting candidate 2
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c2.osim at 13:34:00
+Started predictive simulation at 13:34:00
+Worker starting candidate 3
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c3.osim at 13:34:00
+Started predictive simulation at 13:34:00
+Worker starting candidate 4
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c4.osim at 13:34:01
+Started predictive simulation at 13:34:01
+Worker starting candidate 5
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c5.osim at 13:34:02
+Started predictive simulation at 13:34:02
+Worker starting candidate 6
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c6.osim at 13:34:03
+Started predictive simulation at 13:34:03
+Worker starting candidate 7
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c7.osim at 13:34:04
+Started predictive simulation at 13:34:04
+Worker starting candidate 8
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c8.osim at 13:34:05
+Started predictive simulation at 13:34:05
+Worker starting candidate 9
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c9.osim at 13:34:06
+Started predictive simulation at 13:34:06
+Worker starting candidate 10
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c10.osim at 13:34:07
+Started predictive simulation at 13:34:07
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+Kinematics error is: 65.31
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker1 finished job 1 with function evaluation of 70.20
+Kinematics error is: 65.73
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker2 finished job 2 with function evaluation of 70.37
+Kinematics error is: 66.19
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker3 finished job 3 with function evaluation of 71.08
+Kinematics error is: 65.60
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker4 finished job 4 with function evaluation of 70.22
+Kinematics error is: 65.70
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker5 finished job 5 with function evaluation of 70.54
+Kinematics error is: 65.70
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker6 finished job 6 with function evaluation of 70.45
+Kinematics error is: 65.79
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker7 finished job 7 with function evaluation of 70.27
+Kinematics error is: 68.52
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker8 finished job 8 with function evaluation of 73.12
+Kinematics error is: 66.09
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker9 finished job 9 with function evaluation of 70.71
+Kinematics error is: 65.62
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker10 finished job 10 with function evaluation of 70.74
+----------------------------------------------------------------
+All workers finished, best value is 70.20 for candidate 1
+----------------------------------------------------------------
+----------------------------------------------------------------
+There are 10 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:39:37
+Started predictive simulation at 13:39:37
+Worker starting candidate 2
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c2.osim at 13:39:38
+Started predictive simulation at 13:39:38
+Worker starting candidate 3
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c3.osim at 13:39:39
+Started predictive simulation at 13:39:39
+Worker starting candidate 4
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c4.osim at 13:39:40
+Started predictive simulation at 13:39:40
+Worker starting candidate 5
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c5.osim at 13:39:40
+Started predictive simulation at 13:39:40
+Worker starting candidate 6
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c6.osim at 13:39:41
+Started predictive simulation at 13:39:41
+Worker starting candidate 7
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c7.osim at 13:39:42
+Started predictive simulation at 13:39:42
+Worker starting candidate 8
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c8.osim at 13:39:43
+Started predictive simulation at 13:39:43
+Worker starting candidate 9
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c9.osim at 13:39:44
+Started predictive simulation at 13:39:44
+Worker starting candidate 10
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c10.osim at 13:39:45
+Started predictive simulation at 13:39:45
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+Kinematics error is: 65.49
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker1 finished job 1 with function evaluation of 70.32
+Kinematics error is: 65.64
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker2 finished job 2 with function evaluation of 70.05
+Kinematics error is: 66.08
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker3 finished job 3 with function evaluation of 70.55
+Kinematics error is: 65.99
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker4 finished job 4 with function evaluation of 70.88
+Kinematics error is: 65.66
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker5 finished job 5 with function evaluation of 70.31
+Kinematics error is: 65.37
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker6 finished job 6 with function evaluation of 70.35
+Kinematics error is: 65.36
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker7 finished job 7 with function evaluation of 70.07
+Kinematics error is: 65.88
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker8 finished job 8 with function evaluation of 70.29
+Kinematics error is: 68.88
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker9 finished job 9 with function evaluation of 73.31
+Kinematics error is: 65.92
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker10 finished job 10 with function evaluation of 70.55
+----------------------------------------------------------------
+All workers finished, best value is 70.05 for candidate 2
+----------------------------------------------------------------
+----------------------------------------------------------------
+There are 10 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:46:09
+Started predictive simulation at 13:46:09
+Worker starting candidate 2
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c2.osim at 13:46:09
+Started predictive simulation at 13:46:09
+Worker starting candidate 3
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c3.osim at 13:46:10
+Started predictive simulation at 13:46:10
+Worker starting candidate 4
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c4.osim at 13:46:11
+Started predictive simulation at 13:46:11
+Worker starting candidate 5
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c5.osim at 13:46:12
+Started predictive simulation at 13:46:12
+Worker starting candidate 6
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c6.osim at 13:46:13
+Started predictive simulation at 13:46:13
+Worker starting candidate 7
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c7.osim at 13:46:14
+Started predictive simulation at 13:46:14
+Worker starting candidate 8
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c8.osim at 13:46:15
+Started predictive simulation at 13:46:15
+Worker starting candidate 9
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c9.osim at 13:46:16
+Started predictive simulation at 13:46:16
+Worker starting candidate 10
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c10.osim at 13:46:17
+Started predictive simulation at 13:46:17
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+Kinematics error is: 66.72
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker1 finished job 1 with function evaluation of 70.98
+Kinematics error is: 69.71
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker2 finished job 2 with function evaluation of 74.45
+Kinematics error is: 70.16
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.31
+worker3 finished job 3 with function evaluation of 74.72
+Kinematics error is: 65.59
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker4 finished job 4 with function evaluation of 70.75
+Kinematics error is: 65.65
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker5 finished job 5 with function evaluation of 69.88
+Kinematics error is: 65.47
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker6 finished job 6 with function evaluation of 70.24
+Kinematics error is: 65.87
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker7 finished job 7 with function evaluation of 70.61
+Kinematics error is: 68.83
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker8 finished job 8 with function evaluation of 73.36
+Kinematics error is: 65.94
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker9 finished job 9 with function evaluation of 70.31
+Kinematics error is: 68.59
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker10 finished job 10 with function evaluation of 73.43
+----------------------------------------------------------------
+All workers finished, best value is 69.88 for candidate 5
+----------------------------------------------------------------
+----------------------------------------------------------------
+There are 10 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:51:24
+Started predictive simulation at 13:51:24
+Worker starting candidate 2
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c2.osim at 13:51:25
+Started predictive simulation at 13:51:25
+Worker starting candidate 3
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c3.osim at 13:51:26
+Started predictive simulation at 13:51:26
+Worker starting candidate 4
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c4.osim at 13:51:27
+Started predictive simulation at 13:51:27
+Worker starting candidate 5
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c5.osim at 13:51:28
+Started predictive simulation at 13:51:28
+Worker starting candidate 6
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c6.osim at 13:51:29
+Started predictive simulation at 13:51:29
+Worker starting candidate 7
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c7.osim at 13:51:30
+Started predictive simulation at 13:51:30
+Worker starting candidate 8
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c8.osim at 13:51:31
+Started predictive simulation at 13:51:31
+Worker starting candidate 9
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c9.osim at 13:51:31
+Started predictive simulation at 13:51:31
+Worker starting candidate 10
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c10.osim at 13:51:32
+Started predictive simulation at 13:51:32
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+Kinematics error is: 68.55
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker1 finished job 1 with function evaluation of 72.81
+Kinematics error is: 65.40
+Pennation angle penalty is: 0.03
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker2 finished job 2 with function evaluation of 70.43
+Kinematics error is: 69.13
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker3 finished job 3 with function evaluation of 73.29
+Kinematics error is: 69.13
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.31
+worker4 finished job 4 with function evaluation of 74.06
+Kinematics error is: 68.62
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker5 finished job 5 with function evaluation of 72.97
+Kinematics error is: 68.46
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker6 finished job 6 with function evaluation of 73.12
+Kinematics error is: 69.19
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.29
+worker7 finished job 7 with function evaluation of 73.51
+Kinematics error is: 68.73
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker8 finished job 8 with function evaluation of 73.13
+Kinematics error is: 68.41
+Pennation angle penalty is: 0.01
+Fiber length penalty is: 0.00
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker9 finished job 9 with function evaluation of 72.47
+Kinematics error is: 65.81
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker10 finished job 10 with function evaluation of 70.23
+----------------------------------------------------------------
+All workers finished, best value is 70.23 for candidate 10
+----------------------------------------------------------------
+  200 ,   2001 : 7.0225760296781e+01 +(3e+00,4e+00) | 1.14e+01 | 15:1.1e-04 26:1.2e-03
+----------------------------------------------------------------
+There are 1 candidates 
+----------------------------------------------------------------
+Worker starting candidate 1
+[info] Updating Model file from 40500 to latest format...
+[info] Loaded model SUBJ10mtu3D from file /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/SUBJ10mtu3D.osim
+[warning] Couldn't find file 'sacrum.vtp'.
+[warning] Couldn't find file 'pelvis.vtp'.
+[warning] Couldn't find file 'l_pelvis.vtp'.
+[warning] Couldn't find file 'femur_r.vtp'.
+[warning] Couldn't find file 'tibia_r.vtp'.
+[warning] Couldn't find file 'fibula_r.vtp'.
+[warning] Couldn't find file 'talus_rv.vtp'.
+[warning] Couldn't find file 'foot.vtp'.
+[warning] Couldn't find file 'bofoot.vtp'.
+[warning] Couldn't find file 'femur_l.vtp'.
+[warning] Couldn't find file 'tibia_l.vtp'.
+[warning] Couldn't find file 'fibula_l.vtp'.
+[warning] Couldn't find file 'talus_lv.vtp'.
+[warning] Couldn't find file 'l_foot.vtp'.
+[warning] Couldn't find file 'l_bofoot.vtp'.
+[warning] Couldn't find file 'hat_spine.vtp'.
+[warning] Couldn't find file 'hat_jaw.vtp'.
+[warning] Couldn't find file 'hat_skull.vtp'.
+[warning] Couldn't find file 'hat_ribs_scap.vtp'.
+Written model /vscmnt/brussel_pixiu_data/_data_brussel/112/vsc11236/PredSim-versions/PredSim-v1.2.0/PredSim/Subjects/SUBJ10mtu3D/active/SUBJ10mtu3D_c1.osim at 13:56:06
+Started predictive simulation at 13:56:06
+Current job storage location is: /scratch/brussel/112/vsc11236/matlab_jobs/13334983/cluster_jobs
+Kinematics error is: 65.55
+Pennation angle penalty is: 0.02
+Fiber length penalty is: 0.01
+Tendon strain penalty is: 0.00
+Passive muscle force penalty is: 0.00
+Parameter deviation penalty is: 0.30
+worker1 finished job 1 with function evaluation of 70.05
+----------------------------------------------------------------
+All workers finished, best value is 70.05 for candidate 1
+----------------------------------------------------------------
+#Fevals:   f(returned x)   |    bestever.f     | stopflag (saved to results/SUBJ10mtu3D_102881300/variablescmaes.mat)
+   2002: 7.00452450841e+01 | 6.98127441498e+01 | maxfunevals
+mean solution: +8.9e-02 +9.2e-02 +9.4e-02 +9.5e-02 +8.9e-02 +9.9e-02 +1.5e-01 +1.3e-01 +8.4e-02 +1.1e-01 +9.8e-02 +7.5e-02 +5.1e-02 +7.4e-02 +3.0e-02 +8.0e-02 +1.2e-01 +4.2e-02 +6.6e-02 +3.1e-01 +8.1e-02 +7.3e-02 +1.4e-01 +2.8e-01 +1.1e-01 +3.3e-01 +2.2e-01 +2.3e-01
+std deviation:  3.9e-04  3.8e-04  4.7e-04  3.4e-04  3.5e-04  3.9e-04  6.5e-04  6.6e-04  3.7e-04  4.3e-04  3.8e-04  3.1e-04  1.6e-04  3.3e-04  1.1e-04  3.8e-04  4.5e-04  2.3e-04  2.3e-04  1.0e-03  3.2e-04  2.8e-04  5.8e-04  1.1e-03  4.1e-04  1.2e-03  7.2e-04  7.2e-04
+use plotcmaesdat.m for plotting the output at any time (option LogModulo must not be zero)
+LAPACK: unloading libraries
+BLAS: unloading libraries
