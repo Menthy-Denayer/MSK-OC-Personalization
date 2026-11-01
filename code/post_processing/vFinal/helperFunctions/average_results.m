@@ -64,6 +64,9 @@ for subj = 1:Nsubj
         for fileIdx = 1:Nfiles
             data = load(fullfile(currentDIR,dataFiles(fileIdx)));
 
+
+            % fprintf('File: %s, Model file: %s\n', dataFiles(fileIdx), data.model_info.osim_path);
+
             % Check IG
             % fprintf('File: %s, IG file: %s\n', dataFiles(fileIdx), data.R.S.solver.IG_selection);
 

@@ -1,0 +1,181 @@
+clear all
+clc
+close all
+
+%% Add Path
+addpath("helperFunctions\")
+
+%% Load Metrics
+[file_name, file_loc] = uigetfile(".mat", "Choose metrics structure file.");
+load(fullfile(file_loc, file_name));
+
+%% Define Variables
+NSUBJ = size(metrics.kinematics.normal.R.generic, 1);
+Ncases = size(metrics.kinematics.weighted.R.generic, 2)+1;
+
+kinColHeaders = metrics.colheaders.kinematics;
+
+%% Compute Average Kinematics Correlation Metrics
+R_list_kin_generic_avg = NaN(NSUBJ, Ncases);
+R_list_kin_generic_avg(:,1) = mean(rFisher(metrics.kinematics.normal.R.generic),2);                      % average over joints, fisher corrected
+R_list_kin_generic_avg(:,2:end) = mean(rFisher(metrics.kinematics.weighted.R.generic),3);                % average over joints, fisher corrected
+
+R_list_kin_personal_avg = NaN(NSUBJ, Ncases);
+R_list_kin_personal_avg(:,1) = mean(rFisher(metrics.kinematics.normal.R.personal),2);                    % average over joints, fisher corrected
+R_list_kin_personal_avg(:,2:end) = mean(rFisher(metrics.kinematics.weighted.R.personal),3);              % average over joints, fisher corrected
+
+R_list_kin_dhondt2024_3seg_avg = NaN(NSUBJ, Ncases);
+R_list_kin_dhondt2024_3seg_avg(:,1) = mean(rFisher(metrics.kinematics.normal.R.dhondt2024_3seg),2);      % average over joints, fisher corrected
+R_list_kin_dhondt2024_3seg_avg(:,2:end) = mean(rFisher(metrics.kinematics.weighted.R.dhondt2024_3seg),3);% average over joints, fisher corrected
+
+%% Perform R Repeated Measures Anova
+[p_list_kin_R, diff_list_kin_R] = performRMtest(R_list_kin_generic_avg, R_list_kin_personal_avg, R_list_kin_dhondt2024_3seg_avg, "generic", "personal", "dhondt");
+p_list_kin_R_corr = pValueHolmCorrection(p_list_kin_R);
+
+%% Compute Average Kinematics RMSE Metrics
+isTrans = contains(kinColHeaders, "pelvis_tx") | contains(kinColHeaders, "pelvis_ty") | contains(kinColHeaders, "pelvis_tz");
+isRot = ~isTrans;
+
+rmse_list_kin_generic_avg = NaN(NSUBJ, Ncases);
+rmse_list_kin_generic_avg(:,1) = mean(metrics.kinematics.normal.RMSE.generic(:, isRot),2);                          % average over joints
+rmse_list_kin_generic_avg(:,2:end) = mean(metrics.kinematics.weighted.RMSE.generic(:, :, isRot),3);                 % average over joints
+
+rmse_list_kin_personal_avg = NaN(NSUBJ, Ncases);
+rmse_list_kin_personal_avg(:,1) = mean(metrics.kinematics.normal.RMSE.personal(:, isRot),2);                        % average over joints
+rmse_list_kin_personal_avg(:,2:end) = mean(metrics.kinematics.weighted.RMSE.personal(:, :, isRot),3);               % average over joints
+
+rmse_list_kin_dhondt2024_3seg_avg = NaN(NSUBJ, Ncases);
+rmse_list_kin_dhondt2024_3seg_avg(:,1) = mean(metrics.kinematics.normal.RMSE.dhondt2024_3seg(:, isRot),2);          % average over joints
+rmse_list_kin_dhondt2024_3seg_avg(:,2:end) = mean(metrics.kinematics.weighted.RMSE.dhondt2024_3seg(:, :, isRot),3); % average over joints
+
+%% Perform RMSE Repeated Measures Anova
+[p_list_kin_rmse, diff_list_kin_rmse] = performRMtest(rmse_list_kin_generic_avg, rmse_list_kin_personal_avg, rmse_list_kin_dhondt2024_3seg_avg, "generic", "personal", "dhondt");
+p_list_kin_rmse_corr = pValueHolmCorrection(p_list_kin_rmse);
+
+%% Compute Average GRF Correlation Metrics
+R_list_grf_generic_avg = NaN(NSUBJ, Ncases);
+R_list_grf_generic_avg(:,1) = mean(rFisher(metrics.ground_reaction.normal.R.generic),2);
+R_list_grf_generic_avg(:,2:end) = mean(rFisher(metrics.ground_reaction.weighted.R.generic),3);
+
+R_list_grf_personal_avg = NaN(NSUBJ, Ncases);
+R_list_grf_personal_avg(:,1) = mean(rFisher(metrics.ground_reaction.normal.R.personal),2);
+R_list_grf_personal_avg(:,2:end) = mean(rFisher(metrics.ground_reaction.weighted.R.personal),3);
+
+R_list_grf_dhondt2024_3seg_avg = NaN(NSUBJ, Ncases);
+R_list_grf_dhondt2024_3seg_avg(:,1) = mean(rFisher(metrics.ground_reaction.normal.R.dhondt2024_3seg),2);
+R_list_grf_dhondt2024_3seg_avg(:,2:end) = mean(rFisher(metrics.ground_reaction.weighted.R.dhondt2024_3seg),3);
+
+%% Perform R Repeated Measures Anova
+[p_list_grf_R, diff_list_grf_R] = performRMtest(R_list_grf_generic_avg, R_list_grf_personal_avg, R_list_grf_dhondt2024_3seg_avg, "generic", "personal", "dhondt");
+p_list_grf_R_corr = pValueHolmCorrection(p_list_grf_R);
+
+%% Compute Average GRF RMSE Metrics
+rmse_list_grf_generic_avg = NaN(NSUBJ, Ncases);
+rmse_list_grf_generic_avg(:,1) = mean(metrics.ground_reaction.normal.RMSE.generic,2);
+rmse_list_grf_generic_avg(:,2:end) = mean(metrics.ground_reaction.weighted.RMSE.generic,3);
+
+rmse_list_grf_personal_avg = NaN(NSUBJ, Ncases);
+rmse_list_grf_personal_avg(:,1) = mean(metrics.ground_reaction.normal.RMSE.personal,2);
+rmse_list_grf_personal_avg(:,2:end) = mean(metrics.ground_reaction.weighted.RMSE.personal,3);
+
+rmse_list_grf_dhondt2024_3seg_avg = NaN(NSUBJ, Ncases);
+rmse_list_grf_dhondt2024_3seg_avg(:,1) = mean(metrics.ground_reaction.normal.RMSE.dhondt2024_3seg,2);
+rmse_list_grf_dhondt2024_3seg_avg(:,2:end) = mean(metrics.ground_reaction.weighted.RMSE.dhondt2024_3seg,3);
+
+%% Perform RMSE Repeated Measures Anova
+[p_list_grf_rmse, diff_list_grf_rmse] = performRMtest(rmse_list_grf_generic_avg, rmse_list_grf_personal_avg, rmse_list_grf_dhondt2024_3seg_avg, "generic", "personal", "dhondt");
+p_list_grf_rmse_corr = pValueHolmCorrection(p_list_grf_rmse);
+
+%% Compute Average EMG Correlation Metrics
+R_list_emg_generic_avg = NaN(NSUBJ, Ncases);
+R_list_emg_generic_avg(:,1) = mean(rFisher(metrics.muscle_activations.normal.R.generic),2, "omitnan");
+R_list_emg_generic_avg(:,2:end) = mean(rFisher(metrics.muscle_activations.weighted.R.generic),3, "omitnan");
+
+R_list_emg_personal_avg = NaN(NSUBJ, Ncases);
+R_list_emg_personal_avg(:,1) = mean(rFisher(metrics.muscle_activations.normal.R.personal),2, "omitnan");
+R_list_emg_personal_avg(:,2:end) = mean(rFisher(metrics.muscle_activations.weighted.R.personal),3, "omitnan");
+
+R_list_emg_dhondt2024_3seg_avg = NaN(NSUBJ, Ncases);
+R_list_emg_dhondt2024_3seg_avg(:,1) = mean(rFisher(metrics.muscle_activations.normal.R.dhondt2024_3seg),2, "omitnan");
+R_list_emg_dhondt2024_3seg_avg(:,2:end) = mean(rFisher(metrics.muscle_activations.weighted.R.dhondt2024_3seg),3, "omitnan");
+
+%% Perform RMSE Repeated Measures Anova
+[p_list_emg_R, diff_list_emg_R] = performRMtest(R_list_emg_generic_avg, R_list_emg_personal_avg, R_list_emg_dhondt2024_3seg_avg, "generic", "personal", "dhondt");
+p_list_emg_R_corr = pValueHolmCorrection(p_list_emg_R);
+
+%% Print Results Kinematics
+isSignificant = [p_list_kin_R_corr < 0.05, zeros(6,3)];
+print_matrix_latex([p_list_kin_R_corr diff_list_kin_R],[],["G vs P", "G vs E", "P vs E", "G vs P", "G vs E", "P vs E"], ["normal", "1 kg", "2 kg", "3 kg", "4 kg", "5 kg"],isSignificant,'%.4f')
+
+isSignificant = [p_list_kin_rmse_corr < 0.05, zeros(6,3)];
+print_matrix_latex([p_list_kin_rmse_corr diff_list_kin_rmse],[],["G vs P", "G vs E", "P vs E", "G vs P", "G vs E", "P vs E"], ["normal", "1 kg", "2 kg", "3 kg", "4 kg", "5 kg"],isSignificant,'%.4f')
+
+%% Print Results GRFs
+isSignificant = [p_list_grf_R_corr < 0.05, zeros(6,3)];
+print_matrix_latex([p_list_grf_R_corr diff_list_grf_R],[],["G vs P", "G vs E", "P vs E", "G vs P", "G vs E", "P vs E"], ["normal", "1 kg", "2 kg", "3 kg", "4 kg", "5 kg"],isSignificant,'%.4f')
+
+isSignificant = [p_list_grf_rmse_corr < 0.05, zeros(6,3)];
+print_matrix_latex([p_list_grf_rmse_corr diff_list_grf_rmse],[],["G vs P", "G vs E", "P vs E", "G vs P", "G vs E", "P vs E"], ["normal", "1 kg", "2 kg", "3 kg", "4 kg", "5 kg"],isSignificant,'%.4f')
+
+%% Print Results EMGs
+isSignificant = [p_list_emg_R_corr < 0.05, zeros(6,3)];
+print_matrix_latex([p_list_emg_R_corr diff_list_emg_R],[],["G vs P", "G vs E", "P vs E", "G vs P", "G vs E", "P vs E"], ["normal", "1 kg", "2 kg", "3 kg", "4 kg", "5 kg"],isSignificant,'%.4f')
+
+%% Functions
+function [pListTot, diffListTot] = performRMtest(data1, data2, data3, groupName1, groupName2, groupName3)
+    
+    groupNames = [groupName1 groupName2 groupName3];
+    Ncases = size(data1,2);
+    Ngroups = length(groupNames);
+    pListGG = NaN(Ncases,1);
+    pListTot = NaN(Ncases, Ngroups);
+    diffListTot = NaN(Ncases, Ngroups);
+
+    for i = 1:Ncases
+        y = [data1(:,i) data2(:,i) data3(:,i)];                             % data for generic - personal - extended models
+
+        t = array2table(y, VariableNames = ["M1","M2","M3"]);               % table with data
+        within = table([1 2 3]', VariableNames="Models");                   % table to denote models as within-subjects factor
+        
+        rm  = fitrm(t, 'M1-M3 ~ 1', "WithinDesign", within);                % repeated-measures model fit of the data
+        tbl = ranova(rm);                                                   % one-way, repeated measures anova (not reported)
+        
+        p = tbl.pValue(1);                                                  % uncorrected p-value for Model
+        pListGG(i) = tbl.pValueGG(1);                                       % Greenhouse-Geisser corrected
+        
+        mauchly(rm);                                                        % sphericity test (low power with n = 6)
+        ph = multcompare(rm, "Models");                                     % pairwise post-hoc, Tukey-Kramer (default)
+
+        rows = find(ph.Models_1 < ph.Models_2);                             % find only unique comparisons (1-2, 1-3, 2-3)
+        pListTot(i, :) = ph.pValue(rows);                                   % save pairwise p-values
+        diffListTot(i, :) = ph.Difference(rows);                            % save pairwise differences
+    end
+end
+
+% Adjust p-values to account for multiple scenarios for same
+% subjects/models being tested
+% Holm correction:
+% p_i = max_(i<=j){ (m - j + 1)p_j }_1 {x}_1 = min(x,1)
+% see: https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_method
+
+function pAdjusted = pValueHolmCorrection(p)
+    pAdjusted = NaN(size(p));
+    for i = 1:size(p,2)
+        [ps, idx] = sort(p(:,i));                                           % sort p-values from smallest to largest
+        m = numel(ps);                                                      % number of scenarios = 6
+        adj = min((m - (0:m-1)') .* ps, 1);                                 % adjust p-values with 6 --> 1, take min between pcorr & 1
+        adj = cummax(adj);                                                  % cumulative maximum takes maximum for row and rows before
+        pAdjusted(idx,i) = adj;                                             % return p-values to original position
+    end
+end
+
+% Fisher z-transform to transform R into normally distributed variable
+% see: https://en.wikipedia.org/wiki/Fisher_transformation
+function z_list = rFisher(R_list)
+
+    z_list = atanh(R_list);
+
+    if(any(isnan(z_list),"all"))
+        disp("NaN value because R was close to +-1, or R was NaN")
+    end
+end

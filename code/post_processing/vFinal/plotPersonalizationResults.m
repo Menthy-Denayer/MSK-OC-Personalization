@@ -517,6 +517,7 @@ for i = [4:6 1:3]
     tileCnt = tileCnt + 1;
     grid on
     hold on
+    plot_mean_std(resampTime,mean(normalWalkingGrfExpAvg(:,i,:),3)*grfSigns(i),std(normalWalkingGrfExpAvg(:,i,:),0,3),"black", linewidth,"-")
     plot_mean_std(resampTime,GenericGRFDataAvg(:,i)*grfSigns(i),GenericGRFDataSTD(:,i),colors(2,:), linewidth,"-")
     plot_mean_std(resampTime,PersonalGRFDataAvg(:,i)*grfSigns(i),PersonalGRFDataSTD(:,i),colors(3,:), linewidth,"-")
     plot_mean_std(resampTime,Dhondt2024_3segGRFDataAvg(:,i)*grfSigns(i),Dhondt2024_3segGRFDataSTD(:,i),colors(4,:), linewidth,"--")
@@ -532,7 +533,7 @@ for i = [4:6 1:3]
     hold off
 end
 
-lg = legend(["", "generic", "", "personal", "", "Dhondt2024 3seg"],"Location","northoutside","Orientation","horizontal");
+lg = legend(["", "experimental", "", "generic", "", "personal", "", "Dhondt2024 3seg"],"Location","northoutside","Orientation","horizontal");
 lg.Layout.Tile = 'north';
 lg.NumColumns = 2;
 
